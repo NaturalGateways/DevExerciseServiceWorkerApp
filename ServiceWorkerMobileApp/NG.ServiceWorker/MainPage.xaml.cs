@@ -24,37 +24,43 @@ namespace NG.ServiceWorker
                 {
                     JobTypeName = "Cage Clean Out",
                     CustomerDisplayName = "Ragnar",
-                    Address = "Katee Habitat cage"
+                    Address = "Katee Habitat cage",
+                    ProfilePicUrl = "http://files.naturalgateways.com/Profiles/Ragnar.png"
                 });
                 m_viewModel.JobListViewModels.Add(new Jobs.JobListItemViewModel
                 {
                     JobTypeName = "Bath",
                     CustomerDisplayName = "Flynn",
-                    Address = "Katee Habitat cage"
+                    Address = "Katee Habitat cage",
+                    ProfilePicUrl = "http://files.naturalgateways.com/Profiles/Flynn.png"
                 });
                 m_viewModel.JobListViewModels.Add(new Jobs.JobListItemViewModel
                 {
                     JobTypeName = "Transport to pet show",
                     CustomerDisplayName = "Myron",
-                    Address = "Back of DVD case"
+                    Address = "Back of DVD case",
+                    ProfilePicUrl = "http://files.naturalgateways.com/Profiles/Myron.png"
                 });
                 m_viewModel.JobListViewModels.Add(new Jobs.JobListItemViewModel
                 {
                     JobTypeName = "Transport to pet show",
                     CustomerDisplayName = "Mixon",
-                    Address = "Recyclables pile"
+                    Address = "Recyclables pile",
+                    ProfilePicUrl = "http://files.naturalgateways.com/Profiles/Mixon.png"
                 });
                 m_viewModel.JobListViewModels.Add(new Jobs.JobListItemViewModel
                 {
                     JobTypeName = "Food delivery",
                     CustomerDisplayName = "Biff",
-                    Address = "Bird box"
+                    Address = "Bird box",
+                    ProfilePicUrl = "http://files.naturalgateways.com/Profiles/Biff.png"
                 });
                 m_viewModel.JobListViewModels.Add(new Jobs.JobListItemViewModel
                 {
                     JobTypeName = "Playtime",
                     CustomerDisplayName = "Marty",
-                    Address = "Under the drop sheet"
+                    Address = "Under the drop sheet",
+                    ProfilePicUrl = "http://files.naturalgateways.com/Profiles/Marty.png"
                 });
             }
             this.BindingContext = m_viewModel;
