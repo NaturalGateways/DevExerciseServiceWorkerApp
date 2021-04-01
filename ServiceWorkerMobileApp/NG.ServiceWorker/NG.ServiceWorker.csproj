@@ -18,6 +18,6 @@
     <Folder Include="Jobs\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NG.ServiceWorker.Services.Base\NG.ServiceWorker.Services.Base.csproj" />
+    <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />
   </ItemGroup>
 </Project>

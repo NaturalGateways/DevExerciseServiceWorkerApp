@@ -7,7 +7,7 @@
         <Frame Grid.Row="0" BackgroundColor="#2196F3" Padding="24,36,24,12" CornerRadius="0">
             <Label Text="My Jobs" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
-        <ListView Grid.Row="1" BackgroundColor="Gray" ItemsSource="{Binding JobListViewModels}" RowHeight="70">
+        <ListView Grid.Row="1" BackgroundColor="Gray" ItemsSource="{Binding JobListViewModels}" RowHeight="80">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

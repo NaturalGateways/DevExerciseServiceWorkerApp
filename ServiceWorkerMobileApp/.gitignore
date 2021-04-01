@@ -1,9 +1,15 @@
 /NG.ServiceWorker.Android/bin
 /NG.ServiceWorker.Android/obj
+/NG.ServiceWorker.Base/bin
+/NG.ServiceWorker.Base/obj
+/NG.ServiceWorker.CoreServices.Android/bin
+/NG.ServiceWorker.CoreServices.Android/obj
+/NG.ServiceWorker.CoreServices.iOS/bin
+/NG.ServiceWorker.CoreServices.iOS/obj
 /NG.ServiceWorker.iOS/bin
 /NG.ServiceWorker.iOS/obj
-/NG.ServiceWorker.Services.Base/bin
-/NG.ServiceWorker.Services.Base/obj
+/NG.ServiceWorker.ServiceDefinitions/bin
+/NG.ServiceWorker.ServiceDefinitions/obj
 /NG.ServiceWorker.UWP/bin
 /NG.ServiceWorker.UWP/obj
 /NG.ServiceWorker/bin
