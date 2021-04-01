@@ -22,9 +22,16 @@ namespace NG.ServiceWorker.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            // Setup forms
             global::Xamarin.Forms.Forms.Init();
+
+            // App setup
+            AppSetup.CommonAppSetup.CommonStartup();
+
+            // Load application
             LoadApplication(new App());
 
+            // Call super
             return base.FinishedLaunching(app, options);
         }
     }

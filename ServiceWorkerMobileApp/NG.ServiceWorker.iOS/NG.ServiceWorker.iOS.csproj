@@ -126,10 +126,11 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
+  <Import Project="..\NG.ServiceWorker.AppSetup.Shared\NG.ServiceWorker.AppSetup.Shared.projitems" Label="Shared" Condition="Exists('..\NG.ServiceWorker.AppSetup.Shared\NG.ServiceWorker.AppSetup.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker\NG.ServiceWorker.csproj">
-      <Project>{4A45E5E9-9F3A-4E3C-8CBE-BF1487D08693}</Project>
+      <Project>{676F7961-095B-4A37-B573-B600442206A7}</Project>
       <Name>NG.ServiceWorker</Name>
     </ProjectReference>
   </ItemGroup>

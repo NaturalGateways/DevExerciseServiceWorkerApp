@@ -2,6 +2,8 @@
 /NG.ServiceWorker.Android/obj
 /NG.ServiceWorker.iOS/bin
 /NG.ServiceWorker.iOS/obj
+/NG.ServiceWorker.Services.Base/bin
+/NG.ServiceWorker.Services.Base/obj
 /NG.ServiceWorker.UWP/bin
 /NG.ServiceWorker.UWP/obj
 /NG.ServiceWorker/bin
