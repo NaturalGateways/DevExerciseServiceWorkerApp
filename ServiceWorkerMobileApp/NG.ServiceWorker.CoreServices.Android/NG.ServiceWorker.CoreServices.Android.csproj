@@ -44,6 +44,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -54,12 +55,21 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj">
+      <Project>{9D08DA2C-BBF9-4D8F-B9FD-AEC8B76C82B5}</Project>
+      <Name>NG.ServiceWorker.ServiceDefinitions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\NG.ServiceWorker.CoreServices.Shared\NG.ServiceWorker.CoreServices.Shared.projitems" Label="Shared" Condition="Exists('..\NG.ServiceWorker.CoreServices.Shared\NG.ServiceWorker.CoreServices.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

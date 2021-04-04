@@ -37,12 +37,24 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj">
+      <Project>{9D08DA2C-BBF9-4D8F-B9FD-AEC8B76C82B5}</Project>
+      <Name>NG.ServiceWorker.ServiceDefinitions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="..\NG.ServiceWorker.CoreServices.Shared\NG.ServiceWorker.CoreServices.Shared.projitems" Label="Shared" Condition="Exists('..\NG.ServiceWorker.CoreServices.Shared\NG.ServiceWorker.CoreServices.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -133,5 +133,13 @@
       <Project>{676F7961-095B-4A37-B573-B600442206A7}</Project>
       <Name>NG.ServiceWorker</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj">
+      <Project>{9D08DA2C-BBF9-4D8F-B9FD-AEC8B76C82B5}</Project>
+      <Name>NG.ServiceWorker.ServiceDefinitions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.CoreServices.iOS\NG.ServiceWorker.CoreServices.iOS.csproj">
+      <Project>{E5C1F0C7-7E24-4D60-9EC6-5163D3506F54}</Project>
+      <Name>NG.ServiceWorker.CoreServices.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

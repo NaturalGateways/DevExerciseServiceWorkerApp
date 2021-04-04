@@ -90,6 +90,14 @@
       <Project>{676F7961-095B-4A37-B573-B600442206A7}</Project>
       <Name>NG.ServiceWorker</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.CoreServices.Android\NG.ServiceWorker.CoreServices.Android.csproj">
+      <Project>{8C15E951-D096-4B48-B7D0-ACA3574B66CB}</Project>
+      <Name>NG.ServiceWorker.CoreServices.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj">
+      <Project>{9D08DA2C-BBF9-4D8F-B9FD-AEC8B76C82B5}</Project>
+      <Name>NG.ServiceWorker.ServiceDefinitions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\NG.ServiceWorker.AppSetup.Shared\NG.ServiceWorker.AppSetup.Shared.projitems" Label="Shared" Condition="Exists('..\NG.ServiceWorker.AppSetup.Shared\NG.ServiceWorker.AppSetup.Shared.projitems')" />
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
