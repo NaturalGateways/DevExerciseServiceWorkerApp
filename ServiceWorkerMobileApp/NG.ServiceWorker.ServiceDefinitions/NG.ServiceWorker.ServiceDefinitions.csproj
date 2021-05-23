@@ -5,4 +5,18 @@
     <RootNamespace>NG.ServiceWorker</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ApiModel\" />
+    <Folder Include="ServiceInterfaces\" />
+    <Folder Include="ServiceProvider\" />
+    <Folder Include="ConfigReaders\" />
+    <Folder Include="ConfigReaders\ServiceConfig\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\services_config.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\services_config.xml" />
+  </ItemGroup>
 </Project>

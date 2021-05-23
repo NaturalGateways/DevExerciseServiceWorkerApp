@@ -8,4 +8,14 @@
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>NG.ServiceWorker.CoreServices</Import_RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\" />
+    <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\HttpClasses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultApiService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultHttpService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultJsonService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\HttpClasses\DefaultHttpConnection.cs" />
+  </ItemGroup>
 </Project>

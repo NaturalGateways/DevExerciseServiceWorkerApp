@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<services>
+    <service type="NG.ServiceWorker.IApiService">
+        <implementation type="NG.ServiceWorker.CoreServices.DefaultApiService"/>
+    </service>
+    <service type="NG.ServiceWorker.IHttpService">
+        <implementation type="NG.ServiceWorker.CoreServices.DefaultHttpService"/>
+    </service>
+    <service type="NG.ServiceWorker.IJsonService">
+        <implementation type="NG.ServiceWorker.CoreServices.DefaultJsonService"/>
+    </service>
+</services>

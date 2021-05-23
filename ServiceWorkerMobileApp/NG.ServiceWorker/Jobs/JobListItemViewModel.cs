@@ -4,12 +4,14 @@ namespace NG.ServiceWorker.Jobs
 {
     public class JobListItemViewModel : UI.ViewModel
     {
-        public string JobTypeName { get; set; }
+        public ApiModel.Job Job { get; set; }
 
-        public string CustomerDisplayName { get; set; }
+        public string JobTypeName { get { return this.Job.JobTypeName; } }
 
-        public string Address { get; set; }
+        public string CustomerDisplayName { get { return this.Job.CustomerDisplayName; } }
 
-        public string ProfilePicUrl { get; set; }
+        public string Address { get { return this.Job.Address; } }
+
+        public string ProfilePicUrl { get { return this.Job.ProfilePicUrl; } }
     }
 }
