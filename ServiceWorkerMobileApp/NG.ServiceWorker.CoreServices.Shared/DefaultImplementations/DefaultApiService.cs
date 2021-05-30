@@ -15,7 +15,7 @@ namespace NG.ServiceWorker.CoreServices
         /// <summary>Get the jobs.</summary>
         public ApiModel.Job[] GetJobArray()
         {
-            string url = "https://https.naturalgateways.com/ServiceWorker/Jobs.json";
+            string url = "https://https.naturalgateways.com/ServiceWorker/Jobs2.json";
             return this.ApiConnection.GetJson<ApiModel.Job[]>(url);
         }
 

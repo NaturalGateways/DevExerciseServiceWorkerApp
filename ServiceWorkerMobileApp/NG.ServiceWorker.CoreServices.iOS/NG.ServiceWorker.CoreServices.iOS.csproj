@@ -41,19 +41,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="iOSServices\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="iOSServices\iOSFileSystemService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj">
       <Project>{9D08DA2C-BBF9-4D8F-B9FD-AEC8B76C82B5}</Project>
       <Name>NG.ServiceWorker.ServiceDefinitions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.Images\NG.ServiceWorker.Images.csproj">
+      <Project>{CA2D9727-3BC9-4577-AEC8-686DB7F22D8F}</Project>
+      <Name>NG.ServiceWorker.Images</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>5.0.0.2012</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="..\NG.ServiceWorker.CoreServices.Shared\NG.ServiceWorker.CoreServices.Shared.projitems" Label="Shared" Condition="Exists('..\NG.ServiceWorker.CoreServices.Shared\NG.ServiceWorker.CoreServices.Shared.projitems')" />

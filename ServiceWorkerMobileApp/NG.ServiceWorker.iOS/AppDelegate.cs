@@ -26,6 +26,7 @@ namespace NG.ServiceWorker.iOS
             global::Xamarin.Forms.Forms.Init();
 
             // App setup
+            new AppSetup.iOSSetup.iOSPlatform();
             AppSetup.CommonAppSetup.CommonStartup();
 
             // Load application

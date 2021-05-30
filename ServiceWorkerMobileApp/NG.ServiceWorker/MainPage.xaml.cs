@@ -16,19 +16,25 @@ namespace NG.ServiceWorker
         {
             InitializeComponent();
 
-            // Fake data
-            ApiModel.Job[] jobArray = Services.ApiService.GetJobArray();
-
-            // Create jobs
+            // Create view model
             m_viewModel = new MainPageViewModel();
-            foreach (ApiModel.Job job in jobArray)
-            {
-                m_viewModel.JobListViewModels.Add(new Jobs.JobListItemViewModel
-                {
-                    Job = job
-                });
-            }
             this.BindingContext = m_viewModel;
+
+            // Run on backgroud thread
+            Services.ThreadService.RunActionOnBackgroundThread("FetchJobsOnStartup", () =>
+            {
+                // Fake data
+                ApiModel.Job[] jobArray = Services.ApiService.GetJobArray();
+
+                // Create jobs
+                foreach (ApiModel.Job job in jobArray)
+                {
+                    m_viewModel.JobListViewModels.Add(new Jobs.JobListItemViewModel
+                    {
+                        Job = job
+                    });
+                }
+            });
         }
     }
 }

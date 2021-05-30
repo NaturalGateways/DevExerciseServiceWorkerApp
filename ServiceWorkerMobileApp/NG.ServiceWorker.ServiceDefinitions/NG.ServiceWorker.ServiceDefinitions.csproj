@@ -19,4 +19,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\services_config.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />
+  </ItemGroup>
 </Project>

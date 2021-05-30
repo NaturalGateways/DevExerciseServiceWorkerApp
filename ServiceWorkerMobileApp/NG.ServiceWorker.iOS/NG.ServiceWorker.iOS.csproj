@@ -126,6 +126,7 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
+  <Import Project="..\NG.ServiceWorker.AppSetup.iOS\NG.ServiceWorker.AppSetup.iOS.projitems" Label="Shared" Condition="Exists('..\NG.ServiceWorker.AppSetup.iOS\NG.ServiceWorker.AppSetup.iOS.projitems')" />
   <Import Project="..\NG.ServiceWorker.AppSetup.Shared\NG.ServiceWorker.AppSetup.Shared.projitems" Label="Shared" Condition="Exists('..\NG.ServiceWorker.AppSetup.Shared\NG.ServiceWorker.AppSetup.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -140,6 +141,10 @@
     <ProjectReference Include="..\NG.ServiceWorker.CoreServices.iOS\NG.ServiceWorker.CoreServices.iOS.csproj">
       <Project>{E5C1F0C7-7E24-4D60-9EC6-5163D3506F54}</Project>
       <Name>NG.ServiceWorker.CoreServices.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj">
+      <Project>{30574A12-324D-4F9E-A8C7-54F39F97F6B7}</Project>
+      <Name>NG.ServiceWorker.Base</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

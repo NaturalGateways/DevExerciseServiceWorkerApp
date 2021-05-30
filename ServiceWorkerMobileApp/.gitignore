@@ -6,6 +6,8 @@
 /NG.ServiceWorker.CoreServices.Android/obj
 /NG.ServiceWorker.CoreServices.iOS/bin
 /NG.ServiceWorker.CoreServices.iOS/obj
+/NG.ServiceWorker.Images/bin
+/NG.ServiceWorker.Images/obj
 /NG.ServiceWorker.iOS/bin
 /NG.ServiceWorker.iOS/obj
 /NG.ServiceWorker.ServiceDefinitions/bin

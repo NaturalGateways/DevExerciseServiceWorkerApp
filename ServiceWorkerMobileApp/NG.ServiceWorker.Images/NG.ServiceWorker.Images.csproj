@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="Config\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Images\icon_profilepic_placeholder.svg">
+      <Link>Images\icon_profilepic_placeholder.svg</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="svg-files.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="svg-files.xml" />
+  </ItemGroup>
+</Project>

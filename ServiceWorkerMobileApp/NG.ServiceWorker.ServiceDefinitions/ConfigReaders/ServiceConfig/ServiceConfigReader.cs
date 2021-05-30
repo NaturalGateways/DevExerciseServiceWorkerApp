@@ -55,6 +55,10 @@ namespace NG.ServiceWorker.ConfigReaders.ServiceConfig
                     }
                     Type interfaceType = defAssembly.GetType(serviceMapping.InterfaceTypeString);
                     Type implementationType = coreAssembly.GetType(serviceMapping.ImplementationTypeString);
+                    if (implementationType == null)
+                    {
+                        throw new Exception($"Service implementation '{serviceMapping.ImplementationTypeString}' doesn't exist.");
+                    }
                     ServiceProvider.RegisterService(interfaceType, implementationType);
                 }
             }
@@ -71,7 +75,15 @@ namespace NG.ServiceWorker.ConfigReaders.ServiceConfig
 
         private static void ReadServiceTag(System.Xml.XmlReader reader, ServiceMapping curService)
         {
-            curService.ImplementationTypeString = reader.GetAttribute("type");
+            string typeString = reader.GetAttribute("type");
+            string flagString = reader.GetAttribute("flag");
+
+            if (string.IsNullOrEmpty(flagString) == false && Platform.GetPlatform().HasFlag(flagString) == false)
+            {
+                return;
+            }
+
+            curService.ImplementationTypeString = typeString;
         }
     }
 }

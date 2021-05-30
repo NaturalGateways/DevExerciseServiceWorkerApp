@@ -11,11 +11,15 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\" />
     <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\HttpClasses\" />
+    <Folder Include="$(MSBuildThisFileDirectory)BaseImplementations\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultApiService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultHttpService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultJsonService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\HttpClasses\DefaultHttpConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultFileService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultSvgService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BaseImplementations\BaseThreadService.cs" />
   </ItemGroup>
 </Project>

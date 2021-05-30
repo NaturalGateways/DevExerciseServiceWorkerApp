@@ -6,7 +6,10 @@
         <Grid RowDefinitions="Auto,Auto" Margin="16,4,8,4" RowSpacing="4" VerticalOptions="Center">
             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
                 <Frame Grid.Column="0" CornerRadius="20" IsClippedToBounds="True" WidthRequest="40" HeightRequest="40" VerticalOptions="Center">
-                    <Image Source="{Binding ProfilePicUrl}"/>
+                    <Grid BackgroundColor="Gray">
+                        <Image Source="{Binding ProfilePicUrl}" IsVisible="{Binding IsProfilePicImageVisible}"/>
+                        <Image Source="{Binding PlaceholderProfilePicImage}" IsVisible="{Binding IsPlaceholderProfilePicVisible}"/>
+                    </Grid>
                 </Frame>
                 <Grid Grid.Column="1" RowDefinitions="Auto,Auto" VerticalOptions="Center">
                     <Label Grid.Row="0" Text="{Binding CustomerDisplayName}" FontSize="18" FontAttributes="Bold" MaxLines="1"/>

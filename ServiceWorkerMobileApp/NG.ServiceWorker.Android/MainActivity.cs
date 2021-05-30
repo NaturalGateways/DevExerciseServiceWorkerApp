@@ -23,6 +23,7 @@ namespace NG.ServiceWorker.Droid
             if (s_platformSingleton == null)
             {
                 // App setup
+                new AppSetup.AndroidSetup.AndroidPlatform();
                 AppSetup.CommonAppSetup.CommonStartup();
                 s_platformSingleton = new object();
             }

@@ -4,10 +4,25 @@
     <service type="NG.ServiceWorker.IApiService">
         <implementation type="NG.ServiceWorker.CoreServices.DefaultApiService"/>
     </service>
+    <service type="NG.ServiceWorker.IFileService">
+        <implementation type="NG.ServiceWorker.CoreServices.DefaultFileService"/>
+    </service>
     <service type="NG.ServiceWorker.IHttpService">
         <implementation type="NG.ServiceWorker.CoreServices.DefaultHttpService"/>
     </service>
     <service type="NG.ServiceWorker.IJsonService">
         <implementation type="NG.ServiceWorker.CoreServices.DefaultJsonService"/>
+    </service>
+    <service type="NG.ServiceWorker.ISvgService">
+        <implementation type="NG.ServiceWorker.CoreServices.DefaultSvgService"/>
+    </service>
+
+    <!-- Platform specific services -->
+    <service type="NG.ServiceWorker.IFileSystemService">
+        <implementation flag="iOS" type="NG.ServiceWorker.CoreServices.iOSServices.iOSFileSystemService"/>
+        <implementation flag="Android" type="NG.ServiceWorker.CoreServices.AndroidServices.AndroidFileSystemService"/>
+    </service>
+    <service type="NG.ServiceWorker.IThreadService">
+        <implementation type="NG.ServiceWorker.CoreServices.BaseThreadService"/>
     </service>
 </services>
