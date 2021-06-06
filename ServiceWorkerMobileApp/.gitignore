@@ -1,5 +1,7 @@
 /NG.ServiceWorker.Android/bin
 /NG.ServiceWorker.Android/obj
+/NG.ServiceWorker.AppViews/bin
+/NG.ServiceWorker.AppViews/obj
 /NG.ServiceWorker.Base/bin
 /NG.ServiceWorker.Base/obj
 /NG.ServiceWorker.CoreServices.Android/bin

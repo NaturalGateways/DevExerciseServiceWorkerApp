@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:NG.ServiceWorker.Jobs"
+    x:Class="NG.ServiceWorker.Jobs.JobListPage">
+    <Grid RowDefinitions="Auto,*">
+        <Frame Grid.Row="0" BackgroundColor="{StaticResource Primary}" Padding="24,36,24,12" CornerRadius="0">
+            <Label Text="My Jobs" HorizontalTextAlignment="Center" TextColor="{StaticResource PrimaryText}" FontSize="36"/>
+        </Frame>
+        <CollectionView Grid.Row="1" ItemsSource="{Binding JobListViewModels}" ItemSizingStrategy="MeasureFirstItem" VerticalScrollBarVisibility="Never">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="1"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <local:JobListItemView/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

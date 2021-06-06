@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <svgs>
+    <svg id="icon_maintabs_jobs" resId="NG.ServiceWorker.Images.Images.icon_maintabs_jobs.svg" width="200" height="200"/>
+    <svg id="icon_maintabs_map" resId="NG.ServiceWorker.Images.Images.icon_maintabs_map.svg" width="200" height="200"/>
+    <svg id="icon_maintabs_system" resId="NG.ServiceWorker.Images.Images.icon_maintabs_system.svg" width="170" height="170"/>
     <svg id="icon_profilepic_placeholder" resId="NG.ServiceWorker.Images.Images.icon_profilepic_placeholder.svg" width="200" height="200"/>
 </svgs>

@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace NG.ServiceWorker
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : TabbedPage
     {
         private MainPageViewModel m_viewModel = null;
 
@@ -18,23 +18,18 @@ namespace NG.ServiceWorker
 
             // Create view model
             m_viewModel = new MainPageViewModel();
+
+#if DEBUG
+            // Add debug menu
+            DebugUI.DebugPage debugPage = new DebugUI.DebugPage();
+            NavigationPage debugNavPage = new NavigationPage(debugPage);
+            debugNavPage.Title = "Debug";
+            debugNavPage.IconImageSource = m_viewModel.SystemTabIconImage;
+            this.Children.Add(debugNavPage);
+#endif
+
+            // Set view model
             this.BindingContext = m_viewModel;
-
-            // Run on backgroud thread
-            Services.ThreadService.RunActionOnBackgroundThread("FetchJobsOnStartup", () =>
-            {
-                // Fake data
-                ApiModel.Job[] jobArray = Services.ApiService.GetJobArray();
-
-                // Create jobs
-                foreach (ApiModel.Job job in jobArray)
-                {
-                    m_viewModel.JobListViewModels.Add(new Jobs.JobListItemViewModel
-                    {
-                        Job = job
-                    });
-                }
-            });
         }
     }
 }

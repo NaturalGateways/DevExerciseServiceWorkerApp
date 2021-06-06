@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="NG.ServiceWorker.DebugUI.DebugPage"
+    Title="Debug"
+    BackgroundColor="DarkGray">
+    <StackLayout Spacing="8" VerticalOptions="Center">
+        <Label Text="Debug page" TextColor="White" HorizontalOptions="Center"/>
+        <Label Text="Not implemented" TextColor="White" HorizontalOptions="Center"/>
+    </StackLayout>
+</ContentPage>

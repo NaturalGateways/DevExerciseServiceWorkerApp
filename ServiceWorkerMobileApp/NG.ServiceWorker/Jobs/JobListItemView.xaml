@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NG.ServiceWorker.Jobs.JobListItemView">
-    <Grid BackgroundColor="White">
+    <Grid Style="{StaticResource BackgroundGrid}">
         <Grid RowDefinitions="Auto,Auto" Margin="16,4,8,4" RowSpacing="4" VerticalOptions="Center">
             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
                 <Frame Grid.Column="0" CornerRadius="20" IsClippedToBounds="True" WidthRequest="40" HeightRequest="40" VerticalOptions="Center">
@@ -16,7 +16,7 @@
                     <Label Grid.Row="1" Text="{Binding JobTypeName}" FontSize="16" MaxLines="1"/>
                 </Grid>
             </Grid>
-            <Label Grid.Row="1" Text="{Binding Address}" TextColor="#444444" FontAttributes="Italic" MaxLines="1"/>
+            <Label Grid.Row="1" Text="{Binding Address}" Style="{StaticResource DullLabel}" FontAttributes="Italic" MaxLines="1"/>
         </Grid>
     </Grid>
 </ContentView>

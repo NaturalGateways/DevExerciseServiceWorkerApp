@@ -16,9 +16,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Jobs\" />
+    <Folder Include="MapUI\" />
+    <Folder Include="SystemUI\" />
+    <Folder Include="DebugUI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />
     <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj" />
+    <ProjectReference Include="..\NG.ServiceWorker.AppViews\NG.ServiceWorker.AppViews.csproj" />
   </ItemGroup>
 </Project>

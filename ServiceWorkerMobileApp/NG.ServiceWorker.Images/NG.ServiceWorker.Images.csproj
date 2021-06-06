@@ -16,6 +16,15 @@
       <Link>Images\icon_profilepic_placeholder.svg</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="svg-files.xml" />
+    <EmbeddedResource Include="..\Images\icon_maintabs_system.svg">
+      <Link>Images\icon_maintabs_system.svg</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Images\icon_maintabs_map.svg">
+      <Link>Images\icon_maintabs_map.svg</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Images\icon_maintabs_jobs.svg">
+      <Link>Images\icon_maintabs_jobs.svg</Link>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Remove="svg-files.xml" />

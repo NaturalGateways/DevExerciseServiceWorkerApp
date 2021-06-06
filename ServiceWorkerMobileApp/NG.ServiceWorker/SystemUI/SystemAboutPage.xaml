@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="NG.ServiceWorker.SystemUI.SystemAboutPage"
+    Title="About">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="MarginGrid" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource BackgroundHiLight}, Dark={StaticResource BackgroundNullDark}}"/>
+            </Style>
+            <Style x:Key="TitleLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryLight}, Dark={StaticResource PrimaryDark}}"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="AttNameLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryLight}, Dark={StaticResource PrimaryDark}}"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+            <Style x:Key="AttValueLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid Style="{StaticResource MarginGrid}">
+        <Grid Margin="24,16" Style="{StaticResource BackgroundGrid}" VerticalOptions="Start">
+            <StackLayout Margin="16">
+                <Label Text="System Info" Style="{StaticResource TitleLabel}"/>
+                <Grid HeightRequest="4"/>
+                <Label Text="Project" Style="{StaticResource AttNameLabel}"/>
+                <Label Text="Service Worker" Style="{StaticResource AttValueLabel}"/>
+                <Grid HeightRequest="4"/>
+                <Label Text="Version" Style="{StaticResource AttNameLabel}"/>
+                <Label Text="0.0.0" Style="{StaticResource AttValueLabel}"/>
+                <Grid HeightRequest="4"/>
+                <Label Text="Author" Style="{StaticResource AttNameLabel}"/>
+                <Label Text="Steven Moore" Style="{StaticResource AttValueLabel}"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
