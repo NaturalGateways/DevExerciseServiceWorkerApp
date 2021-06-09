@@ -79,6 +79,10 @@
       <Project>{CA2D9727-3BC9-4577-AEC8-686DB7F22D8F}</Project>
       <Name>NG.ServiceWorker.Images</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj">
+      <Project>{30574A12-324D-4F9E-A8C7-54F39F97F6B7}</Project>
+      <Name>NG.ServiceWorker.Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\NG.ServiceWorker.CoreServices.Shared\NG.ServiceWorker.CoreServices.Shared.projitems" Label="Shared" Condition="Exists('..\NG.ServiceWorker.CoreServices.Shared\NG.ServiceWorker.CoreServices.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

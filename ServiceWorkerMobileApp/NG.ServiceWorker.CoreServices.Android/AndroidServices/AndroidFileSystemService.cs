@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NG.ServiceWorker.CoreServices.AndroidServices
 {
@@ -36,6 +37,24 @@ namespace NG.ServiceWorker.CoreServices.AndroidServices
                 }
                 return m_tempDirpath;
             }
+        }
+
+        /// <summary>Getter for the directories to show in the debug menu.</summary>
+        public Dictionary<string, string> GetRootDirectories()
+        {
+            return new Dictionary<string, string> { { "Documents", m_documentsDirpath } };
+        }
+
+        /// <summary>Getter for whether the given file will be backed up to the platform's cloud.</summary>
+        public bool GetFileBackedUp(string filepath)
+        {
+            return false;
+        }
+
+        /// <summary>Setter for whether a file should be backed up.</summary>
+        public void SetFileBackedup(string filepath, bool shouldBackup)
+        {
+            //
         }
 
         #endregion

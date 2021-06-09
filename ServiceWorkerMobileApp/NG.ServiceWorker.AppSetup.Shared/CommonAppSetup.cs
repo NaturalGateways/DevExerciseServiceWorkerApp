@@ -12,6 +12,9 @@ namespace NG.ServiceWorker.AppSetup
             Assembly servicesDefinitionAssembly = typeof(Services).Assembly;
             Assembly servicesCoreAssembly = typeof(CoreServices.DefaultHttpService).Assembly;
             ConfigReaders.ServiceConfig.ServiceConfigReader.ReadConfig(servicesDefinitionAssembly.GetManifestResourceStream("NG.ServiceWorker.Resources.services_config.xml"), servicesCoreAssembly);
+
+            // Register UI mappings
+            Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<ListViewModels.ListViewModel, AppViews.ListUI.ListView>();
         }
     }
 }

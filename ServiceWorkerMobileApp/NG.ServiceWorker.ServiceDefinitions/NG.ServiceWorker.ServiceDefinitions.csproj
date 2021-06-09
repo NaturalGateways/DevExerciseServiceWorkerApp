@@ -12,6 +12,7 @@
     <Folder Include="ConfigReaders\" />
     <Folder Include="ConfigReaders\ServiceConfig\" />
     <Folder Include="Resources\" />
+    <Folder Include="UserInterfaceServices\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\services_config.xml" />

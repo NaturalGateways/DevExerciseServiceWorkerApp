@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NG.ServiceWorker.AppViews.ListUI"
              x:Class="NG.ServiceWorker.AppViews.ListUI.ListItemCell">
-  <Grid Style="{StaticResource BackgroundGrid}">
-      <Label Text="{Binding MainText}" Margin="16,0" HorizontalOptions="Start" VerticalOptions="Center"/>
+    <Grid Style="{StaticResource BackgroundGrid}">
+        <local:ListItemLayoutView>
+            <Label Style="{StaticResource ListItemMainLabel}" Text="{Binding MainText}"/>
+            <Label Style="{StaticResource ListItemSubtitleLabel}" Text="{Binding ExtraText}" IsVisible="{Binding IsSubtitleVisible}"/>
+            <Label Style="{StaticResource ListItemAttributeLabel}" Text="{Binding ExtraText}" IsVisible="{Binding IsAttributeValueVisible}"/>
+            <Grid BackgroundColor="Red" WidthRequest="10" IsVisible="{Binding ShowDisclosure}"/>
+        </local:ListItemLayoutView>
   </Grid>
 </ViewCell>

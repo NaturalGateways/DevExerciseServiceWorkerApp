@@ -12,6 +12,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\" />
     <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\HttpClasses\" />
     <Folder Include="$(MSBuildThisFileDirectory)BaseImplementations\" />
+    <Folder Include="$(MSBuildThisFileDirectory)UserInterfaceImplementations\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultApiService.cs" />
@@ -21,5 +22,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultFileService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultSvgService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BaseImplementations\BaseThreadService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserInterfaceImplementations\DefaultUserInterfaceViewFactoryService.cs" />
   </ItemGroup>
 </Project>

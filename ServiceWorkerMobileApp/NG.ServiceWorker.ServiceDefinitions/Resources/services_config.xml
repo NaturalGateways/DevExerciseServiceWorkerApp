@@ -17,6 +17,11 @@
         <implementation type="NG.ServiceWorker.CoreServices.DefaultSvgService"/>
     </service>
 
+    <!-- UI services -->
+    <service type="NG.ServiceWorker.UIServices.IUserInterfaceViewFactoryService">
+        <implementation type="NG.ServiceWorker.UIServices.CoreUIServices.DefaultUserInterfaceViewFactoryService"/>
+    </service>
+
     <!-- Platform specific services -->
     <service type="NG.ServiceWorker.IFileSystemService">
         <implementation flag="iOS" type="NG.ServiceWorker.CoreServices.iOSServices.iOSFileSystemService"/>

@@ -6,6 +6,9 @@ namespace NG.ServiceWorker
     {
         /// <summary>Getter for the file data as an image source.</summary>
         Xamarin.Forms.ImageSource AsImageSource { get; }
+
+        /// <summary>Setter for whetehr the file should be backed up or not.</summary>
+        void SetBackedUp(bool shouldBackup);
     }
 
     public interface IFileWriter

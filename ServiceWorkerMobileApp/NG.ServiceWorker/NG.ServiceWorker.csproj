@@ -19,10 +19,12 @@
     <Folder Include="MapUI\" />
     <Folder Include="SystemUI\" />
     <Folder Include="DebugUI\" />
+    <Folder Include="DebugUI\FilesystemDebugUI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />
     <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj" />
     <ProjectReference Include="..\NG.ServiceWorker.AppViews\NG.ServiceWorker.AppViews.csproj" />
+    <ProjectReference Include="..\NG.ServiceWorker.ViewModels\NG.ServiceWorker.ViewModels.csproj" />
   </ItemGroup>
 </Project>

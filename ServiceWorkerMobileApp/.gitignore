@@ -16,6 +16,8 @@
 /NG.ServiceWorker.ServiceDefinitions/obj
 /NG.ServiceWorker.UWP/bin
 /NG.ServiceWorker.UWP/obj
+/NG.ServiceWorker.ViewModels/bin
+/NG.ServiceWorker.ViewModels/obj
 /NG.ServiceWorker/bin
 /NG.ServiceWorker/obj
 .vs

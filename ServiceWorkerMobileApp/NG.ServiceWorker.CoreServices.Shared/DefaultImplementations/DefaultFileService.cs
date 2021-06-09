@@ -35,6 +35,12 @@ namespace NG.ServiceWorker.CoreServices
             }
         }
 
+        /// <summary>Setter for whetehr the file should be backed up or not.</summary>
+        public void SetBackedUp(bool shouldBackup)
+        {
+            Services.FileSystemService.SetFileBackedup(m_filepath, shouldBackup);
+        }
+
         #endregion
     }
 
@@ -74,6 +80,9 @@ namespace NG.ServiceWorker.CoreServices
             {
                 writer.WriteDataToStream(fileStream);
             }
+
+            // Never back up temp files
+            Services.FileSystemService.SetFileBackedup(tempFilepath, false);
 
             // Return
             return new DefaultFileServiceFile(tempFilepath);

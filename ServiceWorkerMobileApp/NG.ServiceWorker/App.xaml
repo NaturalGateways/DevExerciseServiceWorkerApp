@@ -46,9 +46,32 @@
             <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}"/>
         </Style>
 
+        <!-- List styles -->
+        <Style x:Key="SectionHeaderCell" TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+        </Style>
+        <Style x:Key="SectionHeaderLabel" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="{StaticResource PrimaryText}"/>
+        </Style>
+        <Style x:Key="ListItemMainLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}"/>
+        </Style>
+        <Style x:Key="ListItemSubtitleLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="Micro"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource ForegroundDullLight}, Dark={StaticResource ForegroundDullDark}}"/>
+        </Style>
+        <Style x:Key="ListItemAttributeLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}"/>
+        </Style>
+
         <!-- Named styles -->
         <Style x:Key="BackgroundGrid" TargetType="Grid">
             <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"/>
+        </Style>
+        <Style x:Key="BackgroundNullGrid" TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource BackgroundNullLight}, Dark={StaticResource BackgroundNullDark}}"/>
         </Style>
         <Style x:Key="BackgroundHiGrid" TargetType="Grid">
             <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource BackgroundHiLight}, Dark={StaticResource BackgroundHiDark}}"/>

@@ -18,23 +18,16 @@ namespace NG.ServiceWorker.SystemUI
         {
             InitializeComponent();
 
-            Items = new ObservableCollection<AppViews.ListUI.ListItemViewModel>
-            {
-                new AppViews.ListUI.ListItemViewModel { MainText = "About" }
-            };
-
-            MyListView.ItemsSource = Items;
+            // Create list
+            ListViewModels.ListViewModel listViewModel = new ListViewModels.ListViewModel();
+            listViewModel.SectionList.Add(new ListViewModels.ListSectionViewModel { Title = "General" });
+            listViewModel.SectionList[0].Add(ListViewModels.ListItemViewModel.CreateCommand("About", GotoAbout));
+            this.Content = Services.UserInterfaceViewFactoryService.CreateViewFromViewModel(listViewModel);
         }
 
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        public async Task GotoAbout(View view)
         {
-            if (e.Item == null)
-                return;
-
-            await this.Navigation.PushAsync(new SystemAboutPage());
-
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
+            await view.Navigation.PushAsync(new SystemAboutPage());
         }
     }
 }
