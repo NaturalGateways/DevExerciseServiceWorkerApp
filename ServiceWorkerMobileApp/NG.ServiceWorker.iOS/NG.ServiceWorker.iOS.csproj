@@ -113,6 +113,18 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_jobs.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_jobs.imageset\icon_maintabs_jobs.png" />
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_jobs.imageset\icon_maintabs_jobs%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_jobs.imageset\icon_maintabs_jobs%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_map.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_map.imageset\icon_maintabs_map.png" />
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_map.imageset\icon_maintabs_map%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_map.imageset\icon_maintabs_map%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_system.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_system.imageset\icon_maintabs_system.png" />
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_system.imageset\icon_maintabs_system%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_maintabs_system.imageset\icon_maintabs_system%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -154,5 +166,10 @@
       <Project>{77C87912-AD07-4581-A864-301F18B9EAF4}</Project>
       <Name>NG.ServiceWorker.ViewModels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\icon_maintabs_jobs.imageset\" />
+    <Folder Include="Assets.xcassets\icon_maintabs_map.imageset\" />
+    <Folder Include="Assets.xcassets\icon_maintabs_system.imageset\" />
   </ItemGroup>
 </Project>

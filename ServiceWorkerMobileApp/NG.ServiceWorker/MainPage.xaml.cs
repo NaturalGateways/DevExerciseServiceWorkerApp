@@ -24,7 +24,7 @@ namespace NG.ServiceWorker
             DebugUI.DebugPage debugPage = new DebugUI.DebugPage();
             NavigationPage debugNavPage = new NavigationPage(debugPage);
             debugNavPage.Title = "Debug";
-            debugNavPage.IconImageSource = m_viewModel.SystemTabIconImage;
+            debugNavPage.IconImageSource = "icon_maintabs_system";
             this.Children.Add(debugNavPage);
 #endif
 

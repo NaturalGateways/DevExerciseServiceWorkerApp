@@ -13,5 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />
     <ProjectReference Include="..\NG.ServiceWorker.ViewModels\NG.ServiceWorker.ViewModels.csproj" />
+    <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj" />
   </ItemGroup>
 </Project>

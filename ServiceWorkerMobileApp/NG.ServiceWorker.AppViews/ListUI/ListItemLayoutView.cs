@@ -15,7 +15,6 @@ namespace NG.ServiceWorker.AppViews.ListUI
         {
             const double HMARGIN = 16.0;
             const double DISC_PADDING = 8.0;
-            const double DISC_VMARGIN = 4.0;
 
             // Get views
             View mainLabelView = this.Children[0];
@@ -31,7 +30,9 @@ namespace NG.ServiceWorker.AppViews.ListUI
             if (disclosureLabelView.IsVisible)
             {
                 double viewWidth = disclosureLabelView.WidthRequest;
-                LayoutChildIntoBoundingRegion(disclosureLabelView, new Rectangle(x + width - viewWidth, y + DISC_VMARGIN, viewWidth, height - DISC_VMARGIN - DISC_VMARGIN));
+                double viewHeight = disclosureLabelView.HeightRequest;
+                double viewTop = (height - viewHeight) / 2;
+                LayoutChildIntoBoundingRegion(disclosureLabelView, new Rectangle(x + width - viewWidth, y + viewTop, viewWidth, viewHeight));
                 width -= viewWidth + DISC_PADDING;
             }
 

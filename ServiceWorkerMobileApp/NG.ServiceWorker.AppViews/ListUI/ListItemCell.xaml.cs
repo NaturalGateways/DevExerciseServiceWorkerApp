@@ -15,6 +15,9 @@ namespace NG.ServiceWorker.AppViews.ListUI
         public ListItemCell()
         {
             InitializeComponent();
+
+            IFile discImageFile = Services.SvgService.GetPngFile("ui_list_disclosure", (int)this.DiscImage.WidthRequest, 0xAAAAAA);
+            this.DiscImage.Source = discImageFile.AsImageSource;
         }
     }
 }
