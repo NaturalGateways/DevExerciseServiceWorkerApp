@@ -2,17 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>NG.ServiceWorker.UI</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="ListUI\" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="ListUI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ListUI\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />
-    <ProjectReference Include="..\NG.ServiceWorker.ViewModels\NG.ServiceWorker.ViewModels.csproj" />
-    <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj" />
   </ItemGroup>
 </Project>

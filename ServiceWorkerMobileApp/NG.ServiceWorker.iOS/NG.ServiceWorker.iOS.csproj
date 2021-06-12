@@ -158,13 +158,13 @@
       <Project>{30574A12-324D-4F9E-A8C7-54F39F97F6B7}</Project>
       <Name>NG.ServiceWorker.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NG.ServiceWorker.AppViews\NG.ServiceWorker.AppViews.csproj">
-      <Project>{A23A77B9-BA4B-4F1B-B5A2-F779DD688B68}</Project>
-      <Name>NG.ServiceWorker.AppViews</Name>
+    <ProjectReference Include="..\NG.ServiceWorker.UI.AppViews\NG.ServiceWorker.UI.AppViews.csproj">
+      <Project>{F8E2B816-80D9-4336-8151-5297A1D8DED5}</Project>
+      <Name>NG.ServiceWorker.UI.AppViews</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NG.ServiceWorker.ViewModels\NG.ServiceWorker.ViewModels.csproj">
-      <Project>{77C87912-AD07-4581-A864-301F18B9EAF4}</Project>
-      <Name>NG.ServiceWorker.ViewModels</Name>
+    <ProjectReference Include="..\NG.ServiceWorker.UI.AppViewModels\NG.ServiceWorker.UI.AppViewModels.csproj">
+      <Project>{9E1C5276-94BF-47CE-BFB8-217F25D1854E}</Project>
+      <Name>NG.ServiceWorker.UI.AppViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

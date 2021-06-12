@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-namespace NG.ServiceWorker.AppViews.ListUI
+namespace NG.ServiceWorker.UI.ListUI
 {
     public class ListItemLayoutView : Layout<View>
     {

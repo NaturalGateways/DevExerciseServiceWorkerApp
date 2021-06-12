@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace NG.ServiceWorker.AppViews.ListUI
+namespace NG.ServiceWorker.UI.ListUI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListItemCell : ViewCell

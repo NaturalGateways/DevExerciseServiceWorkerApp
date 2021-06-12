@@ -14,22 +14,22 @@ namespace NG.ServiceWorker.DebugUI.FilesystemDebugUI
             this.Title = dirname;
 
             // Get dirpaths
-            ListViewModels.ListViewModel listViewModel = new ListViewModels.ListViewModel();
+            UI.ListUI.ListViewModel listViewModel = new UI.ListUI.ListViewModel();
             string[] subDirpathArray = System.IO.Directory.GetDirectories(dirpath);
             string[] subFilepathArray = System.IO.Directory.GetFiles(dirpath);
             if (subDirpathArray.Any())
             {
-                ListViewModels.ListSectionViewModel sectionViewModel = new ListViewModels.ListSectionViewModel { Title = "Directories" };
+                UI.ListUI.ListSectionViewModel sectionViewModel = new UI.ListUI.ListSectionViewModel { Title = "Directories" };
                 foreach (string subDirpath in subDirpathArray.OrderBy(x => x))
                 {
                     string subDirname = System.IO.Path.GetFileName(subDirpath);
-                    sectionViewModel.Add(ListViewModels.ListItemViewModel.CreateCommand(subDirname, async (view) => { await GoToDirectoryAsync(view, subDirpath); }));
+                    sectionViewModel.Add(UI.ListUI.ListItemViewModel.CreateCommand(subDirname, async (view) => { await GoToDirectoryAsync(view, subDirpath); }));
                 }
                 listViewModel.SectionList.Add(sectionViewModel);
             }
             if (subFilepathArray.Any())
             {
-                ListViewModels.ListSectionViewModel sectionViewModel = new ListViewModels.ListSectionViewModel { Title = "Files" };
+                UI.ListUI.ListSectionViewModel sectionViewModel = new UI.ListUI.ListSectionViewModel { Title = "Files" };
                 foreach (string subFilepath in subFilepathArray.OrderBy(x => x))
                 {
                     sectionViewModel.Add(CreateItemForFilepath(subFilepath));
@@ -39,7 +39,7 @@ namespace NG.ServiceWorker.DebugUI.FilesystemDebugUI
             this.Content = Services.UserInterfaceViewFactoryService.CreateViewFromViewModel(listViewModel);
         }
 
-        private ListViewModels.ListItemViewModel CreateItemForFilepath(string filepath)
+        private UI.ListUI.ListItemViewModel CreateItemForFilepath(string filepath)
         {
             bool isBackedUp = Services.FileSystemService.GetFileBackedUp(filepath);
             string subtitleText = isBackedUp ? "Backed up" : "Local only";
@@ -49,9 +49,9 @@ namespace NG.ServiceWorker.DebugUI.FilesystemDebugUI
                 case ".png":
                 case ".jpg":
                 case ".jpeg":
-                    return ListViewModels.ListItemViewModel.CreateSubtitledCommand(filename, subtitleText, async (view) => { await GoToImageFileAsync(view, filepath); });
+                    return UI.ListUI.ListItemViewModel.CreateSubtitledCommand(filename, subtitleText, async (view) => { await GoToImageFileAsync(view, filepath); });
                 default:
-                    return ListViewModels.ListItemViewModel.CreateSubtitled(filename, subtitleText);
+                    return UI.ListUI.ListItemViewModel.CreateSubtitled(filename, subtitleText);
             }
         }
 

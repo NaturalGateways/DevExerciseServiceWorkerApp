@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 
-namespace NG.ServiceWorker.ListViewModels
+namespace NG.ServiceWorker.UI.ListUI
 {
     public class ListViewModel : UI.ViewModel
     {

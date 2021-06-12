@@ -2,8 +2,8 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:NG.ServiceWorker.AppViews.ListUI"
-    x:Class="NG.ServiceWorker.AppViews.ListUI.ListView">
+    xmlns:local="clr-namespace:NG.ServiceWorker.UI.ListUI"
+    x:Class="NG.ServiceWorker.UI.ListUI.ListView">
     <ListView ItemsSource="{Binding SectionList}"
               IsGroupingEnabled="True"
               GroupDisplayBinding="{Binding Title}"
@@ -12,8 +12,8 @@
             <DataTemplate>
                 <ViewCell>
                     <Grid Style="{StaticResource SectionHeaderCell}">
-                      <Label Style="{StaticResource SectionHeaderLabel}" Text="{Binding Title}" Margin="16,0" HorizontalOptions="Start" VerticalOptions="Center"/>
-                  </Grid>
+                        <Label Style="{StaticResource SectionHeaderLabel}" Text="{Binding Title}" Margin="16,0" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    </Grid>
                 </ViewCell>
             </DataTemplate>
         </ListView.GroupHeaderTemplate>

@@ -13,9 +13,9 @@ namespace NG.ServiceWorker.DebugUI
             InitializeComponent();
 
             // Create list
-            ListViewModels.ListViewModel listViewModel = new ListViewModels.ListViewModel();
-            listViewModel.SectionList.Add(new ListViewModels.ListSectionViewModel { Title = "General" });
-            listViewModel.SectionList[0].Add(ListViewModels.ListItemViewModel.CreateCommand("Filesystem", GotoFilesystem));
+            UI.ListUI.ListViewModel listViewModel = new UI.ListUI.ListViewModel();
+            listViewModel.SectionList.Add(new UI.ListUI.ListSectionViewModel { Title = "General" });
+            listViewModel.SectionList[0].Add(UI.ListUI.ListItemViewModel.CreateCommand("Filesystem", GotoFilesystem));
             this.Content = Services.UserInterfaceViewFactoryService.CreateViewFromViewModel(listViewModel);
         }
 

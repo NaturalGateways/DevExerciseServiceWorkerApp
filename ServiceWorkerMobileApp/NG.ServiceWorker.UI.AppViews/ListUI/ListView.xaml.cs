@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Xamarin.Forms;
 
-namespace NG.ServiceWorker.AppViews.ListUI
+namespace NG.ServiceWorker.UI.ListUI
 {
     public partial class ListView : ContentView
     {
@@ -18,7 +17,7 @@ namespace NG.ServiceWorker.AppViews.ListUI
                 return;
 
             // Get view model
-            ListViewModels.ListItemViewModel itemViewModel = e.Item as ListViewModels.ListItemViewModel;
+            ListItemViewModel itemViewModel = e.Item as ListItemViewModel;
             if (itemViewModel == null)
             {
                 return;

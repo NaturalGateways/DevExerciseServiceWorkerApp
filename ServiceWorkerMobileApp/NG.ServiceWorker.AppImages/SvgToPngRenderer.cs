@@ -4,7 +4,7 @@ using System.Reflection;
 using SkiaSharp;
 using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
 
-namespace NG.ServiceWorker.Images
+namespace NG.ServiceWorker.AppImages
 {
     public static class SvgToPngRenderer
     {

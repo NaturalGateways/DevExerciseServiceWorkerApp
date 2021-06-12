@@ -14,7 +14,7 @@ namespace NG.ServiceWorker.AppSetup
             ConfigReaders.ServiceConfig.ServiceConfigReader.ReadConfig(servicesDefinitionAssembly.GetManifestResourceStream("NG.ServiceWorker.Resources.services_config.xml"), servicesCoreAssembly);
 
             // Register UI mappings
-            Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<ListViewModels.ListViewModel, AppViews.ListUI.ListView>();
+            Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.ListUI.ListViewModel, UI.ListUI.ListView>();
         }
     }
 }

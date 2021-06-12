@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<svgs>
+    <svg id="icon_profilepic_placeholder" resId="NG.ServiceWorker.AppImages.SvgFiles.icon_profilepic_placeholder.svg" width="200" height="200"/>
+    <svg id="ui_list_disclosure" resId="NG.ServiceWorker.AppImages.SvgFiles.ui_list_disclosure.svg" width="120" height="200"/>
+</svgs>

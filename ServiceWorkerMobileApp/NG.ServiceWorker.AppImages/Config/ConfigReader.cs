@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NG.ServiceWorker.Images.Config
+namespace NG.ServiceWorker.AppImages.Config
 {
     public static class ConfigReader
     {
@@ -10,7 +10,7 @@ namespace NG.ServiceWorker.Images.Config
             List<SvgFile> svgFileList = new List<SvgFile>();
 
             // Read config
-            System.IO.Stream xmlStream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("NG.ServiceWorker.Images.svg-files.xml");
+            System.IO.Stream xmlStream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("NG.ServiceWorker.AppImages.svg-files.xml");
             using (System.Xml.XmlReader reader = System.Xml.XmlReader.Create(xmlStream))
             {
                 while (reader.Read())

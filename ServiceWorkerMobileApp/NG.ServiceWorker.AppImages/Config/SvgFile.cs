@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NG.ServiceWorker.Images.Config
+namespace NG.ServiceWorker.AppImages.Config
 {
     public class SvgFile
     {

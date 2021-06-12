@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace NG.ServiceWorker.ListViewModels
+namespace NG.ServiceWorker.UI.ListUI
 {
     public enum ListItemExtraType
     {
@@ -64,6 +64,5 @@ namespace NG.ServiceWorker.ListViewModels
         public bool IsAttributeValueVisible { get { return this.ExtraType == ListItemExtraType.Attribute && string.IsNullOrEmpty(this.ExtraText) == false; } }
 
         #endregion
-
     }
 }

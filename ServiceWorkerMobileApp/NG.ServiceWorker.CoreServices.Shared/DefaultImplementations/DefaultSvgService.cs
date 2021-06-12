@@ -9,7 +9,7 @@ namespace NG.ServiceWorker.CoreServices
         #region Base
 
         /// <summary>The confgiured SVG files.</summary>
-        private Dictionary<string, Images.Config.SvgFile> m_svgFilesById = new Dictionary<string, Images.Config.SvgFile>();
+        private Dictionary<string, AppImages.Config.SvgFile> m_svgFilesById = new Dictionary<string, AppImages.Config.SvgFile>();
 
         /// <summary>The confgiured SVG files.</summary>
         private Dictionary<string, List<RenderedPng>> m_pngListsById = new Dictionary<string, List<RenderedPng>>();
@@ -18,7 +18,7 @@ namespace NG.ServiceWorker.CoreServices
         public DefaultSvgService()
         {
             // Read config
-            m_svgFilesById = Images.Config.ConfigReader.ReadConfig().ToDictionary(x => x.SvgId);
+            m_svgFilesById = AppImages.Config.ConfigReader.ReadConfig().ToDictionary(x => x.SvgId);
         }
 
         #endregion
@@ -47,14 +47,14 @@ namespace NG.ServiceWorker.CoreServices
             #region IFileWriter implementation
 
             /// <summary>The resource ID.</summary>
-            private Images.Config.SvgFile m_svgConfig = null;
+            private AppImages.Config.SvgFile m_svgConfig = null;
             /// <summary>The resource ID.</summary>
             private int m_imageWidth = 0;
             /// <summary>The resource ID.</summary>
             private uint? m_colourRGB = null;
 
             /// <summary>Constructor.</summary>
-            public SvgToPngWriter(Images.Config.SvgFile svgConfig, int imageWidth, uint? colourRGB)
+            public SvgToPngWriter(AppImages.Config.SvgFile svgConfig, int imageWidth, uint? colourRGB)
             {
                 m_svgConfig = svgConfig;
                 m_imageWidth = imageWidth;
@@ -71,7 +71,7 @@ namespace NG.ServiceWorker.CoreServices
             /// <summary>Called to write the data to a created file.</summary>
             public void WriteDataToStream(System.IO.Stream stream)
             {
-                Images.SvgToPngRenderer.RenderPng(stream, m_svgConfig, m_imageWidth, m_colourRGB);
+                AppImages.SvgToPngRenderer.RenderPng(stream, m_svgConfig, m_imageWidth, m_colourRGB);
             }
 
             #endregion
@@ -101,7 +101,7 @@ namespace NG.ServiceWorker.CoreServices
                 {
                     throw new Exception($"SVG file '{svgId}' does not exist in config.");
                 }
-                Images.Config.SvgFile svgConfig = m_svgFilesById[svgId];
+                AppImages.Config.SvgFile svgConfig = m_svgFilesById[svgId];
 
                 // Create file
                 RenderedPng renderedPng = new RenderedPng

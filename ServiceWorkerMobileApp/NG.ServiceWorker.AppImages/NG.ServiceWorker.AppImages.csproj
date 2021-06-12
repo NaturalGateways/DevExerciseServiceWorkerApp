@@ -8,17 +8,17 @@
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Folder Include="SvgFiles\" />
     <Folder Include="Config\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\Images\icon_profilepic_placeholder.svg">
-      <Link>Images\icon_profilepic_placeholder.svg</Link>
+      <Link>SvgFiles\icon_profilepic_placeholder.svg</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Images\ui_list_disclosure.svg">
+      <Link>SvgFiles\ui_list_disclosure.svg</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="svg-files.xml" />
-    <EmbeddedResource Include="..\Images\ui_list_disclosure.svg">
-      <Link>Images\ui_list_disclosure.svg</Link>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Remove="svg-files.xml" />
