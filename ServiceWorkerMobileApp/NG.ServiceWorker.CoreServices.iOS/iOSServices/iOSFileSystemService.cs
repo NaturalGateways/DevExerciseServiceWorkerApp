@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 using Foundation;
 
@@ -11,18 +12,41 @@ namespace NG.ServiceWorker.CoreServices.iOSServices
 
         /// <summary>The documents directory.</summary>
         private string m_documentsDirpath = null;
-        /// <summary>The documents directory.</summary>
+        /// <summary>The library directory.</summary>
+        private string m_libraryDirpath = null;
+
+        /// <summary>The database directory.</summary>
+        private string m_databaseDirpath = null;
+        /// <summary>The temp directory.</summary>
         private string m_tempDirpath = null;
 
         /// <summary>Constructor.</summary>
         public iOSFileSystemService()
         {
             m_documentsDirpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            m_libraryDirpath = Path.GetFullPath(Path.Combine(m_documentsDirpath, "..", "Library"));
         }
 
         #endregion
 
         #region IFileSystemService
+
+        /// <summary>Getter for the directory to put database files in.</summary>
+        public string DatabaseDirpath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(m_databaseDirpath))
+                {
+                    m_databaseDirpath = Path.Combine(m_libraryDirpath, "SwData");
+                    if (Directory.Exists(m_databaseDirpath) == false)
+                    {
+                        Directory.CreateDirectory(m_databaseDirpath);
+                    }
+                }
+                return m_databaseDirpath;
+            }
+        }
 
         /// <summary>Getter for the directory to put temp files in.</summary>
         public string TempDirectory
@@ -31,10 +55,10 @@ namespace NG.ServiceWorker.CoreServices.iOSServices
             {
                 if (string.IsNullOrEmpty(m_tempDirpath))
                 {
-                    m_tempDirpath = System.IO.Path.GetFullPath(System.IO.Path.Combine(m_documentsDirpath, "..", "tmp", "SwTemp"));
-                    if (System.IO.Directory.Exists(m_tempDirpath) == false)
+                    m_tempDirpath = Path.GetFullPath(System.IO.Path.Combine(m_documentsDirpath, "..", "tmp", "SwTemp"));
+                    if (Directory.Exists(m_tempDirpath) == false)
                     {
-                        System.IO.Directory.CreateDirectory(m_tempDirpath);
+                        Directory.CreateDirectory(m_tempDirpath);
                     }
                 }
                 return m_tempDirpath;
@@ -47,7 +71,8 @@ namespace NG.ServiceWorker.CoreServices.iOSServices
             return new Dictionary<string, string>
             {
                 { "Documents", m_documentsDirpath },
-                { "Temp", System.IO.Path.GetFullPath(System.IO.Path.Combine(m_documentsDirpath, "..", "tmp")) }
+                { "Library", m_libraryDirpath },
+                { "Temp", Path.GetFullPath(Path.Combine(m_documentsDirpath, "..", "tmp")) }
             };
         }
 
@@ -74,7 +99,7 @@ namespace NG.ServiceWorker.CoreServices.iOSServices
             NSError error = NSFileManager.SetSkipBackupAttribute(filepath, !shouldBackup);
             if (error != null)
             {
-                string filename = System.IO.Path.GetFileName(filepath);
+                string filename = Path.GetFileName(filepath);
                 if (shouldBackup)
                     Console.WriteLine($"Cannot set the file '{filename}' to be backed up: {error.LocalizedFailureReason}");
                 else

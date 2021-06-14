@@ -13,9 +13,13 @@
     <Folder Include="ConfigReaders\ServiceConfig\" />
     <Folder Include="Resources\" />
     <Folder Include="UserInterfaceServices\" />
+    <Folder Include="SqliteInterfaces\" />
+    <Folder Include="LogsModel\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\services_config.xml" />
+    <None Remove="SqliteInterfaces\" />
+    <None Remove="LogsModel\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\services_config.xml" />

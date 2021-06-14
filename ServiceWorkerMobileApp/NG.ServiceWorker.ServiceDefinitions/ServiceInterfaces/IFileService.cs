@@ -24,5 +24,8 @@ namespace NG.ServiceWorker
     {
         /// <summary>Creates a temp file.</summary>
         IFile CreateTempFile(IFileWriter writer);
+
+        /// <summary>Getter for a database filepath.</summary>
+        string GetDatabaseFilepath(string filename);
     }
 }

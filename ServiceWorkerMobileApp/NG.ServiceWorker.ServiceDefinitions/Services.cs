@@ -14,6 +14,10 @@ namespace NG.ServiceWorker
 
         public static IJsonService JsonService { get { return ServiceProvider.GetService<IJsonService>(); } }
 
+        public static ILogService LogService { get { return ServiceProvider.GetService<ILogService>(); } }
+
+        public static ISqliteService SqliteService { get { return ServiceProvider.GetService<ISqliteService>(); } }
+
         public static ISvgService SvgService { get { return ServiceProvider.GetService<ISvgService>(); } }
 
         public static IThreadService ThreadService { get { return ServiceProvider.GetService<IThreadService>(); } }

@@ -20,11 +20,15 @@
     <Folder Include="SystemUI\" />
     <Folder Include="DebugUI\" />
     <Folder Include="DebugUI\FilesystemDebugUI\" />
+    <Folder Include="SystemUI\LogsUI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.AppViews\NG.ServiceWorker.AppViews.csproj" />
     <ProjectReference Include="..\NG.ServiceWorker.ViewModels\NG.ServiceWorker.ViewModels.csproj" />
     <ProjectReference Include="..\NG.ServiceWorker.UI.AppViewModels\NG.ServiceWorker.UI.AppViewModels.csproj" />
     <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="SystemUI\LogsUI\" />
   </ItemGroup>
 </Project>

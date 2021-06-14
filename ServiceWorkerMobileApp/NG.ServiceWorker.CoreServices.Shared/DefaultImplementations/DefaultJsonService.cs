@@ -6,6 +6,22 @@ namespace NG.ServiceWorker.CoreServices
     {
         private Newtonsoft.Json.JsonSerializer m_serialiser = null;
 
+        private Newtonsoft.Json.JsonSerializerSettings m_minimalSerialiser = new Newtonsoft.Json.JsonSerializerSettings
+        {
+            Formatting = Newtonsoft.Json.Formatting.None,
+            NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore
+        };
+
+        /// <summary>Serialises an object into JSON.</summary>
+        public string SerialiseObject(object jsonObject)
+        {
+            if (jsonObject == null)
+            {
+                return null;
+            }
+            return Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject, m_minimalSerialiser);
+        }
+
         /// <summary>Deserialises JSON.</summary>
         public JsonType DeserialiseString<JsonType>(string jsonString)
         {

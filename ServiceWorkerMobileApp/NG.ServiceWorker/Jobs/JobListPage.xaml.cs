@@ -20,16 +20,23 @@ namespace NG.ServiceWorker.Jobs
             // Run on backgroud thread
             Services.ThreadService.RunActionOnBackgroundThread("FetchJobsOnStartup", () =>
             {
-                // Fake data
-                ApiModel.Job[] jobArray = Services.ApiService.GetJobArray();
-
-                // Create jobs
-                foreach (ApiModel.Job job in jobArray)
+                try
                 {
-                    m_viewModel.JobListViewModels.Add(new JobListItemViewModel
+                    // Fake data
+                    ApiModel.Job[] jobArray = Services.ApiService.GetJobArray();
+
+                    // Create jobs
+                    foreach (ApiModel.Job job in jobArray)
                     {
-                        Job = job
-                    });
+                        m_viewModel.JobListViewModels.Add(new JobListItemViewModel
+                        {
+                            Job = job
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Services.LogService.CreateLogger("JobsFetch").Error("Error fetching jobs.", ex);
                 }
             });
         }

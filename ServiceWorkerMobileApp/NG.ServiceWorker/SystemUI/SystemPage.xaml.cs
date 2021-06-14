@@ -18,14 +18,20 @@ namespace NG.ServiceWorker.SystemUI
 
             // Create list
             UI.ListUI.ListViewModel listViewModel = new UI.ListUI.ListViewModel();
-            listViewModel.SectionList.Add(new UI.ListUI.ListSectionViewModel { Title = "General" });
+            listViewModel.SectionList.Add(new UI.ListUI.ListSectionViewModel { Title = "System" });
             listViewModel.SectionList[0].Add(UI.ListUI.ListItemViewModel.CreateCommand("About", GotoAbout));
+            listViewModel.SectionList[0].Add(UI.ListUI.ListItemViewModel.CreateCommand("Logs", GotoLogs));
             this.Content = Services.UserInterfaceViewFactoryService.CreateViewFromViewModel(listViewModel);
         }
 
         public async Task GotoAbout(View view)
         {
             await view.Navigation.PushAsync(new SystemAboutPage());
+        }
+
+        public async Task GotoLogs(View view)
+        {
+            await view.Navigation.PushAsync(new LogsUI.SystemLogsPage());
         }
     }
 }

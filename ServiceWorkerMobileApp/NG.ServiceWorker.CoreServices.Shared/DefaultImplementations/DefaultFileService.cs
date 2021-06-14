@@ -88,6 +88,13 @@ namespace NG.ServiceWorker.CoreServices
             return new DefaultFileServiceFile(tempFilepath);
         }
 
+        /// <summary>Getter for a database filepath.</summary>
+        public string GetDatabaseFilepath(string filename)
+        {
+            string databaseDirpath = Services.FileSystemService.DatabaseDirpath;
+            return System.IO.Path.Combine(databaseDirpath, filename);
+        }
+
         #endregion
     }
 }

@@ -9,7 +9,9 @@ namespace NG.ServiceWorker.CoreServices.AndroidServices
 
         /// <summary>The documents directory.</summary>
         private string m_documentsDirpath = null;
-        /// <summary>The documents directory.</summary>
+        /// <summary>The database directory.</summary>
+        private string m_databaseDirpath = null;
+        /// <summary>The temp directory.</summary>
         private string m_tempDirpath = null;
 
         /// <summary>Constructor.</summary>
@@ -21,6 +23,23 @@ namespace NG.ServiceWorker.CoreServices.AndroidServices
         #endregion
 
         #region IFileSystemService
+
+        /// <summary>Getter for the directory to put database files in.</summary>
+        public string DatabaseDirpath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(m_databaseDirpath))
+                {
+                    m_databaseDirpath = System.IO.Path.Combine(m_documentsDirpath, "SwData");
+                    if (System.IO.Directory.Exists(m_databaseDirpath) == false)
+                    {
+                        System.IO.Directory.CreateDirectory(m_databaseDirpath);
+                    }
+                }
+                return m_databaseDirpath;
+            }
+        }
 
         /// <summary>Getter for the directory to put temp files in.</summary>
         public string TempDirectory

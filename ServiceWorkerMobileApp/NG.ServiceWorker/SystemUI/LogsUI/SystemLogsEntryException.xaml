@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="NG.ServiceWorker.SystemUI.LogsUI.SystemLogsEntryException">
+    <StackLayout Orientation="Vertical">
+        <Grid ColumnDefinitions="Auto,4,*">
+            <Label Grid.Column="0" x:Name="NameLabel" FontAttributes="Bold"/>
+            <Label Grid.Column="2" x:Name="MessageLabel"/>
+        </Grid>
+        <Label x:Name="StackTraceLabel" Margin="8,0,0,0"/>
+    </StackLayout>
+</ContentView>

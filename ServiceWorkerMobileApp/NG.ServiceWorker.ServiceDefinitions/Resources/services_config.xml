@@ -17,6 +17,14 @@
         <implementation type="NG.ServiceWorker.CoreServices.DefaultSvgService"/>
     </service>
 
+    <!-- Custom namespace service -->
+    <service type="NG.ServiceWorker.ILogService">
+        <implementation type="NG.ServiceWorker.CoreServices.SqliteLogging.SqliteLogService"/>
+    </service>
+    <service type="NG.ServiceWorker.ISqliteService">
+        <implementation type="NG.ServiceWorker.CoreServices.SqliteDatabases.DefaultSqliteService"/>
+    </service>
+
     <!-- UI services -->
     <service type="NG.ServiceWorker.UIServices.IUserInterfaceViewFactoryService">
         <implementation type="NG.ServiceWorker.UIServices.CoreUIServices.DefaultUserInterfaceViewFactoryService"/>

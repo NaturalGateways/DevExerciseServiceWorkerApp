@@ -13,6 +13,9 @@
     <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\HttpClasses\" />
     <Folder Include="$(MSBuildThisFileDirectory)BaseImplementations\" />
     <Folder Include="$(MSBuildThisFileDirectory)UserInterfaceImplementations\" />
+    <Folder Include="$(MSBuildThisFileDirectory)SqliteDatabases\" />
+    <Folder Include="$(MSBuildThisFileDirectory)SqliteDatabases\LoggingDatabase\" />
+    <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\SqliteLogging\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultApiService.cs" />
@@ -23,5 +26,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultSvgService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BaseImplementations\BaseThreadService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UserInterfaceImplementations\DefaultUserInterfaceViewFactoryService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SqliteDatabases\LoggingDatabase\LoggingDatabaseInitialiser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SqliteDatabases\DefaultSqliteService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SqliteDatabases\DefaultSqliteConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\SqliteLogging\SqliteLogService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\SqliteLogging\SqliteLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SqliteDatabases\DefaultSqliteRow.cs" />
   </ItemGroup>
 </Project>
