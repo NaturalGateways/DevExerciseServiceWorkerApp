@@ -13,10 +13,15 @@ namespace NG.ServiceWorker.CoreServices
         #region IApiService implementations
 
         /// <summary>Get the jobs.</summary>
-        public ApiModel.Job[] GetJobArray()
+        public ApiModel.JobWithLinks[] GetJobArray()
         {
-            string url = "https://https.naturalgateways.com/ServiceWorker/Jobs2.json";
-            return this.ApiConnection.GetJson<ApiModel.Job[]>(url);
+            string url = "https://https.naturalgateways.com/ServiceWorker/Jobs3.json";
+            ApiModel.JobWithLinks[] data = this.ApiConnection.GetJson<ApiModel.JobWithLinks[]>(url);
+            for (int itemIndex = 0; itemIndex != data.Length; ++itemIndex)
+            {
+                data[itemIndex].Job.JobKey = "J" + (itemIndex + 1).ToString("D3");
+            }
+            return data;
         }
 
         #endregion

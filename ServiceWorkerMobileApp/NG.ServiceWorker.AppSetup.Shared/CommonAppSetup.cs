@@ -15,6 +15,7 @@ namespace NG.ServiceWorker.AppSetup
 
             // Register UI mappings
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.ListUI.ListViewModel, UI.ListUI.ListView>();
+            Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<OpenJobUI.OpenJobViewModel, OpenJobUI.OpenJobPage>();
         }
     }
 }

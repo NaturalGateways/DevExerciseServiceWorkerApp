@@ -29,6 +29,20 @@ namespace NG.ServiceWorker.UIServices.CoreUIServices
         }
 
         /// <summary>Creates a view for the given view model.</summary>
+        public Page CreatePageFromViewModel<ViewModelType>(ViewModelType viewModel) where ViewModelType : UI.ViewModel
+        {
+            Type viewModelType = typeof(ViewModelType);
+            if (m_viewTypesByViewModelType.ContainsKey(viewModelType) == false)
+            {
+                throw new Exception($"Unrecognised view model: CreateViewFromViewModel<{viewModelType.FullName}>()");
+            }
+            Type viewType = m_viewTypesByViewModelType[viewModelType];
+            Page page = (Page)Activator.CreateInstance(viewType, viewModel);
+            page.BindingContext = viewModel;
+            return page;
+        }
+
+        /// <summary>Creates a view for the given view model.</summary>
         public View CreateViewFromViewModel<ViewModelType>(ViewModelType viewModel) where ViewModelType : UI.ViewModel
         {
             Type viewModelType = typeof(ViewModelType);

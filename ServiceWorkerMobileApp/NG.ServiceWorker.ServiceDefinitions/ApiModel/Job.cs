@@ -2,14 +2,51 @@
 
 namespace NG.ServiceWorker.ApiModel
 {
+    public class JobWithLinks
+    {
+        public Contact Contact { get; set; }
+
+        public Job Job { get; set; }
+    }
+
     public class Job
     {
-        public string JobTypeName { get; set; }
+        public string JobKey { get; set; }
 
-        public string CustomerDisplayName { get; set; }
+        public int JobStatusId { get; set; }
 
-        public string Address { get; set; }
+        public string JobStatusName { get; set; }
 
-        public string ProfilePicUrl { get; set; }
+        public string Description { get; set; }
+
+        public int PaymentTypeId { get; set; }
+
+        public string PaymentTypeKey { get; set; }
+
+        public string PaymentTypeName { get; set; }
+
+        public double? PaymentAmount { get; set; }
+
+        public JobScheduleWindow ScheduleWindow { get; set; }
+
+        public int? EstimatedTimeMinutes { get; set; }
+
+        public JobEstimatedMaterial[] EstimatedMaterials { get; set; }
+    }
+
+    public class JobScheduleWindow
+    {
+        public DateTime? StartDateTimeUtc { get; set; }
+
+        public DateTime? EndDateTimeUtc { get; set; }
+    }
+
+    public class JobEstimatedMaterial
+    {
+        public int EquipmentTypeId { get; set; }
+
+        public string EquipmentTypeName { get; set; }
+
+        public int? Amount { get; set; }
     }
 }

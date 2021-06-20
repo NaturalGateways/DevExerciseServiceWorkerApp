@@ -1,34 +1,48 @@
 ﻿using System;
+using System.Windows.Input;
+
+using Xamarin.Forms;
 
 namespace NG.ServiceWorker.Jobs
 {
     public class JobListItemViewModel : UI.ViewModel
     {
-        public ApiModel.Job Job { get; set; }
+        public Page XamarinView { get; set; }
 
-        public string JobTypeName { get { return this.Job.JobTypeName; } }
+        public ApiModel.JobWithLinks JobWithLinks { get; set; }
 
-        public string CustomerDisplayName { get { return this.Job.CustomerDisplayName; } }
+        public string JobTypeName { get { return this.JobWithLinks.Job.Description; } }
 
-        public string Address { get { return this.Job.Address; } }
+        public string CustomerDisplayName { get { return this.JobWithLinks.Contact.DisplayName; } }
 
-        public string ProfilePicUrl { get { return this.Job.ProfilePicUrl; } }
+        public string Address { get { return this.JobWithLinks.Contact.Address; } }
 
-        public Xamarin.Forms.ImageSource PlaceholderProfilePicImage
+        public string ProfilePicUrl { get { return this.JobWithLinks.Contact.ProfilePicUrl; } }
+
+        public ImageSource PlaceholderProfilePicImage
         {
             get
             {
                 if (this.IsPlaceholderProfilePicVisible)
                 {
                     IFile pngFile = Services.SvgService.GetPngFile("icon_profilepic_placeholder", 40, 0xAAAAAA);
-                    Xamarin.Forms.ImageSource pngImage = pngFile.AsImageSource;
+                    ImageSource pngImage = pngFile.AsImageSource;
                     return pngImage;
                 }
                 return null;
             }
         }
 
-        public bool IsProfilePicImageVisible { get { return string.IsNullOrEmpty(this.Job.ProfilePicUrl) == false; } }
-        public bool IsPlaceholderProfilePicVisible { get { return string.IsNullOrEmpty(this.Job.ProfilePicUrl); } }
+        public bool IsProfilePicImageVisible { get { return string.IsNullOrEmpty(this.JobWithLinks.Contact.ProfilePicUrl) == false; } }
+        public bool IsPlaceholderProfilePicVisible { get { return string.IsNullOrEmpty(this.JobWithLinks.Contact.ProfilePicUrl); } }
+
+        public ICommand TappedCommand => new Command(OnItemTapped);
+
+        private void OnItemTapped()
+        {
+            OpenJobUI.OpenJobViewModel jobViewModel = new OpenJobUI.OpenJobViewModel { JobWithLinks = this.JobWithLinks };
+            Page openJobPage = Services.UserInterfaceViewFactoryService.CreatePageFromViewModel<OpenJobUI.OpenJobViewModel>(jobViewModel);
+            this.XamarinView.Navigation.PushAsync(openJobPage);
+        }
     }
 }

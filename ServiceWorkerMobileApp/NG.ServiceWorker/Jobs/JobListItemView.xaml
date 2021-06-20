@@ -2,6 +2,9 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NG.ServiceWorker.Jobs.JobListItemView">
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding TappedCommand}"/>
+    </ContentView.GestureRecognizers>
     <Grid Style="{StaticResource BackgroundGrid}">
         <Grid RowDefinitions="Auto,Auto" Margin="16,4,8,4" RowSpacing="4" VerticalOptions="Center">
             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">

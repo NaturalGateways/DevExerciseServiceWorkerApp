@@ -22,15 +22,16 @@ namespace NG.ServiceWorker.Jobs
             {
                 try
                 {
-                    // Fake data
-                    ApiModel.Job[] jobArray = Services.ApiService.GetJobArray();
+                    // API data
+                    ApiModel.JobWithLinks[] jobArray = Services.ApiService.GetJobArray();
 
                     // Create jobs
-                    foreach (ApiModel.Job job in jobArray)
+                    foreach (ApiModel.JobWithLinks jobWithLinks in jobArray)
                     {
                         m_viewModel.JobListViewModels.Add(new JobListItemViewModel
                         {
-                            Job = job
+                            XamarinView = this,
+                            JobWithLinks = jobWithLinks
                         });
                     }
                 }

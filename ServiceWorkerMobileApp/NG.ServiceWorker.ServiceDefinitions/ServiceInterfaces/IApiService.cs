@@ -5,6 +5,6 @@ namespace NG.ServiceWorker
     public interface IApiService
     {
         /// <summary>Get the jobs.</summary>
-        ApiModel.Job[] GetJobArray();
+        ApiModel.JobWithLinks[] GetJobArray();
     }
 }

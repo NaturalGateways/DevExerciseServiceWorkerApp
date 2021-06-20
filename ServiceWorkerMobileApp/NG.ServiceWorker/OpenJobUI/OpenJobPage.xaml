@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="NG.ServiceWorker.OpenJobUI.OpenJobPage"
+    Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ContactGrid" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+            </Style>
+            <Style x:Key="ContactLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryText}"/>
+            </Style>
+            <Style x:Key="AttNameLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryLight}, Dark={StaticResource PrimaryDark}}"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+            <Style x:Key="AttValueLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <Grid RowDefinitions="Auto,*">
+            <Grid Grid.Row="1" Style="{StaticResource BackgroundGrid}">
+                <StackLayout Margin="8,16,8,8">
+                    <Label Text="Status" Style="{StaticResource AttNameLabel}"/>
+                    <Label Text="{Binding JobStatus}" Style="{StaticResource AttValueLabel}"/>
+                    <Grid HeightRequest="4"/>
+                    <Label Text="Description" Style="{StaticResource AttNameLabel}"/>
+                    <Label Text="{Binding JobDescription}" Style="{StaticResource AttValueLabel}"/>
+                    <Grid HeightRequest="4"/>
+                    <Label Text="Payment Rate" Style="{StaticResource AttNameLabel}"/>
+                    <Label Text="{Binding PaymentRate}" Style="{StaticResource AttValueLabel}"/>
+                    <Grid HeightRequest="4"/>
+                    <Label Text="Schedule" Style="{StaticResource AttNameLabel}"/>
+                    <Label Text="{Binding Schedule}" Style="{StaticResource AttValueLabel}"/>
+                    <Grid HeightRequest="4"/>
+                    <Label Text="Estimated Time" Style="{StaticResource AttNameLabel}"/>
+                    <Label Text="{Binding EstimatedTime}" Style="{StaticResource AttValueLabel}"/>
+                </StackLayout>
+            </Grid>
+            <Grid x:Name="ContactHeaderGrid" Grid.Row="0" Style="{StaticResource ContactGrid}">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Grid.GestureRecognizers>
+                <Grid Margin="16,4,4,4" ColumnSpacing="16" ColumnDefinitions="Auto,*">
+                    <Frame Grid.Column="0" CornerRadius="30" IsClippedToBounds="True" WidthRequest="60" HeightRequest="60" VerticalOptions="Center" HasShadow="False" Scale="1.4">
+                        <Grid BackgroundColor="{StaticResource Primary}"/>
+                    </Frame>
+                    <Frame Grid.Column="0" CornerRadius="30" IsClippedToBounds="True" WidthRequest="60" HeightRequest="60" VerticalOptions="Center" HasShadow="False" Scale="1.2">
+                        <Grid BackgroundColor="Gray">
+                            <Image Source="{Binding ProfilePicUrl}" IsVisible="{Binding IsProfilePicImageVisible}"/>
+                            <Image Source="{Binding PlaceholderProfilePicImage}" IsVisible="{Binding IsPlaceholderProfilePicVisible}"/>
+                        </Grid>
+                    </Frame>
+                    <StackLayout Grid.Column="1" VerticalOptions="Center" IsVisible="{Binding IsSummaryContactVisible}">
+                        <Label Style="{StaticResource ContactLabel}" Text="{Binding DisplayName}" FontAttributes="Bold"/>
+                        <Label Style="{StaticResource ContactLabel}" Text="{Binding BusinessName}" IsVisible="{Binding IsBusinessNameVisible}" FontAttributes="Italic"/>
+                        <Label Style="{StaticResource ContactLabel}" Text="{Binding Address}"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" x:Name="ContactDetailStack" VerticalOptions="Center" IsVisible="{Binding IsDetailContactVisible}">
+                        <Label Style="{StaticResource ContactLabel}" Text="{Binding DisplayName}" FontAttributes="Bold"/>
+                        <Label Style="{StaticResource ContactLabel}" Text="{Binding BusinessName}" IsVisible="{Binding IsBusinessNameVisible}" FontAttributes="Italic"/>
+                        <Label Style="{StaticResource ContactLabel}" Text="{Binding Address}"/>
+                        <StackLayout x:Name="PhoneNumberStack"/>
+                        <Label Style="{StaticResource ContactLabel}" Text="{Binding Email}"/>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

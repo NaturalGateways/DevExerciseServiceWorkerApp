@@ -10,6 +10,9 @@ namespace NG.ServiceWorker.UIServices
         void RegisterViewModelViewMapping<ViewModelType, ViewType>();
 
         /// <summary>Creates a view for the given view model.</summary>
+        Page CreatePageFromViewModel<ViewModelType>(ViewModelType viewModel) where ViewModelType : UI.ViewModel;
+
+        /// <summary>Creates a view for the given view model.</summary>
         View CreateViewFromViewModel<ViewModelType>(ViewModelType viewModel) where ViewModelType : UI.ViewModel;
     }
 }

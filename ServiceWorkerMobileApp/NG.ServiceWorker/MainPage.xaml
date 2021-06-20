@@ -5,7 +5,11 @@
              xmlns:map="clr-namespace:NG.ServiceWorker.MapUI"
              xmlns:system="clr-namespace:NG.ServiceWorker.SystemUI"
              x:Class="NG.ServiceWorker.MainPage">
-    <jobs:JobListPage Title="Jobs" IconImageSource="icon_maintabs_jobs"/>
+    <NavigationPage Title="Jobs" IconImageSource="icon_maintabs_jobs">
+        <x:Arguments>
+            <jobs:JobListPage Title="Jobs"/>
+        </x:Arguments>
+    </NavigationPage>
     <map:MapPage Title="Map" IconImageSource="icon_maintabs_map"/>
     <NavigationPage Title="System" IconImageSource="icon_maintabs_system">
         <x:Arguments>
