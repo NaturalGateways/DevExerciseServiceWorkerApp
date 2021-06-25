@@ -26,19 +26,32 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid Style="{StaticResource MarginGrid}">
-        <Grid Margin="24,16" Style="{StaticResource BackgroundGrid}" VerticalOptions="Start">
-            <StackLayout Margin="16">
-                <Label Text="System Info" Style="{StaticResource TitleLabel}"/>
-                <Grid HeightRequest="4"/>
-                <Label Text="Project" Style="{StaticResource AttNameLabel}"/>
-                <Label Text="Service Worker" Style="{StaticResource AttValueLabel}"/>
-                <Grid HeightRequest="4"/>
-                <Label Text="Version" Style="{StaticResource AttNameLabel}"/>
-                <Label Text="0.0.0" Style="{StaticResource AttValueLabel}"/>
-                <Grid HeightRequest="4"/>
-                <Label Text="Author" Style="{StaticResource AttNameLabel}"/>
-                <Label Text="Steven Moore" Style="{StaticResource AttValueLabel}"/>
-            </StackLayout>
-        </Grid>
+        <StackLayout Orientation="Vertical" Margin="24,16" Spacing="16" VerticalOptions="Start">
+            <Grid Style="{StaticResource BackgroundGrid}">
+                <StackLayout Margin="16">
+                    <Label Text="System Info" Style="{StaticResource TitleLabel}"/>
+                    <Grid HeightRequest="4"/>
+                    <Label Text="Project" Style="{StaticResource AttNameLabel}"/>
+                    <Label Text="Service Worker" Style="{StaticResource AttValueLabel}"/>
+                    <Grid HeightRequest="4"/>
+                    <Label Text="Version" Style="{StaticResource AttNameLabel}"/>
+                    <Label Text="0.0.0" Style="{StaticResource AttValueLabel}"/>
+                    <Grid HeightRequest="4"/>
+                    <Label Text="Author" Style="{StaticResource AttNameLabel}"/>
+                    <Label Text="Steven Moore" Style="{StaticResource AttValueLabel}"/>
+                </StackLayout>
+            </Grid>
+            <Grid Style="{StaticResource BackgroundGrid}">
+                <StackLayout Margin="16">
+                    <Label Text="Libraries Used" Style="{StaticResource TitleLabel}"/>
+                    <Grid HeightRequest="4"/>
+                    <Label Text="JSON Serialisation" Style="{StaticResource AttNameLabel}"/>
+                    <Label Text="Newtonsoft.JSON" Style="{StaticResource AttValueLabel}"/>
+                    <Grid HeightRequest="4"/>
+                    <Label Text="SVG to PNG Rendering" Style="{StaticResource AttNameLabel}"/>
+                    <Label Text="SkiaSharp.SVG" Style="{StaticResource AttValueLabel}"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
     </Grid>
 </ContentPage>
