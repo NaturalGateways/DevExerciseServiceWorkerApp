@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ui="clr-namespace:NG.ServiceWorker.UI;assembly=NG.ServiceWorker.UI.AppControls"
              x:Class="NG.ServiceWorker.Jobs.JobListItemView">
     <ContentView.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding TappedCommand}"/>
@@ -11,7 +12,7 @@
                 <Frame Grid.Column="0" CornerRadius="20" IsClippedToBounds="True" WidthRequest="40" HeightRequest="40" VerticalOptions="Center">
                     <Grid BackgroundColor="Gray">
                         <Image Source="{Binding ProfilePicUrl}" IsVisible="{Binding IsProfilePicImageVisible}"/>
-                        <Image Source="{Binding PlaceholderProfilePicImage}" IsVisible="{Binding IsPlaceholderProfilePicVisible}"/>
+                        <ui:SvgImage SvgName="icon_profilepic_placeholder" RenderColour="#AAAAAA" IsVisible="{Binding IsPlaceholderProfilePicVisible}"/>
                     </Grid>
                 </Frame>
                 <Grid Grid.Column="1" RowDefinitions="Auto,Auto" VerticalOptions="Center">

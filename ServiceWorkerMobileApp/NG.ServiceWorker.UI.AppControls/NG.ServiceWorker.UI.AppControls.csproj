@@ -6,17 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Xamarin.Forms" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="ListUI\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ListUI\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj" />
-    <ProjectReference Include="..\NG.ServiceWorker.UI.AppViewModels\NG.ServiceWorker.UI.AppViewModels.csproj" />
-    <ProjectReference Include="..\NG.ServiceWorker.UI.AppControls\NG.ServiceWorker.UI.AppControls.csproj" />
+    <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />
   </ItemGroup>
 </Project>

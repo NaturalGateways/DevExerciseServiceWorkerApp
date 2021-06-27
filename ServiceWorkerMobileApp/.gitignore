@@ -12,6 +12,8 @@
 /NG.ServiceWorker.iOS/obj
 /NG.ServiceWorker.ServiceDefinitions/bin
 /NG.ServiceWorker.ServiceDefinitions/obj
+/NG.ServiceWorker.UI.AppControls/bin
+/NG.ServiceWorker.UI.AppControls/obj
 /NG.ServiceWorker.UI.AppViewModels/bin
 /NG.ServiceWorker.UI.AppViewModels/obj
 /NG.ServiceWorker.UI.AppViews/bin

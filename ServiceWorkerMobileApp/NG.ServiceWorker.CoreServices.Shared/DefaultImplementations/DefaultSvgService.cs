@@ -81,6 +81,16 @@ namespace NG.ServiceWorker.CoreServices
 
         #region ISvgService implementation
 
+        /// <summary>Getter for the aspect ratio.</summary>
+        public double GetSvgAspectRatioWoverH(string svgId)
+        {
+            if (m_svgFilesById.ContainsKey(svgId) == false)
+            {
+                throw new Exception($"Aspect Ratio Getter Error: SVG file '{svgId}' does not exist in config.");
+            }
+            return m_svgFilesById[svgId].AspectRatioWoverH;
+        }
+
         /// <summary>Gets a PNG file for an SVG resource.</summary>
         public IFile GetPngFile(string svgId, int imageWidth, uint? colourRGB)
         {

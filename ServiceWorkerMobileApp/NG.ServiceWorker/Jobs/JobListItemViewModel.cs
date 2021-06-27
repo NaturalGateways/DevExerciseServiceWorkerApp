@@ -19,20 +19,6 @@ namespace NG.ServiceWorker.Jobs
 
         public string ProfilePicUrl { get { return this.JobWithLinks.Contact.ProfilePicUrl; } }
 
-        public ImageSource PlaceholderProfilePicImage
-        {
-            get
-            {
-                if (this.IsPlaceholderProfilePicVisible)
-                {
-                    IFile pngFile = Services.SvgService.GetPngFile("icon_profilepic_placeholder", 40, 0xAAAAAA);
-                    ImageSource pngImage = pngFile.AsImageSource;
-                    return pngImage;
-                }
-                return null;
-            }
-        }
-
         public bool IsProfilePicImageVisible { get { return string.IsNullOrEmpty(this.JobWithLinks.Contact.ProfilePicUrl) == false; } }
         public bool IsPlaceholderProfilePicVisible { get { return string.IsNullOrEmpty(this.JobWithLinks.Contact.ProfilePicUrl); } }
 

@@ -22,5 +22,7 @@ namespace NG.ServiceWorker
         {
             return this.Flags.Contains(flag);
         }
+
+        public virtual double RetinaScale { get { return 1.0; } }
     }
 }
