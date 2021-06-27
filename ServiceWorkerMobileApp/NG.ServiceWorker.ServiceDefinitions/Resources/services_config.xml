@@ -19,7 +19,7 @@
 
     <!-- Custom namespace service -->
     <service type="NG.ServiceWorker.ILogService">
-        <implementation type="NG.ServiceWorker.CoreServices.SqliteLogging.SqliteLogService"/>
+        <implementation type="NG.ServiceWorker.CoreServices.Serilog.SerilogLogService"/>
     </service>
     <service type="NG.ServiceWorker.ISqliteService">
         <implementation type="NG.ServiceWorker.CoreServices.SqliteDatabases.DefaultSqliteService"/>
