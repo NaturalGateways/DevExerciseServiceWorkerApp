@@ -1,9 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
+#if WINDOWS_UWP
+using SqliteCommand = Microsoft.Data.Sqlite.SqliteCommand;
+using SqliteConnection = Microsoft.Data.Sqlite.SqliteConnection;
+using SqliteDataReader = Microsoft.Data.Sqlite.SqliteDataReader;
+#else
 using SqliteCommand = Mono.Data.Sqlite.SqliteCommand;
 using SqliteConnection = Mono.Data.Sqlite.SqliteConnection;
 using SqliteDataReader = Mono.Data.Sqlite.SqliteDataReader;
+#endif
 
 namespace NG.ServiceWorker.CoreServices.SqliteDatabases
 {

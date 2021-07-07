@@ -67,6 +67,10 @@ namespace NG.ServiceWorker.UWP
                 Window.Current.Content = rootFrame;
             }
 
+            // App setup
+            new AppSetup.WindowsSetup.WindowsPlatform();
+            AppSetup.CommonAppSetup.CommonStartup();
+
             if (rootFrame.Content == null)
             {
                 // When the navigation stack isn't restored navigate to the first page,

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -12,7 +12,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
@@ -145,7 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.12"/>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.12" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
@@ -153,11 +153,29 @@
       <Project>{a91c3817-d1a8-4b98-9c84-3bd412b2e9a1}</Project>
       <Name>NG.ServiceWorker.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.CoreServices.UWP\NG.ServiceWorker.CoreServices.UWP.csproj">
+      <Project>{075ba179-f767-4c07-aa39-674cf751eeb7}</Project>
+      <Name>NG.ServiceWorker.CoreServices.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj">
+      <Project>{5674d163-f5fc-4626-9c4f-b2c37dba9cb4}</Project>
+      <Name>NG.ServiceWorker.ServiceDefinitions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.UI.AppViewModels\NG.ServiceWorker.UI.AppViewModels.csproj">
+      <Project>{472532fa-6166-4c17-b5ba-adeae6bd43e6}</Project>
+      <Name>NG.ServiceWorker.UI.AppViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.UI.AppViews\NG.ServiceWorker.UI.AppViews.csproj">
+      <Project>{961bc365-fc54-430d-9946-177e2090f843}</Project>
+      <Name>NG.ServiceWorker.UI.AppViews</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NG.ServiceWorker\NG.ServiceWorker.csproj">
       <Project>{4A45E5E9-9F3A-4E3C-8CBE-BF1487D08693}</Project>
       <Name>NG.ServiceWorker</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\NG.ServiceWorker.AppSetup.Windows\NG.ServiceWorker.AppSetup.Windows.projitems" Label="Shared" />
+  <Import Project="..\NG.ServiceWorker.AppSetup.Shared\NG.ServiceWorker.AppSetup.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

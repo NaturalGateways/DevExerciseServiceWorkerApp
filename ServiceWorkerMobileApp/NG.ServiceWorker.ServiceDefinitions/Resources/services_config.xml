@@ -34,6 +34,7 @@
     <service type="NG.ServiceWorker.IFileSystemService">
         <implementation flag="iOS" type="NG.ServiceWorker.CoreServices.iOSServices.iOSFileSystemService"/>
         <implementation flag="Android" type="NG.ServiceWorker.CoreServices.AndroidServices.AndroidFileSystemService"/>
+        <implementation flag="UWP" type="NG.ServiceWorker.CoreServices.UwpServices.UwpFileSystemService"/>
     </service>
     <service type="NG.ServiceWorker.IThreadService">
         <implementation type="NG.ServiceWorker.CoreServices.BaseThreadService"/>

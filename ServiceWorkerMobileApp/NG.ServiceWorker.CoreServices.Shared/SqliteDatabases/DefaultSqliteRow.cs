@@ -1,6 +1,10 @@
 ﻿using System;
 
+#if WINDOWS_UWP
+using SqliteDataReader = Microsoft.Data.Sqlite.SqliteDataReader;
+#else
 using SqliteDataReader = Mono.Data.Sqlite.SqliteDataReader;
+#endif
 
 namespace NG.ServiceWorker.CoreServices.SqliteDatabases
 {

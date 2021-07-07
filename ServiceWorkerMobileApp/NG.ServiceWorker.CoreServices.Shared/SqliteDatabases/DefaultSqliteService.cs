@@ -1,6 +1,10 @@
 ﻿using System;
 
+#if WINDOWS_UWP
+using SqliteConnection = Microsoft.Data.Sqlite.SqliteConnection;
+#else
 using SqliteConnection = Mono.Data.Sqlite.SqliteConnection;
+#endif
 
 namespace NG.ServiceWorker.CoreServices.SqliteDatabases
 {

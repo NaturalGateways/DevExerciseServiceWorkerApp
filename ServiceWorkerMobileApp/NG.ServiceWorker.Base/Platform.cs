@@ -7,6 +7,8 @@ namespace NG.ServiceWorker
     {
         public const string PLATFORM_IOS = "iOS";
         public const string PLATFORM_ANDROID = "Android";
+        public const string PLATFORM_WINDOWS = "Windows";
+        public const string PLATFORM_UWP = "UWP";
 
         private static Platform s_singleton = null;
         public static Platform GetPlatform() { return s_singleton; }
