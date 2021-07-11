@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 
 namespace NG.ServiceWorker.AppSetup
@@ -15,6 +15,9 @@ namespace NG.ServiceWorker.AppSetup
 
             // Register UI mappings
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.ListUI.ListViewModel, UI.ListUI.ListView>();
+            Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.FormsUI.FormsDocumentViewModel, UI.FormsUI.FormsDocumentView>();
+            Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.FormsUI.FormsSectionViewModel, UI.FormsUI.FormsSectionView>();
+            Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.FormsUI.FormsFieldReadOnlyViewModel, UI.FormsUI.FormsFieldReadOnlyView>();
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<OpenJobUI.OpenJobViewModel, OpenJobUI.OpenJobPage>();
         }
     }

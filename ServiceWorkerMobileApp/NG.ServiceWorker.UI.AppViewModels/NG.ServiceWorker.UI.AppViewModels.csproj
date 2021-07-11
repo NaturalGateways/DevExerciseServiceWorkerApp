@@ -10,11 +10,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="ListUI\" />
+    <None Remove="FormsUI\" />
+    <None Remove="FormsUI\Fields\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ListUI\" />
+    <Folder Include="FormsUI\" />
+    <Folder Include="FormsUI\FieldsUI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />
+    <ProjectReference Include="..\NG.ServiceWorker.FormsInterface\NG.ServiceWorker.FormsInterface.csproj" />
   </ItemGroup>
 </Project>

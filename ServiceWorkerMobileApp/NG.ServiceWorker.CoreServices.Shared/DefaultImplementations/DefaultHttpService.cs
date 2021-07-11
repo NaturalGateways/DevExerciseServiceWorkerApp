@@ -37,7 +37,7 @@ namespace NG.ServiceWorker.CoreServices
                     }
                 }
                 DefaultHttpConnection newConnection = new DefaultHttpConnection();
-                m_connectionsByDomainUrl.Add(domainUrl, newConnection);
+                m_connectionsByDomainUrl.Add(domainUrlParsed, newConnection);
                 return newConnection;
             }
         }

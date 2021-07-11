@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>NG.ServiceWorker.SwForms</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="NodeInterfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NodeInterfaces\" />
+  </ItemGroup>
+</Project>

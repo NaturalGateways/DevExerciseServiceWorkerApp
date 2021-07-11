@@ -25,9 +25,9 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ScrollView>
-        <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,Auto,8,Auto">
             <Grid Grid.Row="1" Style="{StaticResource BackgroundGrid}">
-                <StackLayout Margin="8,16,8,8">
+                <StackLayout Margin="8,16,8,0">
                     <Label Text="Status" Style="{StaticResource AttNameLabel}"/>
                     <Label Text="{Binding JobStatus}" Style="{StaticResource AttValueLabel}"/>
                     <Grid HeightRequest="4"/>
@@ -44,6 +44,7 @@
                     <Label Text="{Binding EstimatedTime}" Style="{StaticResource AttValueLabel}"/>
                 </StackLayout>
             </Grid>
+            <ContentView Grid.Row="3" Margin="8,0,8,8" Content="{Binding FormsView}"/>
             <Grid x:Name="ContactHeaderGrid" Grid.Row="0" Style="{StaticResource ContactGrid}">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>

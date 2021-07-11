@@ -16,6 +16,9 @@
     <Folder Include="$(MSBuildThisFileDirectory)SqliteDatabases\" />
     <Folder Include="$(MSBuildThisFileDirectory)SqliteDatabases\LoggingDatabase\" />
     <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\SqliteLogging\" />
+    <Folder Include="$(MSBuildThisFileDirectory)FormTypes\" />
+    <Folder Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\" />
+    <Folder Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Converter\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultApiService.cs" />
@@ -32,5 +35,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\SqliteLogging\SqliteLogService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\SqliteLogging\SqliteLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SqliteDatabases\DefaultSqliteRow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\FormsIoDocument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\FormsIoField.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\FormsIoSection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Converter\ApiModel2SwForms.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultFormsServices.cs" />
   </ItemGroup>
 </Project>

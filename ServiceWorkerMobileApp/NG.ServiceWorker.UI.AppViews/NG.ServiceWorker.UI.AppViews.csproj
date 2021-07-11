@@ -10,9 +10,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="ListUI\" />
+    <None Remove="FormsUI\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ListUI\" />
+    <Folder Include="FormsUI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj" />

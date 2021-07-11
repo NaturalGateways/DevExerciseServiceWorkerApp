@@ -8,6 +8,8 @@ namespace NG.ServiceWorker.CoreServices
 
         private IHttpConnection ApiConnection { get { return Services.HttpService.GetConnection("http://files.naturalgateways.com"); } }
 
+        private IHttpConnection FormsIoConnection { get { return Services.HttpService.GetConnection("http://thnwvtixxzqkrmr.form.io"); } }
+
         #endregion
 
         #region IApiService implementations
@@ -22,6 +24,14 @@ namespace NG.ServiceWorker.CoreServices
                 data[itemIndex].Job.JobKey = "J" + (itemIndex + 1).ToString("D3");
             }
             return data;
+        }
+
+
+        /// <summary>Get the form design of a job.</summary>
+        public ApiModel.FormIOModel.FormDesign GetJobFormDesign()
+        {
+            string url = "https://thnwvtixxzqkrmr.form.io/cleanerjob?_ga=2.241665346.1506319149.1625382416-2110815082.1623673278";
+            return this.FormsIoConnection.GetJson<ApiModel.FormIOModel.FormDesign>(url);
         }
 
         #endregion

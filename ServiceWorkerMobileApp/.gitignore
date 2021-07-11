@@ -10,6 +10,8 @@
 /NG.ServiceWorker.CoreServices.iOS/obj
 /NG.ServiceWorker.CoreServices.UWP/bin
 /NG.ServiceWorker.CoreServices.UWP/obj
+/NG.ServiceWorker.FormsInterface/bin
+/NG.ServiceWorker.FormsInterface/obj
 /NG.ServiceWorker.iOS/bin
 /NG.ServiceWorker.iOS/obj
 /NG.ServiceWorker.ServiceDefinitions/bin

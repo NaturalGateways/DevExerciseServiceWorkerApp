@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -51,7 +51,7 @@ namespace NG.ServiceWorker.UIServices.CoreUIServices
                 throw new Exception($"Unrecognised view model: CreateViewFromViewModel<{viewModelType.FullName}>()");
             }
             Type viewType = m_viewTypesByViewModelType[viewModelType];
-            View view = (View)Activator.CreateInstance(viewType);
+            View view = (View)Activator.CreateInstance(viewType, viewModel);
             view.BindingContext = viewModel;
             return view;
         }

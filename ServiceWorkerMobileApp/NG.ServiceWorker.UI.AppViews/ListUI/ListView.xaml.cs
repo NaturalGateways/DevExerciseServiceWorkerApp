@@ -6,7 +6,7 @@ namespace NG.ServiceWorker.UI.ListUI
 {
     public partial class ListView : ContentView
     {
-        public ListView()
+        public ListView(ListViewModel viewModel)
         {
             InitializeComponent();
         }

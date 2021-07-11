@@ -62,6 +62,9 @@
       <Project>{D703E453-EF32-4AB8-94D1-A6A7F21E53FC}</Project>
       <Name>NG.ServiceWorker.AppImages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.FormsInterface\NG.ServiceWorker.FormsInterface.csproj">
+      <Name>NG.ServiceWorker.FormsInterface</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">

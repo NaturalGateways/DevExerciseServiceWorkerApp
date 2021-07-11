@@ -6,5 +6,8 @@ namespace NG.ServiceWorker
     {
         /// <summary>Get the jobs.</summary>
         ApiModel.JobWithLinks[] GetJobArray();
+
+        /// <summary>Get the form design of a job.</summary>
+        ApiModel.FormIOModel.FormDesign GetJobFormDesign();
     }
 }

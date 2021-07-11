@@ -10,6 +10,8 @@ namespace NG.ServiceWorker
 
         public static IFileSystemService FileSystemService { get { return ServiceProvider.GetService<IFileSystemService>(); } }
 
+        public static IFormsService FormsService { get { return ServiceProvider.GetService<IFormsService>(); } }
+
         public static IHttpService HttpService { get { return ServiceProvider.GetService<IHttpService>(); } }
 
         public static IJsonService JsonService { get { return ServiceProvider.GetService<IJsonService>(); } }

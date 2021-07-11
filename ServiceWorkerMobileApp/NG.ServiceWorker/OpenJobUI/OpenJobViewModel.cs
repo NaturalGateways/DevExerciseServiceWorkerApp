@@ -6,7 +6,16 @@ namespace NG.ServiceWorker.OpenJobUI
 {
     public class OpenJobViewModel : UI.ViewModel
     {
-        public ApiModel.JobWithLinks JobWithLinks { get; set; }
+        public ApiModel.JobWithLinks JobWithLinks { get; private set; }
+
+        public OpenJobViewModel(ApiModel.JobWithLinks jobWithLinks)
+        {
+            this.JobWithLinks = jobWithLinks;
+
+            SwForms.IFormDocument formDocument = Services.FormsService.CreateJobForm();
+            UI.FormsUI.FormsDocumentViewModel formViewModel = new UI.FormsUI.FormsDocumentViewModel(formDocument);
+            this.FormsView = Services.UserInterfaceViewFactoryService.CreateViewFromViewModel(formViewModel);
+        }
 
         private bool m_showContactDetail = false;
         public bool ShowContactDetail
@@ -148,5 +157,7 @@ namespace NG.ServiceWorker.OpenJobUI
                 return $"{compHours} hours {compMinutes} mins";
             }
         }
+
+        public View FormsView { get; private set; }
     }
 }

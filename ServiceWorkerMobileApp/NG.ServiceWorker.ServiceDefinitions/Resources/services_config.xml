@@ -7,6 +7,9 @@
     <service type="NG.ServiceWorker.IFileService">
         <implementation type="NG.ServiceWorker.CoreServices.DefaultFileService"/>
     </service>
+    <service type="NG.ServiceWorker.IFormsService">
+        <implementation type="NG.ServiceWorker.CoreServices.DefaultFormsServices"/>
+    </service>
     <service type="NG.ServiceWorker.IHttpService">
         <implementation type="NG.ServiceWorker.CoreServices.DefaultHttpService"/>
     </service>

@@ -26,7 +26,7 @@ namespace NG.ServiceWorker.Jobs
 
         private void OnItemTapped()
         {
-            OpenJobUI.OpenJobViewModel jobViewModel = new OpenJobUI.OpenJobViewModel { JobWithLinks = this.JobWithLinks };
+            OpenJobUI.OpenJobViewModel jobViewModel = new OpenJobUI.OpenJobViewModel(this.JobWithLinks);
             Page openJobPage = Services.UserInterfaceViewFactoryService.CreatePageFromViewModel<OpenJobUI.OpenJobViewModel>(jobViewModel);
             this.XamarinView.Navigation.PushAsync(openJobPage);
         }
