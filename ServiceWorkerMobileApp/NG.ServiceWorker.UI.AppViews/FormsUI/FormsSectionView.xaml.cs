@@ -14,7 +14,7 @@ namespace NG.ServiceWorker.UI.FormsUI
             {
                 foreach (FormsFieldViewModel fieldViewModel in viewModel.FieldViewModelArray)
                 {
-                    View fieldView = Services.UserInterfaceViewFactoryService.CreateViewFromViewModel(fieldViewModel);
+                    View fieldView = Services.UserInterfaceViewFactoryService.CreateViewFromAppViewModel(fieldViewModel);
                     this.FieldStack.Children.Add(fieldView);
                 }
             }

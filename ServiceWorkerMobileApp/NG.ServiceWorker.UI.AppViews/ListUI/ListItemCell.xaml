@@ -5,6 +5,7 @@
              xmlns:ui="clr-namespace:NG.ServiceWorker.UI;assembly=NG.ServiceWorker.UI.AppControls"
              x:Class="NG.ServiceWorker.UI.ListUI.ListItemCell">
     <Grid Style="{StaticResource BackgroundGrid}">
+        <Grid BackgroundColor="{AppThemeBinding Light={StaticResource ListSelectionLight}, Dark={StaticResource ListSelectionDark}}" IsVisible="{Binding IsSelectedVisible}"/>
         <local:ListItemLayoutView>
             <Label Style="{StaticResource ListItemMainLabel}" Text="{Binding MainText}"/>
             <Label Style="{StaticResource ListItemSubtitleLabel}" Text="{Binding ExtraText}" IsVisible="{Binding IsSubtitleVisible}"/>

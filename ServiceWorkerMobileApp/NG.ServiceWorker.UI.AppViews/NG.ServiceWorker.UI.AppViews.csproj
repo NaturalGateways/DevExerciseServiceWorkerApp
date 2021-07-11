@@ -11,10 +11,14 @@
   <ItemGroup>
     <None Remove="ListUI\" />
     <None Remove="FormsUI\" />
+    <None Remove="FormsUI\FieldsUI\" />
+    <None Remove="FormsUI\InputPageUI\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ListUI\" />
     <Folder Include="FormsUI\" />
+    <Folder Include="FormsUI\FieldsUI\" />
+    <Folder Include="FormsUI\InputPageUI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj" />

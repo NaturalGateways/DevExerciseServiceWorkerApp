@@ -24,6 +24,8 @@ namespace NG.ServiceWorker.ApiModel.FormIOModel
 
         public bool disabled { get; set; }
 
+        public string defaultValue { get; set; }
+
         public Dictionary<string, string> attributes { get; set; }
 
         public FormDesignComponentData data { get; set; }

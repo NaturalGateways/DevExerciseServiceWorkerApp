@@ -19,6 +19,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)FormTypes\" />
     <Folder Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\" />
     <Folder Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Converter\" />
+    <Folder Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\SelectLists\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultApiService.cs" />
@@ -40,5 +41,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\FormsIoSection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Converter\ApiModel2SwForms.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultFormsServices.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\SelectLists\FormValuesSelectList.cs" />
   </ItemGroup>
 </Project>

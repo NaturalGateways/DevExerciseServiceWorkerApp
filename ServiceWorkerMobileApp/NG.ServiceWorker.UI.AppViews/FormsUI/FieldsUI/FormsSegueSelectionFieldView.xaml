@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="NG.ServiceWorker.UI.FormsUI.FieldsUI.FormsSegueSelectionFieldView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TitleLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryLight}, Dark={StaticResource PrimaryDark}}"/>
+            </Style>
+            <Style x:Key="ValueLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}"/>
+            </Style>
+            <Style x:Key="NoValueLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource ForegroundDullLight}, Dark={StaticResource ForegroundDullDark}}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <StackLayout Orientation="Vertical">
+        <Label Text="{Binding LabelText}" Style="{StaticResource TitleLabel}"/>
+        <Label Text="{Binding ValueText}" Style="{StaticResource ValueLabel}" IsVisible="{Binding IsValueVisible}"/>
+        <Label Text="{Binding NoValuePlaceholderText}" Style="{StaticResource NoValueLabel}" IsVisible="{Binding IsNoValueVisible}"/>
+        <Button Text="Edit" HorizontalOptions="Start" Command="{Binding EditCommand}"/>
+    </StackLayout>
+</ContentView>

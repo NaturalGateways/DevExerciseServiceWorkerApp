@@ -45,6 +45,12 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO.Converter
             // Create document
             FormsIoField fieldNode = new FormsIoField(fieldComponent);
 
+            // Check for default value
+            if (string.IsNullOrEmpty(fieldComponent.defaultValue) == false)
+            {
+                fieldNode.AnswerModel.Answer = new SwForms.Answers.StringAnswer(fieldComponent.defaultValue);
+            }
+
             // Return
             return fieldNode;
         }

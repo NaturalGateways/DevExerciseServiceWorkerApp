@@ -4,8 +4,6 @@ namespace NG.ServiceWorker.CoreServices
 {
     public class DefaultJsonService : IJsonService
     {
-        private Newtonsoft.Json.JsonSerializer m_serialiser = null;
-
         private Newtonsoft.Json.JsonSerializerSettings m_minimalSerialiser = new Newtonsoft.Json.JsonSerializerSettings
         {
             Formatting = Newtonsoft.Json.Formatting.None,

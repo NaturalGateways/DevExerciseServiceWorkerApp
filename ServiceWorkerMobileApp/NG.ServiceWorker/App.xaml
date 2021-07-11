@@ -35,6 +35,10 @@
         <Color x:Key="ForegroundDullDark">#616161</Color> <!-- Google standard: low emphasis = %38 white -->
         <Color x:Key="PrimaryDark">#9300C5</Color>
 
+        <!-- Misc UI -->
+        <Color x:Key="ListSelectionLight">#CCE0FF</Color>
+        <Color x:Key="ListSelectionDark">#1E1E44</Color>
+
         <!-- Common styles -->
         <Style TargetType="CollectionView">
             <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource BackgroundNullLight}, Dark={StaticResource BackgroundNullDark}}"/>

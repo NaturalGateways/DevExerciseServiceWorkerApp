@@ -7,8 +7,17 @@
 
   <ItemGroup>
     <None Remove="NodeInterfaces\" />
+    <None Remove="Answers\" />
+    <None Remove="SelectLists\" />
+    <None Remove="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NodeInterfaces\" />
+    <Folder Include="Answers\" />
+    <Folder Include="SelectLists\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />
   </ItemGroup>
 </Project>

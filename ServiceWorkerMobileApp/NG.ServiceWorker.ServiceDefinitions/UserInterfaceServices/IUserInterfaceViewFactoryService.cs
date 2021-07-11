@@ -14,5 +14,8 @@ namespace NG.ServiceWorker.UIServices
 
         /// <summary>Creates a view for the given view model.</summary>
         View CreateViewFromViewModel<ViewModelType>(ViewModelType viewModel) where ViewModelType : UI.ViewModel;
+
+        /// <summary>Creates a view for the given view model.</summary>
+        View CreateViewFromAppViewModel(UI.AppViewModel viewModel);
     }
 }

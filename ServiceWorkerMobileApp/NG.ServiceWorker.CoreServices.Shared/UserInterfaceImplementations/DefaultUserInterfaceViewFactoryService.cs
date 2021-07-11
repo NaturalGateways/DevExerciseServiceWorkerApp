@@ -56,6 +56,21 @@ namespace NG.ServiceWorker.UIServices.CoreUIServices
             return view;
         }
 
+        /// <summary>Creates a view for the given view model.</summary>
+        public View CreateViewFromAppViewModel(UI.AppViewModel viewModel)
+        {
+            Type viewModelType = viewModel.ViewModelType;
+            if (m_viewTypesByViewModelType.ContainsKey(viewModelType) == false)
+            {
+                throw new Exception($"Unrecognised view model: CreateViewFromViewModel<{viewModelType.FullName}>()");
+            }
+            Type viewType = m_viewTypesByViewModelType[viewModelType];
+            View view = (View)Activator.CreateInstance(viewType, viewModel);
+            view.BindingContext = viewModel;
+            viewModel.View = view;
+            return view;
+        }
+
         #endregion
     }
 }
