@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="NG.ServiceWorker.UI.FormsUI.FieldsUI.FormsDateTimeFieldView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TitleLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryLight}, Dark={StaticResource PrimaryDark}}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <StackLayout Orientation="Vertical">
+        <Label Text="{Binding LabelText}" Style="{StaticResource TitleLabel}"/>
+        <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+            <DatePicker Grid.Column="0" Date="{Binding DateValue}"/>
+            <TimePicker Grid.Column="1" Time="{Binding TimeValue}"/>
+        </Grid>
+    </StackLayout>
+</ContentView>

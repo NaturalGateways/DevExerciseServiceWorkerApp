@@ -18,10 +18,15 @@ namespace NG.ServiceWorker.UI.FormsUI
         {
             switch (formField.InputType)
             {
+                case SwForms.FormFieldInputType.DateTime:
+                    return new FieldsUI.FormsDateTimeFieldViewModel(formField);
+                case SwForms.FormFieldInputType.SegueMultiSelection:
+                case SwForms.FormFieldInputType.SegueSingleSelection:
+                    return new FieldsUI.FormsSegueSelectionFieldViewModel(formField);
                 case SwForms.FormFieldInputType.ReadOnly:
                     return new FieldsUI.FormsReadOnlyFieldViewModel(formField);
-                case SwForms.FormFieldInputType.SegueSelection:
-                    return new FieldsUI.FormsSegueSelectionFieldViewModel(formField);
+                case SwForms.FormFieldInputType.ToggleButtonSingleSelection:
+                    return new FieldsUI.FormsToggleButtonSelectionFieldViewModel(formField);
                 default:
                     return new FieldsUI.FormsTextFieldViewModel(formField);
             }

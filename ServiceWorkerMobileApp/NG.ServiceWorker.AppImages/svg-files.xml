@@ -3,4 +3,5 @@
 <svgs>
     <svg id="icon_profilepic_placeholder" resId="NG.ServiceWorker.AppImages.SvgFiles.icon_profilepic_placeholder.svg" width="200" height="200"/>
     <svg id="ui_list_disclosure" resId="NG.ServiceWorker.AppImages.SvgFiles.ui_list_disclosure.svg" width="120" height="200"/>
+    <svg id="ui_list_tick" resId="NG.ServiceWorker.AppImages.SvgFiles.ui_list_tick.svg" width="160" height="115"/>
 </svgs>

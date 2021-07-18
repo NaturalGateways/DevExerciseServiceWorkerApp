@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="NG.ServiceWorker.UI.FormsUI.FieldsUI.SelectionUI.ToggleButton">
+    <Button BorderWidth="1" BorderColor="{StaticResource Primary}" BackgroundColor="{Binding ButtonBgColor}" Text="{Binding ButtonText}" FontSize="Small" TextColor="{Binding ButtonTextColor}" Padding="8,0" HeightRequest="25" Command="{Binding ButtonCommand}"/>
+</ContentView>

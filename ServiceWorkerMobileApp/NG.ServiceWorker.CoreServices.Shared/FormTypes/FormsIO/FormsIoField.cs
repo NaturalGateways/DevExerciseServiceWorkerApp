@@ -24,6 +24,9 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
             {
                 switch (this.FieldDesign.type)
                 {
+                    case "datetime":
+                        this.InputType = SwForms.FormFieldInputType.DateTime;
+                        break;
                     case "select":
                         if (fieldDesign.data == null || fieldDesign.data.values == null)
                         {
@@ -31,7 +34,7 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
                         }
                         else
                         {
-                            this.InputType = SwForms.FormFieldInputType.SegueSelection;
+                            this.InputType = SwForms.FormFieldInputType.SegueMultiSelection;
                             this.SelectList = new SelectLists.FormValuesSelectList(fieldDesign.data.values);
                         }
                         break;
@@ -42,8 +45,15 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
                         }
                         else
                         {
-                            this.InputType = SwForms.FormFieldInputType.SegueSelection;
                             this.SelectList = new SelectLists.FormValuesSelectList(fieldDesign.values);
+                            if (fieldDesign.attributes?.ContainsKey("MobileUI") ?? false && fieldDesign.attributes["MobileUI"] == "Buttons")
+                            {
+                                this.InputType = SwForms.FormFieldInputType.ToggleButtonSingleSelection;
+                            }
+                            else
+                            {
+                                this.InputType = SwForms.FormFieldInputType.SegueSingleSelection;
+                            }
                         }
                         break;
                 }

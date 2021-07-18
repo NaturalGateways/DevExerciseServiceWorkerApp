@@ -20,19 +20,28 @@ namespace NG.ServiceWorker.UI.ListUI
             View mainLabelView = this.Children[0];
             View subtitleLabelView = this.Children[1];
             View attributeLabelView = this.Children[2];
-            View disclosureLabelView = this.Children[3];
+            View disclosureView = this.Children[3];
+            View tickView = this.Children[4];
 
             // Apply margin
             x += HMARGIN;
             width -= HMARGIN + HMARGIN;
 
-            // Layout disclosure
-            if (disclosureLabelView.IsVisible)
+            // Layout disclosure and tick
+            if (disclosureView.IsVisible)
             {
-                double viewWidth = disclosureLabelView.WidthRequest;
-                double viewHeight = disclosureLabelView.HeightRequest;
+                double viewWidth = disclosureView.WidthRequest;
+                double viewHeight = disclosureView.HeightRequest;
                 double viewTop = (height - viewHeight) / 2;
-                LayoutChildIntoBoundingRegion(disclosureLabelView, new Rectangle(x + width - viewWidth, y + viewTop, viewWidth, viewHeight));
+                LayoutChildIntoBoundingRegion(disclosureView, new Rectangle(x + width - viewWidth, y + viewTop, viewWidth, viewHeight));
+                width -= viewWidth + DISC_PADDING;
+            }
+            if (tickView.IsVisible)
+            {
+                double viewWidth = tickView.WidthRequest;
+                double viewHeight = tickView.HeightRequest;
+                double viewTop = (height - viewHeight) / 2;
+                LayoutChildIntoBoundingRegion(tickView, new Rectangle(x + width - viewWidth, y + viewTop, viewWidth, viewHeight));
                 width -= viewWidth + DISC_PADDING;
             }
 

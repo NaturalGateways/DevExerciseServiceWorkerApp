@@ -19,6 +19,9 @@
       <Link>SvgFiles\ui_list_disclosure.svg</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="svg-files.xml" />
+    <EmbeddedResource Include="..\Images\ui_list_tick.svg">
+      <Link>SvgFiles\ui_list_tick.svg</Link>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Remove="svg-files.xml" />

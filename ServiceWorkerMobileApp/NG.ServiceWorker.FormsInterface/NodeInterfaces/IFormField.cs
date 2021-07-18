@@ -4,9 +4,12 @@ namespace NG.ServiceWorker.SwForms
 {
     public enum FormFieldInputType
     {
-        Text,
+        DateTime,
         ReadOnly,
-        SegueSelection
+        SegueMultiSelection,
+        SegueSingleSelection,
+        ToggleButtonSingleSelection,
+        Text
     }
 
     public interface IFormField

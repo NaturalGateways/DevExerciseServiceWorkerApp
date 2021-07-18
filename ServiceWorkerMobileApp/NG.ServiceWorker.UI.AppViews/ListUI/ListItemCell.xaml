@@ -12,7 +12,12 @@
             <Label Style="{StaticResource ListItemAttributeLabel}" Text="{Binding ExtraText}" IsVisible="{Binding IsAttributeValueVisible}"/>
             <ui:SvgImage SvgName="ui_list_disclosure"
                          RenderColour="{AppThemeBinding Light={StaticResource ForegroundDullLight}, Dark={StaticResource ForegroundDullDark}}"
-                         WidthRequest="9" HeightRequest="15"/>
+                         WidthRequest="9" HeightRequest="15"
+                         IsVisible="{Binding ShowDisclosure}"/>
+            <ui:SvgImage SvgName="ui_list_tick"
+                         RenderColour="{Binding TickColour}"
+                         WidthRequest="15" HeightRequest="10"
+                         IsVisible="{Binding ShowTick}"/>
         </local:ListItemLayoutView>
     </Grid>
 </ViewCell>

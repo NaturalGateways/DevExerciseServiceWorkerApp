@@ -24,9 +24,18 @@ namespace NG.ServiceWorker.UI.FormsUI.FieldsUI
             // Get view for naviagtion
             View view = this.View as View;
             // Create page to segue to
-            InputPageUI.SegueSelectionInputPageViewModel segueViewModel = new InputPageUI.SegueSelectionInputPageViewModel(this.FormField);
-            Page seguePage = Services.UserInterfaceViewFactoryService.CreatePageFromViewModel(segueViewModel);
-            await view.Navigation.PushAsync(seguePage);
+            if (this.FormField.InputType == SwForms.FormFieldInputType.SegueMultiSelection)
+            {
+                InputPageUI.SegueMultiSelectionInputPageViewModel segueViewModel = new InputPageUI.SegueMultiSelectionInputPageViewModel(this.FormField);
+                Page seguePage = Services.UserInterfaceViewFactoryService.CreatePageFromViewModel(segueViewModel);
+                await view.Navigation.PushAsync(seguePage);
+            }
+            else
+            {
+                InputPageUI.SegueSelectionInputPageViewModel segueViewModel = new InputPageUI.SegueSelectionInputPageViewModel(this.FormField);
+                Page seguePage = Services.UserInterfaceViewFactoryService.CreatePageFromViewModel(segueViewModel);
+                await view.Navigation.PushAsync(seguePage);
+            }
         }
 
         #endregion
