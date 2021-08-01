@@ -3,52 +3,20 @@ using System.Collections.Generic;
 
 namespace NG.ServiceWorker.CoreServices.SqliteDatabases.LoggingDatabase
 {
-    public class LoggingDatabaseInitialiser
+    public class LoggingDatabaseInitialiser : BaseDatabaseInitialiser
     {
-        public const int MIN_VERSION = 1;
+        public override int MinVersion { get { return 1; } }
 
-        public const int CURRENT_VERSION = 1;
+        public override int CurrentVersion { get { return 1; } }
 
         public static ISqliteConnection Connect()
         {
-            // Create database
-            string filepath = Services.FileService.GetDatabaseFilepath("Logs.sqlite");
-            ISqliteConnection connection = Services.SqliteService.ConnectToFilepath(filepath);
-
-            // Get database version
-            int databaseVersion = 0;
-            if (connection.QueryExists("SELECT 1 FROM sqlite_master WHERE TYPE='table' AND NAME='DB_VERSION';", null))
-            {
-                databaseVersion = connection.QueryInteger("SELECT VERSION FROM DB_VERSION;", null, 0);
-            }
-            else
-            {
-                connection.ExecuteSql("CREATE TABLE IF NOT EXISTS DB_VERSION (VERSION numeric NOT NULL);", null);
-            }
-
-            // Check if we initialise
-            if (databaseVersion == 0)
-            {
-                // Setup
-                databaseVersion = SetupDatabase(connection);
-                // Set new version
-                Dictionary<string, object> updateVersionBindVars = new Dictionary<string, object> { { "version", databaseVersion } };
-                if (connection.QueryExists("SELECT 1 FROM DB_VERSION;", null))
-                {
-                    connection.ExecuteSql("UPDATE DB_VERSION SET VERSION=@version;", updateVersionBindVars);
-                }
-                else
-                {
-                    connection.ExecuteSql("INSERT INTO DB_VERSION (VERSION) VALUES (@version);", updateVersionBindVars);
-                }
-            }
-
-            // Return
-            return connection;
+            LoggingDatabaseInitialiser initialiser = new LoggingDatabaseInitialiser();
+            return initialiser.CreateConnection("Logs.sqlite");
         }
 
         /// <summary>Sets up the database.</summary>
-        private static int SetupDatabase(ISqliteConnection connection)
+        protected override int SetupDatabase(ISqliteConnection connection)
         {
             // Create session table
             connection.ExecuteSql("CREATE TABLE IF NOT EXISTS APP_SESSION (APP_SESSION_ID text NOT NULL PRIMARY KEY, START_DATETIME_UTC text NOT NULL);", null);
@@ -66,7 +34,7 @@ namespace NG.ServiceWorker.CoreServices.SqliteDatabases.LoggingDatabase
             connection.ExecuteSql("CREATE INDEX IDX_LOG_ENTRY_BY_SESSION ON LOG_ENTRY (APP_SESSION_ID, DATETIME_UTC);", null);
 
             // Return current version
-            return CURRENT_VERSION;
+            return this.CurrentVersion;
         }
     }
 }

@@ -16,12 +16,16 @@
     <Folder Include="SqliteInterfaces\" />
     <Folder Include="LogsModel\" />
     <Folder Include="ApiModel\FormIOModel\" />
+    <Folder Include="DataModel\" />
+    <Folder Include="ServiceInterfaces\JsonObjects\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\services_config.xml" />
     <None Remove="SqliteInterfaces\" />
     <None Remove="LogsModel\" />
     <None Remove="ApiModel\FormIOModel\" />
+    <None Remove="DataModel\" />
+    <None Remove="ServiceInterfaces\JsonObjects\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\services_config.xml" />

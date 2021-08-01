@@ -18,6 +18,8 @@ namespace NG.ServiceWorker
 
         public static ILogService LogService { get { return ServiceProvider.GetService<ILogService>(); } }
 
+        public static IMainDataService MainDataService { get { return ServiceProvider.GetService<IMainDataService>(); } }
+
         public static ISqliteService SqliteService { get { return ServiceProvider.GetService<ISqliteService>(); } }
 
         public static ISvgService SvgService { get { return ServiceProvider.GetService<ISvgService>(); } }

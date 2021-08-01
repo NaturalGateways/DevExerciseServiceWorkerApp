@@ -12,5 +12,8 @@ namespace NG.ServiceWorker
 
         /// <summary>Deserialises JSON.</summary>
         JsonType DeserialiseStream<JsonType>(System.IO.Stream jsonStream);
+
+        /// <summary>Creates a traversable object from an anon JSON object.</summary>
+        IJsonObject JsonObjectFromAnonObject(object anonObject);
     }
 }

@@ -80,7 +80,7 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO.SelectLists
         #region SwForms.IAnswer implementation
 
         /// <summary>The raw answer.</summary>
-        public object AnswerObject { get { return m_value; } }
+        public object AnswerObject { get { return m_value.value; } }
 
         /// <summary>The code value.</summary>
         public string CodeValue { get { return m_value.value; } }

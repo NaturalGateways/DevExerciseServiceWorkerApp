@@ -13,6 +13,9 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
         /// <summary>The list of sections.</summary>
         public List<FormsIoSection> SectionList { get; private set; } = new List<FormsIoSection>();
 
+        /// <summary>The list of all fields by their key.</summary>
+        public Dictionary<string, FormsIoField> FieldsByKey { get; private set; } = new Dictionary<string, FormsIoField>();
+
         /// <summary>Construtor.</summary>
         public FormsIoDocument(ApiModel.FormIOModel.FormDesign formDesign)
         {

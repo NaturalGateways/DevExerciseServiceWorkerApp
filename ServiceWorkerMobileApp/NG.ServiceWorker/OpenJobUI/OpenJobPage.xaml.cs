@@ -15,6 +15,8 @@ namespace NG.ServiceWorker.OpenJobUI
         {
             InitializeComponent();
 
+            viewModel.XamarinPage = this;
+
             this.ContactHeaderGrid.HeightRequest = MIN_CONTACT_HEIGHT;
 
             if (viewModel.JobWithLinks.Contact.PhoneNumbers != null)

@@ -53,5 +53,11 @@ namespace NG.ServiceWorker.CoreServices
             }
 #endif
         }
+
+        /// <summary>Creates a traversable object from an anon JSON object.</summary>
+        public IJsonObject JsonObjectFromAnonObject(object anonObject)
+        {
+            return JsonObjects.JsonObjectFactory.FromObject(anonObject);
+        }
     }
 }

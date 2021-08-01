@@ -34,6 +34,14 @@ namespace NG.ServiceWorker.SwForms.Answers
         }
 
         /// <summary>Constructor.</summary>
+        public MultiAnswer(IEnumerable<IAnswer> answers)
+        {
+            m_answersByCode = answers.ToDictionary(x => x.CodeValue);
+            this.CodeValue = string.Join(",", m_answersByCode.Keys);
+            this.DisplayValue = string.Join(", ", m_answersByCode.Values.Select(x => x.DisplayValue));
+        }
+
+        /// <summary>Constructor.</summary>
         private MultiAnswer(Dictionary<string, IAnswer> answersByCodeValue)
         {
             m_answersByCode = answersByCodeValue;
@@ -63,7 +71,7 @@ namespace NG.ServiceWorker.SwForms.Answers
         #region IAnswer implementation
 
         /// <summary>The raw answer.</summary>
-        public object AnswerObject { get { return m_answersByCode; } }
+        public object AnswerObject { get { return m_answersByCode.Values.Select(x => x.AnswerObject).ToArray(); } }
 
         /// <summary>The code value.</summary>
         public string CodeValue { get; set; }

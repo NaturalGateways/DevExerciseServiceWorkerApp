@@ -15,6 +15,14 @@ namespace NG.ServiceWorker.UI.FormsUI.FieldsUI
         public string LabelText { get { return this.FormField.Label; } }
 
         /// <summary>The value text.</summary>
-        public string ValueText { get; set; }
+        public string ValueText
+        {
+            get { return this.FormField.AnswerModel.Answer.DisplayValue; }
+            set
+            {
+                this.FormField.AnswerModel.Answer = new SwForms.Answers.StringAnswer(value);
+                this.FormField.AnswerModel.OnDataChanged();
+            }
+        }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 using Xamarin.Forms;
 
@@ -6,14 +8,19 @@ namespace NG.ServiceWorker.OpenJobUI
 {
     public class OpenJobViewModel : UI.ViewModel
     {
+        public Page XamarinPage { get; set; }
+
         public ApiModel.JobWithLinks JobWithLinks { get; private set; }
+
+        private SwForms.IFormDocument m_formsDocument = null;
 
         public OpenJobViewModel(ApiModel.JobWithLinks jobWithLinks)
         {
             this.JobWithLinks = jobWithLinks;
 
-            SwForms.IFormDocument formDocument = Services.FormsService.CreateJobForm();
-            UI.FormsUI.FormsDocumentViewModel formViewModel = new UI.FormsUI.FormsDocumentViewModel(formDocument);
+            DataModel.JobForm jobForm = Services.MainDataService.GetDocument<DataModel.JobForm>(jobWithLinks.Job.JobKey);
+            m_formsDocument = Services.FormsService.CreateJobForm(jobForm?.FormData);
+            UI.FormsUI.FormsDocumentViewModel formViewModel = new UI.FormsUI.FormsDocumentViewModel(m_formsDocument);
             this.FormsView = Services.UserInterfaceViewFactoryService.CreateViewFromViewModel(formViewModel);
         }
 
@@ -159,5 +166,21 @@ namespace NG.ServiceWorker.OpenJobUI
         }
 
         public View FormsView { get; private set; }
+
+        private async Task OnSave()
+        {
+            // Do save
+            object jobData = Services.FormsService.ConvertJobFormToData(m_formsDocument);
+            Services.MainDataService.SetDocument<DataModel.JobForm>(this.JobWithLinks.Job.JobKey, new DataModel.JobForm
+            {
+                JobKey = this.JobWithLinks.Job.JobKey,
+                FormData = jobData
+            });
+
+            // Dismiss itself
+            await this.XamarinPage.Navigation.PopAsync(true);
+        }
+
+        public ICommand SaveCommand => new Command(async () => { await OnSave(); });
     }
 }

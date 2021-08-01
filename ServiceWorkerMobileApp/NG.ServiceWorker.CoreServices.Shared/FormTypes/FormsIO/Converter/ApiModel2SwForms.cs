@@ -14,7 +14,7 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO.Converter
             {
                 foreach (ApiModel.FormIOModel.FormDesignComponent component in formDesign.components)
                 {
-                    doc.SectionList.Add(CreateSection(component));
+                    doc.SectionList.Add(CreateSection(doc, component));
                 }
             }
 
@@ -22,7 +22,7 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO.Converter
             return doc;
         }
 
-        private static FormsIoSection CreateSection(ApiModel.FormIOModel.FormDesignComponent sectionComponent)
+        private static FormsIoSection CreateSection(FormsIoDocument doc, ApiModel.FormIOModel.FormDesignComponent sectionComponent)
         {
             // Create document
             FormsIoSection sectionNode = new FormsIoSection(sectionComponent);
@@ -32,7 +32,12 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO.Converter
             {
                 foreach (ApiModel.FormIOModel.FormDesignComponent component in sectionComponent.components)
                 {
-                    sectionNode.FieldList.Add(CreateField(component));
+                    FormsIoField newField = CreateField(component);
+                    sectionNode.FieldList.Add(newField);
+                    if (doc.FieldsByKey.ContainsKey(newField.FieldDesign.key) == false)
+                    {
+                        doc.FieldsByKey.Add(newField.FieldDesign.key, newField);
+                    }
                 }
             }
 

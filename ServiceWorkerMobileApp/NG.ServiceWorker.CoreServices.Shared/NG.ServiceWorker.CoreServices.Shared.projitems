@@ -20,6 +20,9 @@
     <Folder Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\" />
     <Folder Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Converter\" />
     <Folder Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\SelectLists\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MainData\" />
+    <Folder Include="$(MSBuildThisFileDirectory)SqliteDatabases\MainDatabase\" />
+    <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultApiService.cs" />
@@ -42,5 +45,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Converter\ApiModel2SwForms.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultFormsServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\SelectLists\FormValuesSelectList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MainData\SqliteMainDataService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SqliteDatabases\MainDatabase\MainDatabaseInitialiser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SqliteDatabases\BaseDatabaseInitialiser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Converter\SwForms2DataModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Converter\LoadDataModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\JsonObjectNull.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\JsonObjectString.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\JsonObjectFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\JsonObjectDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\JsonObjectArray.cs" />
   </ItemGroup>
 </Project>

@@ -25,7 +25,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ScrollView>
-        <Grid RowDefinitions="Auto,Auto,8,Auto">
+        <Grid RowDefinitions="Auto,Auto,8,Auto,Auto">
             <Grid Grid.Row="1" Style="{StaticResource BackgroundGrid}">
                 <StackLayout Margin="8,16,8,0">
                     <Label Text="Status" Style="{StaticResource AttNameLabel}"/>
@@ -45,6 +45,7 @@
                 </StackLayout>
             </Grid>
             <ContentView Grid.Row="3" Margin="8,0,8,8" Content="{Binding FormsView}"/>
+            <Button Grid.Row="4" Margin="8,0,8,8" Text="Save" Command="{Binding SaveCommand}"/>
             <Grid x:Name="ContactHeaderGrid" Grid.Row="0" Style="{StaticResource ContactGrid}">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>

@@ -16,6 +16,9 @@
     <service type="NG.ServiceWorker.IJsonService">
         <implementation type="NG.ServiceWorker.CoreServices.DefaultJsonService"/>
     </service>
+    <service type="NG.ServiceWorker.IMainDataService">
+        <implementation type="NG.ServiceWorker.CoreServices.MainData.SqliteMainDataService"/>
+    </service>
     <service type="NG.ServiceWorker.ISvgService">
         <implementation type="NG.ServiceWorker.CoreServices.DefaultSvgService"/>
     </service>
