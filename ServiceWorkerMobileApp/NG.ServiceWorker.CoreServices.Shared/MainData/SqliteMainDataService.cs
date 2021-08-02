@@ -42,25 +42,15 @@ namespace NG.ServiceWorker.CoreServices.MainData
         /// <summary>Setter for a document.</summary>
         public void SetDocument<DocType>(string docKey, DocType docObject)
         {
-            // Get the type
-            string checkSql = "SELECT 1 FROM LOCAL_DOCUMENT WHERE DOC_TYPE=@docType AND DOC_KEY=@docKey LIMIT 1;";
+            // Create the SQL
+            string sql = "INSERT INTO LOCAL_DOCUMENT (DOC_TYPE, DOC_KEY, JSON_DATA) VALUES (@docType, @docKey, @jsonData) ON CONFLICT(DOC_TYPE, DOC_KEY) DO UPDATE SET JSON_DATA=@jsonData WHERE DOC_TYPE=@docType AND DOC_KEY=@docKey;";
             Dictionary<string, object> bindVars = new Dictionary<string, object>
             {
                 { "docType", typeof(DocType).FullName },
-                { "docKey", docKey ?? "NO_KEY" }
+                { "docKey", docKey ?? "NO_KEY" },
+                { "jsonData", Services.JsonService.SerialiseObject(docObject) }
             };
-            if (m_connection.QueryExists(checkSql, bindVars))
-            {
-                string updateSql = "UPDATE LOCAL_DOCUMENT SET JSON_DATA=@jsonData WHERE DOC_TYPE=@docType AND DOC_KEY=@docKey;";
-                bindVars["jsonData"] = Services.JsonService.SerialiseObject(docObject);
-                m_connection.ExecuteSql(updateSql, bindVars);
-            }
-            else
-            {
-                string updateSql = "INSERT INTO LOCAL_DOCUMENT (DOC_TYPE, DOC_KEY, JSON_DATA) VALUES (@docType, @docKey, @jsonData);";
-                bindVars["jsonData"] = Services.JsonService.SerialiseObject(docObject);
-                m_connection.ExecuteSql(updateSql, bindVars);
-            }
+            m_connection.ExecuteSql(sql, bindVars);
         }
 
         #endregion
