@@ -1,0 +1,5 @@
+.vs
+ServiceWorker.DynamoDbMaintainer/bin
+ServiceWorker.DynamoDbMaintainer/obj
+ServiceWorker.SandboxConsole/bin
+ServiceWorker.SandboxConsole/obj
