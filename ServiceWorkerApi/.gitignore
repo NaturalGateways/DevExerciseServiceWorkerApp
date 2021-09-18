@@ -1,4 +1,8 @@
 .vs
+ServiceWorker.Api.Core/bin
+ServiceWorker.Api.Core/obj
+ServiceWorker.Api.Lambda/bin
+ServiceWorker.Api.Lambda/obj
 ServiceWorker.DynamoDbMaintainer/bin
 ServiceWorker.DynamoDbMaintainer/obj
 ServiceWorker.SandboxConsole/bin

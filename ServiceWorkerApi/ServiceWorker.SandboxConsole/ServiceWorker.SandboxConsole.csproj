@@ -6,10 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Natural.Aws.Lambda" Version="1.0.0" />
+    <PackageReference Include="Natural.Aws.Lambda" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ServiceWorker.Api.Core\ServiceWorker.Api.Core.csproj" />
     <ProjectReference Include="..\ServiceWorker.DynamoDbMaintainer\ServiceWorker.DynamoDbMaintainer.csproj" />
   </ItemGroup>
 

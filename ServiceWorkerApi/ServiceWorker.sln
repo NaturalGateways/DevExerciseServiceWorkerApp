@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceWorker.SandboxConsole", "ServiceWorker.SandboxConsole\ServiceWorker.SandboxConsole.csproj", "{E7BB8BE4-7BA5-49EF-ACB9-5671F75C48A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceWorker.SandboxConsole", "ServiceWorker.SandboxConsole\ServiceWorker.SandboxConsole.csproj", "{E7BB8BE4-7BA5-49EF-ACB9-5671F75C48A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceWorker.DynamoDbMaintainer", "ServiceWorker.DynamoDbMaintainer\ServiceWorker.DynamoDbMaintainer.csproj", "{BE1500C0-FE92-45E3-95EE-4901CDC2E886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceWorker.DynamoDbMaintainer", "ServiceWorker.DynamoDbMaintainer\ServiceWorker.DynamoDbMaintainer.csproj", "{BE1500C0-FE92-45E3-95EE-4901CDC2E886}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceWorker.Api.Core", "ServiceWorker.Api.Core\ServiceWorker.Api.Core.csproj", "{BDDA46EE-EF5E-49EA-81C3-66D6F8D84B2E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceWorker.Api.Lambda", "ServiceWorker.Api.Lambda\ServiceWorker.Api.Lambda.csproj", "{5B4F65C5-8C02-43FF-9DCE-F25813A4258E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{BE1500C0-FE92-45E3-95EE-4901CDC2E886}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE1500C0-FE92-45E3-95EE-4901CDC2E886}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE1500C0-FE92-45E3-95EE-4901CDC2E886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDDA46EE-EF5E-49EA-81C3-66D6F8D84B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDDA46EE-EF5E-49EA-81C3-66D6F8D84B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDDA46EE-EF5E-49EA-81C3-66D6F8D84B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDDA46EE-EF5E-49EA-81C3-66D6F8D84B2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B4F65C5-8C02-43FF-9DCE-F25813A4258E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B4F65C5-8C02-43FF-9DCE-F25813A4258E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B4F65C5-8C02-43FF-9DCE-F25813A4258E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B4F65C5-8C02-43FF-9DCE-F25813A4258E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
