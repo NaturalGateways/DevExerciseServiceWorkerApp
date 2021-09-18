@@ -5,6 +5,7 @@ phases:
     commands:
       - "curl -s -qL -o /usr/bin/jq https://stedolan.github.io/jq/download/linux64/jq"
       - "chmod +x /usr/bin/jq"
+      - export PATH="$PATH:/root/.dotnet/tools"
       - dotnet tool install -g AWS.CodeArtifact.NuGet.CredentialProvider
       - dotnet codeartifact-creds install
   pre_build:
