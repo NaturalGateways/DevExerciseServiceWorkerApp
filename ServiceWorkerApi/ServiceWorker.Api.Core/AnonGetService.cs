@@ -83,13 +83,26 @@ namespace ServiceWorker.Api
         /// <summary>Executes a get-info request.</summary>
         private static object ExecuteGetInfoRequest()
         {
-            return new Dictionary<string, object>
+            // Get the resource stream
+            System.IO.Stream resourceStream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("ServiceWorker.Api.Resources.AppInfo.json");
+            if (resourceStream == null)
             {
-                { "Name", "Service Worker" },
-                { "Environment", Environment.GetEnvironmentVariable("Environment") },
-                { "Author", "Steven Moore" },
-                { "Copyright", "2021" }
-            };
+                throw new Exception("Cannot retrieve app info JSON");
+            }
+
+            // Read the version
+            string appInfoText = null;
+            using (System.IO.StreamReader appInfoStream = new System.IO.StreamReader(resourceStream))
+            {
+                appInfoText = appInfoStream.ReadToEnd();
+            }
+            Dictionary<string, string> appInfoByName = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(appInfoText);
+
+            // Add author and return
+            appInfoByName.Add("Author", "Steven Moore");
+            appInfoByName.Add("Environment", Environment.GetEnvironmentVariable("Environment"));
+            appInfoByName.Add("Copyright", "2021");
+            return appInfoByName;
         }
 
         /// <summary>Executes a get-ref-data request.</summary>

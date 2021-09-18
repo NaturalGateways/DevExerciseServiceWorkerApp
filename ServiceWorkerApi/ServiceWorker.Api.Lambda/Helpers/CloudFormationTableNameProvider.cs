@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ServiceWorker.Api.Lambda.Helpers
 {
-    public class CloudFormationTableNameProvider
+    public class CloudFormationTableNameProvider : ITableNameProvider
     {
         /// <summary>Getter for a specific name of a table from a conceptual name.</summary>
         public string GetInstanceNameFromConceptName(string conceptName)

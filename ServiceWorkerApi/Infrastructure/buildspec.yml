@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - "curl -s -qL -o /usr/bin/jq https://stedolan.github.io/jq/download/linux64/jq"
+      - "chmod +x /usr/bin/jq"
+  pre_build:
+    commands:
+      - "json=$(jq -n --arg nam \"Service Worker\" --arg ver \"$VERSION\" '{Name: $nam, Version: $ver}')"
+      - echo $json > ServiceWorkerApi/ServiceWorker.Api.Core/Resources/AppInfo.json
+      - cat ServiceWorkerApi/ServiceWorker.Api.Core/Resources/AppInfo.json
+  build:
+    commands:
+      - dotnet publish --configuration Release --output build ServiceWorkerApi/ServiceWorker.Api.Lambda/ServiceWorker.Api.Lambda.csproj
+      - rm build/ServiceWorker.Api.Core.pdb
+      - rm build/ServiceWorker.Api.Lambda.pdb
+artifacts:
+  files:
+    - build/*
+  discard-paths: yes
