@@ -33,6 +33,7 @@ namespace ServiceWorker.Api
         {
             try
             {
+                // Get response
                 object responseObject = null;
                 switch (requestDto.RequestType)
                 {
@@ -45,7 +46,9 @@ namespace ServiceWorker.Api
                     default:
                         throw new Exception($"Request type '{requestDto.RequestType}' unrecognised.");
                 }
-                return new ApiResponseDto { Success = true, Response = responseObject };
+                // Ensure response is deserialised properly
+                string responseString = System.Text.Json.JsonSerializer.Serialize(responseObject);
+                return new ApiResponseDto { Success = true, Response = System.Text.Json.JsonSerializer.Deserialize<object>(responseString) };
             }
             catch (ApiException ae)
             {
