@@ -47,7 +47,7 @@ namespace ServiceWorker.Api
                         throw new Exception($"Request type '{requestDto.RequestType}' unrecognised.");
                 }
                 // Ensure response is deserialised properly
-                string responseString = System.Text.Json.JsonSerializer.Serialize(responseObject);
+                string responseString = Newtonsoft.Json.JsonConvert.SerializeObject(responseObject);
                 return new ApiResponseDto { Success = true, Response = System.Text.Json.JsonSerializer.Deserialize<object>(responseString) };
             }
             catch (ApiException ae)
