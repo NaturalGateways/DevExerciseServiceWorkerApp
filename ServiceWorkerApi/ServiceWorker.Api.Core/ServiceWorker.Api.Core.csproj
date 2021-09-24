@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>ServiceWorker.Api</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\AppInfo.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppInfo.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Natural.Aws" Version="1.0.3" />
+  </ItemGroup>
+
+</Project>

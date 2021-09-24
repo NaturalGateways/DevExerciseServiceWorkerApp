@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - "curl -s -qL -o /usr/bin/jq https://stedolan.github.io/jq/download/linux64/jq"
+      - "chmod +x /usr/bin/jq"
+      - export PATH="$PATH:/root/.dotnet/tools"
+      - dotnet tool install -g AWS.CodeArtifact.NuGet.CredentialProvider
+      - dotnet codeartifact-creds install
+  pre_build:
+    commands:
+      - "json=$(jq -n --arg nam \"Service Worker\" --arg ver \"$VERSION\" '{Name: $nam, Version: $ver}')"
+      - echo $json > ServiceWorkerApi/ServiceWorker.Api.Core/Resources/AppInfo.json
+      - cat ServiceWorkerApi/ServiceWorker.Api.Core/Resources/AppInfo.json
+      - dotnet nuget add source -n codeartifact "$(aws codeartifact get-repository-endpoint --domain natural-libs --domain-owner 582929002414 --repository NaturalLibs --format nuget --query repositoryEndpoint --output text)v3/index.json"
+  build:
+    commands:
+      - dotnet publish --configuration Release --output build ServiceWorkerApi/ServiceWorker.Api.Lambda/ServiceWorker.Api.Lambda.csproj
+      - rm build/ServiceWorker.Api.Core.pdb
+      - rm build/ServiceWorker.Api.Lambda.pdb
+artifacts:
+  files:
+    - build/*
+  discard-paths: yes
