@@ -27,17 +27,17 @@ namespace ServiceWorker.DynamoDbMaintainer
                 string dbNow = DateTime.UtcNow.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffZ");
 
                 // Upload job types
-                SetRefDataItem(refDataTable, dbNow, "JobStatus", "PEND", "{'JobStatusId':1,'JobStatusKey':'PEND','JobStatusName':'Pending'}");
-                SetRefDataItem(refDataTable, dbNow, "JobStatus", "HOLD", "{'JobStatusId':2,'JobStatusKey':'HOLD','JobStatusName':'On Hold'}");
-                SetRefDataItem(refDataTable, dbNow, "JobStatus", "COMPLETE", "{'JobStatusId':3,'JobStatusKey':'COMPLETE','JobStatusName':'Complete'}");
-                SetRefDataItem(refDataTable, dbNow, "JobStatus", "CANCELLED", "{'JobStatusId':4,'JobStatusKey':'CANCELLED','JobStatusName':'Cancelled'}");
-                SetRefDataItem(refDataTable, dbNow, "PaymentType", "Quote", "{'PaymentTypeId':1,'PaymentTypeKey':'Quote','PaymentTypeName':'Quote'}");
-                SetRefDataItem(refDataTable, dbNow, "PaymentType", "PerHour", "{'PaymentTypeId':2,'PaymentTypeKey':'PerHour','PaymentTypeName':'Per Hour'}");
-                SetRefDataItem(refDataTable, dbNow, "MaterialType", "1", "{'MaterialTypeId':1,'MaterialTypeName':'Nescafe Blend 43, Jar, 300g'}");
-                SetRefDataItem(refDataTable, dbNow, "MaterialType", "2", "{'MaterialTypeId':2,'MaterialTypeName':'Sugar, White, 250g'}");
-                SetRefDataItem(refDataTable, dbNow, "MaterialType", "3", "{'MaterialTypeId':3,'MaterialTypeName':'Lipton, Black Tea'}");
+                SetRefDataItem(refDataTable, dbNow, "JobStatus", "PEND", "{\"JobStatusId\":1,\"JobStatusKey\":\"PEND\",\"JobStatusName\":\"Pending\"}");
+                SetRefDataItem(refDataTable, dbNow, "JobStatus", "HOLD", "{\"JobStatusId\":2,\"JobStatusKey\":\"HOLD\",\"JobStatusName\":\"On Hold\"}");
+                SetRefDataItem(refDataTable, dbNow, "JobStatus", "COMPLETE", "{\"JobStatusId\":3,\"JobStatusKey\":\"COMPLETE\",\"JobStatusName\":\"Complete\"}");
+                SetRefDataItem(refDataTable, dbNow, "JobStatus", "CANCELLED", "{\"JobStatusId\":4,\"JobStatusKey\":\"CANCELLED\",\"JobStatusName\":\"Cancelled\"}");
+                SetRefDataItem(refDataTable, dbNow, "PaymentType", "Quote", "{\"PaymentTypeId\":1,\"PaymentTypeKey\":\"Quote\",\"PaymentTypeName\":\"Quote\"}");
+                SetRefDataItem(refDataTable, dbNow, "PaymentType", "PerHour", "{\"PaymentTypeId\":2,\"PaymentTypeKey\":\"PerHour\",\"PaymentTypeName\":\"Per Hour\"}");
+                SetRefDataItem(refDataTable, dbNow, "MaterialType", "1", "{\"MaterialTypeId\":1,\"MaterialTypeName\":\"Nescafe Blend 43, Jar, 300g\"}");
+                SetRefDataItem(refDataTable, dbNow, "MaterialType", "2", "{\"MaterialTypeId\":2,\"MaterialTypeName\":\"Sugar, White, 250g\"}");
+                SetRefDataItem(refDataTable, dbNow, "MaterialType", "3", "{\"MaterialTypeId\":3,\"MaterialTypeName\":\"Lipton, Black Tea\"}");
                 // Upload final times
-                SetRefDataItem(refDataTable, dbNow, "Master", "LastUpdated", $"{{'RefData':'{dbNow}'}}");
+                SetRefDataItem(refDataTable, dbNow, "Master", "LastUpdated", $"{{\"RefData\":\"{dbNow}\"}}");
             }
         }
 

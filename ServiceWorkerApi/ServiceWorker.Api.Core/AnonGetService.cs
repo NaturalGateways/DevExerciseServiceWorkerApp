@@ -110,7 +110,8 @@ namespace ServiceWorker.Api
                 { "Version", appInfoJson["Version"] },
                 { "Author", "Steven Moore" },
                 { "Environment", Environment.GetEnvironmentVariable("Environment") },
-                { "Copyright", "2021" }
+                { "Copyright", "2021" },
+                { "InterfaceVersion", 1 }
             };
         }
 
@@ -129,8 +130,8 @@ namespace ServiceWorker.Api
             {
                 string tableInstanceName = this.TableNameProvider.GetInstanceNameFromConceptName("RefData");
                 IDynamoTable refDataTable = dynamoDbService.GetTable(tableInstanceName, "RefDataType", "RefDataKey");
-                IDynamoItem item = await refDataTable.GetItemByKeyAsync("Master", "LastUpdated", "DateTimeUtc");
-                return DateTime.Parse(item.GetString("DateTimeUtc"));
+                IDynamoItem item = await refDataTable.GetItemByKeyAsync("Master", "LastUpdated", "JsonData");
+                return item.GetStringAsObject<object>("JsonData");
             }
         }
 
@@ -150,6 +151,11 @@ namespace ServiceWorker.Api
                 string tableInstanceName = this.TableNameProvider.GetInstanceNameFromConceptName("RefData");
                 IDynamoTable refDataTable = dynamoDbService.GetTable(tableInstanceName, "RefDataType", "RefDataKey");
                 IEnumerable<IDynamoItem> items = await refDataTable.GetItemsAsync(requestDto.ItemType, null, "JsonData");
+                string[] itemDataArray2 = items.Select(x => x.GetString("JsonData")).ToArray();
+                object item1 = items.ToArray()[0].GetStringAsObject<object>("JsonData");
+                object item2 = items.ToArray()[1].GetStringAsObject<object>("JsonData");
+                object item3 = items.ToArray()[2].GetStringAsObject<object>("JsonData");
+                object item4 = items.ToArray()[3].GetStringAsObject<object>("JsonData");
                 object[] itemDataArray = items.Select(x => x.GetStringAsObject<object>("JsonData")).ToArray();
                 return itemDataArray;
             }
