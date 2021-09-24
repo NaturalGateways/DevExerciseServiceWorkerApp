@@ -1,0 +1,343 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Creates the serverless resources for the Service Worker project.",
+  "Parameters": {
+    "Environment": {
+      "Description": "Name of the environment to use to identify resources.",
+      "Type": "String"
+    },
+    "ApiBuildId": {
+      "Description": "The build ID of the API.",
+      "Type": "String"
+    }
+  },
+  "Resources": {
+    "ApiGatewayApi": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Description": "API Gateway.",
+        "Name": {
+          "Fn::Join": [
+            "-",
+            [
+              "ServiceWorker",
+              {
+                "Ref": "Environment"
+              }
+            ]
+          ]
+        },
+        "EndpointConfiguration": {
+          "Types": [
+            "REGIONAL"
+          ]
+        }
+      }
+    },
+    "ApiGatewayAnonResource": {
+      "DependsOn": [
+        "ApiGatewayApi"
+      ],
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ApiGatewayApi"
+        },
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayApi",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "anon"
+      }
+    },
+    "ApiGatewayAnonGetMethod": {
+      "DependsOn": [
+        "ApiGatewayAnonResource"
+      ],
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "GET",
+        "Integration": {
+          "IntegrationHttpMethod": "GET",
+          "IntegrationResponses": [
+            {
+              "StatusCode": 200,
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "ResponseTemplates": {
+                "application/json": ""
+              }
+            }
+          ],
+          "PassthroughBehavior": "NEVER",
+          "RequestTemplates": {
+            "application/json": "#set($queryString = $input.params().querystring)\n{\"body\":{\"RequestType\": \"$util.escapeJavaScript($queryString.get('RequestType'))\",\"GetRefData\":{\"ItemType\": \"$util.escapeJavaScript($queryString.get('ItemType'))\"}}}"
+          },
+          "Type": "AWS",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:aws:apigateway:ap-southeast-2:lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "ApiAnonHandlerLambda",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": [
+          {
+            "ResponseModels": {
+              "application/json": "Empty"
+            },
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": false
+            },
+            "StatusCode": 200
+          }
+        ],
+        "ResourceId": {
+          "Ref": "ApiGatewayAnonResource"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayApi"
+        }
+      }
+    },
+    "ApiGatewayAnonOptionsMethod": {
+      "DependsOn": [
+        "ApiGatewayAnonResource"
+      ],
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "StatusCode": 200,
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Methods": "'GET,OPTIONS'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "ResponseTemplates": {
+                "application/json": ""
+              }
+            }
+          ],
+          "PassthroughBehavior": "WHEN_NO_MATCH",
+          "RequestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseModels": {
+              "application/json": "Empty"
+            },
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": false,
+              "method.response.header.Access-Control-Allow-Methods": false,
+              "method.response.header.Access-Control-Allow-Origin": false
+            },
+            "StatusCode": 200
+          }
+        ],
+        "ResourceId": {
+          "Ref": "ApiGatewayAnonResource"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayApi"
+        }
+      }
+    },
+    "ApiGatewayDeployment": {
+      "DependsOn": [
+        "ApiGatewayAnonGetMethod",
+        "ApiGatewayAnonOptionsMethod"
+      ],
+      "Type": "AWS::ApiGateway::Deployment",
+      "Properties": {
+        "Description": "Deployment for the stage.",
+        "RestApiId": {
+          "Ref": "ApiGatewayApi"
+        },
+        "StageName": "LATEST"
+      }
+    },
+    "ApiHandlerLambdaPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "ServiceWorkerApiLambdaPolicy",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "DynamoDbAccess",
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:Query"
+              ],
+              "Resource": {
+                "Fn::GetAtt": [
+                  "DynamoRefDataTable",
+                  "Arn"
+                ]
+              }
+            }
+          ]
+        },
+        "Roles": [
+          {
+            "Ref": "ApiHandlerLambdaRole"
+          }
+        ]
+      }
+    },
+    "ApiHandlerLambdaRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Description": "Role for the API Lambda.",
+        "Path": "/",
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "ServiceWorker"
+          },
+          {
+            "Key": "Environment",
+            "Value": {
+              "Ref": "Environment"
+            }
+          }
+        ]
+      }
+    },
+    "ApiHandlerLambdaPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:invokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "ApiAnonHandlerLambda",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:aws:execute-api:ap-southeast-2:",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayApi"
+              },
+              "/*"
+            ]
+          ]
+        }
+      }
+    },
+    "ApiAnonHandlerLambda": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Description": "Lambda to process API requests.",
+        "Code": {
+          "S3Bucket": "naturalgateways",
+          "S3Key": {
+            "Fn::Join": [
+              "/",
+              [
+                "builds",
+                "ServiceWorkerApi",
+                {
+                  "Ref": "ApiBuildId"
+                },
+                "ServiceWorker-API"
+              ]
+            ]
+          }
+        },
+        "Environment": {
+          "Variables": {
+            "Environment": {
+              "Ref": "Environment"
+            },
+            "DbTableRefData": {
+              "Ref": "DynamoRefDataTable"
+            }
+          }
+        },
+        "Handler": "ServiceWorker.Api.Lambda::ServiceWorker.Api.Lambda.Function::AnonEndpointHandler",
+        "MemorySize": 512,
+        "Role": {
+          "Fn::GetAtt": [
+            "ApiHandlerLambdaRole",
+            "Arn"
+          ]
+        },
+        "Runtime": "dotnetcore3.1",
+        "Timeout": 15
+      }
+    },
+    "DynamoRefDataTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "RefDataType",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "RefDataKey",
+            "AttributeType": "S"
+          }
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "KeySchema": [
+          {
+            "AttributeName": "RefDataType",
+            "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "RefDataKey",
+            "KeyType": "RANGE"
+          }
+        ]
+      }
+    }
+  }
+}
