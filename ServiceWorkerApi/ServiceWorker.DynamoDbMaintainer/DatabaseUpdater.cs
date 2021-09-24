@@ -36,6 +36,8 @@ namespace ServiceWorker.DynamoDbMaintainer
                 SetRefDataItem(refDataTable, dbNow, "MaterialType", "1", "{'MaterialTypeId':1,'MaterialTypeName':'Nescafe Blend 43, Jar, 300g'}");
                 SetRefDataItem(refDataTable, dbNow, "MaterialType", "2", "{'MaterialTypeId':2,'MaterialTypeName':'Sugar, White, 250g'}");
                 SetRefDataItem(refDataTable, dbNow, "MaterialType", "3", "{'MaterialTypeId':3,'MaterialTypeName':'Lipton, Black Tea'}");
+                // Upload final times
+                SetRefDataItem(refDataTable, dbNow, "Master", "LastUpdated", $"{{'RefData':'{dbNow}'}}");
             }
         }
 

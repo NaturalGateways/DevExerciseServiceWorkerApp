@@ -40,6 +40,9 @@ namespace ServiceWorker.Api
                     case ApiRequestAnonType.GetInfo:
                         responseObject = ExecuteGetInfoRequest();
                         break;
+                    case ApiRequestAnonType.GetLastMod:
+                        responseObject = await ExecuteGetLastMod();
+                        break;
                     case ApiRequestAnonType.GetRefData:
                         responseObject = await ExecuteGetRefDataRequestAsync(requestDto.GetRefData);
                         break;
@@ -47,8 +50,7 @@ namespace ServiceWorker.Api
                         throw new Exception($"Request type '{requestDto.RequestType}' unrecognised.");
                 }
                 // Ensure response is deserialised properly
-                string responseString = Newtonsoft.Json.JsonConvert.SerializeObject(responseObject);
-                return new ApiResponseDto { Success = true, Response = System.Text.Json.JsonSerializer.Deserialize<object>(responseString) };
+                return new ApiResponseDto { Success = true, Response = responseObject };
             }
             catch (ApiException ae)
             {
@@ -94,18 +96,42 @@ namespace ServiceWorker.Api
             }
 
             // Read the version
-            string appInfoText = null;
+            string appInfoString = null;
             using (System.IO.StreamReader appInfoStream = new System.IO.StreamReader(resourceStream))
             {
-                appInfoText = appInfoStream.ReadToEnd();
+                appInfoString = appInfoStream.ReadToEnd();
             }
-            Dictionary<string, string> appInfoByName = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(appInfoText);
+            Dictionary<string, string> appInfoJson = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(appInfoString);
 
             // Add author and return
-            appInfoByName.Add("Author", "Steven Moore");
-            appInfoByName.Add("Environment", Environment.GetEnvironmentVariable("Environment"));
-            appInfoByName.Add("Copyright", "2021");
-            return appInfoByName;
+            return new Dictionary<string, object>
+            {
+                { "Name", appInfoJson["Name"] },
+                { "Version", appInfoJson["Version"] },
+                { "Author", "Steven Moore" },
+                { "Environment", Environment.GetEnvironmentVariable("Environment") },
+                { "Copyright", "2021" }
+            };
+        }
+
+        /// <summary>Executes a get-ref-data request.</summary>
+        private async Task<object> ExecuteGetLastMod()
+        {
+            // Check AWS service
+            IAwsService awsService = this.AwsService;
+            if (awsService == null)
+            {
+                throw new Exception("Cannot get ref data without an AWS service.");
+            }
+
+            // Read data
+            using (IDynamoService dynamoDbService = awsService.CreateDynamoService())
+            {
+                string tableInstanceName = this.TableNameProvider.GetInstanceNameFromConceptName("RefData");
+                IDynamoTable refDataTable = dynamoDbService.GetTable(tableInstanceName, "RefDataType", "RefDataKey");
+                IDynamoItem item = await refDataTable.GetItemByKeyAsync("Master", "LastUpdated", "DateTimeUtc");
+                return DateTime.Parse(item.GetString("DateTimeUtc"));
+            }
         }
 
         /// <summary>Executes a get-ref-data request.</summary>

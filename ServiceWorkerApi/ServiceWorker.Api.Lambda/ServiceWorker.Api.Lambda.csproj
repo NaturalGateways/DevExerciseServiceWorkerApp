@@ -8,9 +8,9 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Amazon.Lambda.Core" Version="1.2.0" />
+    <PackageReference Include="Amazon.Lambda.Core" Version="2.0.0" />
     <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.1.0" />
-    <PackageReference Include="Natural.Aws.Lambda" Version="1.0.2" />
+    <PackageReference Include="Natural.Aws.Lambda" Version="1.0.3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ServiceWorker.Api.Core\ServiceWorker.Api.Core.csproj" />

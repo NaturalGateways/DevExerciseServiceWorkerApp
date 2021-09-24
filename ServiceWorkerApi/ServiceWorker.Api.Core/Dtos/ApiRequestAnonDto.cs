@@ -7,6 +7,7 @@ namespace ServiceWorker.Api
     public enum ApiRequestAnonType
     {
         GetInfo,
+        GetLastMod,
         GetRefData
     }
 
