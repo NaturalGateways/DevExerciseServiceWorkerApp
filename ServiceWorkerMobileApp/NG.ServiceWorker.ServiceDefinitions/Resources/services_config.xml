@@ -22,6 +22,9 @@
     <service type="NG.ServiceWorker.ISvgService">
         <implementation type="NG.ServiceWorker.CoreServices.DefaultSvgService"/>
     </service>
+    <service type="NG.ServiceWorker.ISyncService">
+        <implementation type="NG.ServiceWorker.CoreServices.Sync.DefaultSyncService"/>
+    </service>
 
     <!-- Custom namespace service -->
     <service type="NG.ServiceWorker.ILogService">

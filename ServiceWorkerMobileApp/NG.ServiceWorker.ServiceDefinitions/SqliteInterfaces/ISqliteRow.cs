@@ -4,6 +4,9 @@ namespace NG.ServiceWorker
 {
     public interface ISqliteRow
     {
+        /// <summary>Skips a column.</summary>
+        void SkipColumn();
+
         /// <summary>Getter for a not-nullable string.</summary>
         string GetString();
 

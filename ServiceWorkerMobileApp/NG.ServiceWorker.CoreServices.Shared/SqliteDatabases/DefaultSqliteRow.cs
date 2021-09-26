@@ -30,6 +30,12 @@ namespace NG.ServiceWorker.CoreServices.SqliteDatabases
 
         #region ISqliteRow implementation
 
+        /// <summary>Skips a column.</summary>
+        public void SkipColumn()
+        {
+            ++m_columnIndex;
+        }
+
         /// <summary>Getter for a not-nullable string.</summary>
         public string GetString()
         {

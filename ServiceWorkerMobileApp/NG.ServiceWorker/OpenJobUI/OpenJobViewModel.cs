@@ -12,12 +12,22 @@ namespace NG.ServiceWorker.OpenJobUI
 
         public ApiModel.JobWithLinks JobWithLinks { get; private set; }
 
+        public DataModel.RefData.JobStatus JobStatusRefData { get; private set; }
+
+        public DataModel.RefData.PaymentType PaymentTypeRefData { get; private set; }
+
         private SwForms.IFormDocument m_formsDocument = null;
 
         public OpenJobViewModel(ApiModel.JobWithLinks jobWithLinks)
         {
+            // Set API data
             this.JobWithLinks = jobWithLinks;
 
+            // Lookup reference data
+            this.JobStatusRefData = Services.MainDataService.GetRefListItem<DataModel.RefData.JobStatus>(null, jobWithLinks.Job.JobStatusId.ToString());
+            this.PaymentTypeRefData = Services.MainDataService.GetRefListItem<DataModel.RefData.PaymentType>(null, jobWithLinks.Job.PaymentTypeId.ToString());
+
+            // Load form
             DataModel.JobForm jobForm = Services.MainDataService.GetDocument<DataModel.JobForm>(jobWithLinks.Job.JobKey);
             m_formsDocument = Services.FormsService.CreateJobForm(jobForm?.FormData);
             UI.FormsUI.FormsDocumentViewModel formViewModel = new UI.FormsUI.FormsDocumentViewModel(m_formsDocument);
@@ -68,7 +78,7 @@ namespace NG.ServiceWorker.OpenJobUI
         public bool IsProfilePicImageVisible { get { return string.IsNullOrEmpty(this.JobWithLinks.Contact.ProfilePicUrl) == false; } }
         public bool IsPlaceholderProfilePicVisible { get { return string.IsNullOrEmpty(this.JobWithLinks.Contact.ProfilePicUrl); } }
 
-        public string JobStatus { get { return this.JobWithLinks.Job.JobStatusName; } }
+        public string JobStatus { get { return this.JobStatusRefData.JobStatusName; } }
 
         public string JobDescription { get { return this.JobWithLinks.Job.Description; } }
 
@@ -81,7 +91,7 @@ namespace NG.ServiceWorker.OpenJobUI
                     return "Unknown";
                 }
                 string amountCurrency = "$" + this.JobWithLinks.Job.PaymentAmount.Value.ToString("N2");
-                if (this.JobWithLinks.Job.PaymentTypeKey == "PerHour")
+                if (this.PaymentTypeRefData.PaymentTypeKey == "PerHour")
                 {
                     return $"{amountCurrency} per hour";
                 }

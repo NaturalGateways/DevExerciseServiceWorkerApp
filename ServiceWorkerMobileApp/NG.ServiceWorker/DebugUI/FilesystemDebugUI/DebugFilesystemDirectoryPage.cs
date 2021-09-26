@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 
 namespace NG.ServiceWorker.DebugUI.FilesystemDebugUI
@@ -50,6 +51,8 @@ namespace NG.ServiceWorker.DebugUI.FilesystemDebugUI
                 case ".jpg":
                 case ".jpeg":
                     return UI.ListUI.ListItemViewModel.CreateSubtitledCommand(filename, subtitleText, async (view) => { await GoToImageFileAsync(view, filepath); });
+                case ".sqlite":
+                    return UI.ListUI.ListItemViewModel.CreateSubtitledCommand(filename, subtitleText, async (view) => { await GoToSqliteFileAsync(view, filepath); });
                 default:
                     return UI.ListUI.ListItemViewModel.CreateSubtitled(filename, subtitleText);
             }
@@ -63,6 +66,11 @@ namespace NG.ServiceWorker.DebugUI.FilesystemDebugUI
         public async Task GoToImageFileAsync(View view, string path)
         {
             await view.Navigation.PushAsync(new DebugfilesystemImagePage(path));
+        }
+
+        public async Task GoToSqliteFileAsync(View view, string path)
+        {
+            await view.Navigation.PushAsync(new DebugFilesystemSqlitePage(path));
         }
     }
 }

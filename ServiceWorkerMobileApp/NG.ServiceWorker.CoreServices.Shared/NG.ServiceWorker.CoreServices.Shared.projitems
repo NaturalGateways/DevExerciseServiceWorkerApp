@@ -23,6 +23,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)MainData\" />
     <Folder Include="$(MSBuildThisFileDirectory)SqliteDatabases\MainDatabase\" />
     <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Sync\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Sync\PeriodicDownloadSteps\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultApiService.cs" />
@@ -55,5 +57,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\JsonObjectFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\JsonObjectDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\JsonObjectArray.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sync\DefaultSyncService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sync\PeriodicDownloadSyncThread.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sync\IDownloadStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sync\PeriodicDownloadSteps\JobStatusStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sync\PeriodicDownloadSteps\PaymentTypeStep.cs" />
   </ItemGroup>
 </Project>

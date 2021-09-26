@@ -18,6 +18,9 @@
     <Folder Include="ApiModel\FormIOModel\" />
     <Folder Include="DataModel\" />
     <Folder Include="ServiceInterfaces\JsonObjects\" />
+    <Folder Include="ApiModel\RefData\" />
+    <Folder Include="ServiceInterfaces\MainDataClasses\" />
+    <Folder Include="DataModel\RefData\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\services_config.xml" />
@@ -26,6 +29,9 @@
     <None Remove="ApiModel\FormIOModel\" />
     <None Remove="DataModel\" />
     <None Remove="ServiceInterfaces\JsonObjects\" />
+    <None Remove="ApiModel\RefData\" />
+    <None Remove="ServiceInterfaces\MainDataClasses\" />
+    <None Remove="DataModel\RefData\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\services_config.xml" />

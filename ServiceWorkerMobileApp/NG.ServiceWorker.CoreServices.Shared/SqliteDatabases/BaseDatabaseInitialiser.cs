@@ -43,11 +43,26 @@ namespace NG.ServiceWorker.CoreServices.SqliteDatabases
                 }
             }
 
+            // Check if we upgrade
+            while (databaseVersion < this.CurrentVersion)
+            {
+                databaseVersion = UpgradeDatabase(connection, databaseVersion);
+
+                Dictionary<string, object> updateVersionBindVars = new Dictionary<string, object> { { "version", databaseVersion } };
+                connection.ExecuteSql("UPDATE DB_VERSION SET VERSION=@version;", updateVersionBindVars);
+            }
+
             // Return
             return connection;
         }
 
         /// <summary>Sets up the database.</summary>
         protected abstract int SetupDatabase(ISqliteConnection connection);
+
+        /// <summary>Sets up the database.</summary>
+        protected virtual int UpgradeDatabase(ISqliteConnection connection, int curVersion)
+        {
+            throw new Exception("This type of database doesn't current support upgrades.");
+        }
     }
 }

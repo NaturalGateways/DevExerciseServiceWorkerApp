@@ -15,15 +15,9 @@ namespace NG.ServiceWorker.ApiModel
 
         public int JobStatusId { get; set; }
 
-        public string JobStatusName { get; set; }
-
         public string Description { get; set; }
 
         public int PaymentTypeId { get; set; }
-
-        public string PaymentTypeKey { get; set; }
-
-        public string PaymentTypeName { get; set; }
 
         public double? PaymentAmount { get; set; }
 

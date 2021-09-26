@@ -24,6 +24,8 @@ namespace NG.ServiceWorker
 
         public static ISvgService SvgService { get { return ServiceProvider.GetService<ISvgService>(); } }
 
+        public static ISyncService SyncService { get { return ServiceProvider.GetService<ISyncService>(); } }
+
         public static IThreadService ThreadService { get { return ServiceProvider.GetService<IThreadService>(); } }
 
         public static UIServices.IUserInterfaceViewFactoryService UserInterfaceViewFactoryService { get { return ServiceProvider.GetService<UIServices.IUserInterfaceViewFactoryService>(); } }
