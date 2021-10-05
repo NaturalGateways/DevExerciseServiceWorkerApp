@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 using Natural.Aws.DynamoDB;
 
@@ -13,6 +13,56 @@ namespace ServiceWorker.DynamoDbMaintainer
 
         /// <summary>The table name of the DynamoDB table with ref data.</summary>
         public string RefDataTableName { get; set; }
+
+        /// <summary>Updates the database.</summary>
+        public void UpdateRefData(RefDataModel.RefData refData)
+        {
+            // Connect to DB
+            using (IDynamoService dynamoDbService = this.AwsService.CreateDynamoService())
+            {
+                // Create tables
+                IDynamoTable refDataTable = dynamoDbService.GetTable(this.RefDataTableName, "RefDataType", "RefDataKey");
+
+                // Get now
+                string dbNow = DateTime.UtcNow.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffZ");
+
+                // Update forms
+                if (refData.FormArray != null)
+                {
+                    foreach (RefDataModel.RefDataForm form in refData.FormArray)
+                    {
+                        SetForm(refDataTable, dbNow, form);
+                    }
+                    SetFormList(refDataTable, dbNow, refData.FormArray.Select(x => x.Key).ToArray());
+                }
+            }
+        }
+
+        /// <summary>Sets a job type.</summary>
+        private static void SetForm(IDynamoTable refDataTable, string dbNow, RefDataModel.RefDataForm form)
+        {
+            refDataTable.PutItemAsync("Form", form.Key, new ItemUpdate
+            {
+                StringAttributes = new Dictionary<string, string>
+                {
+                    { "DateTimeUtc", dbNow },
+                    { "JsonData", System.Text.Json.JsonSerializer.Serialize(form) }
+                }
+            }).Wait();
+        }
+
+        /// <summary>Sets a job type.</summary>
+        private static void SetFormList(IDynamoTable refDataTable, string dbNow, string[] formKeyArray)
+        {
+            refDataTable.PutItemAsync("Master", "FormList", new ItemUpdate
+            {
+                StringAttributes = new Dictionary<string, string>
+                {
+                    { "DateTimeUtc", dbNow },
+                    { "JsonData", System.Text.Json.JsonSerializer.Serialize(formKeyArray) }
+                }
+            }).Wait();
+        }
 
         /// <summary>Updates the database.</summary>
         public void UpdateDatabase()

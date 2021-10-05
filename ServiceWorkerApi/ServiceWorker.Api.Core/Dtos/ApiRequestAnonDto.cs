@@ -8,7 +8,8 @@ namespace ServiceWorker.Api
     {
         GetInfo,
         GetLastMod,
-        GetRefData
+        GetRefData,
+        GetRefDataItem
     }
 
     public class ApiRequestAnonDto
@@ -21,5 +22,7 @@ namespace ServiceWorker.Api
     public class ApiRequestGetRefDataDto
     {
         public string ItemType { get; set; }
+
+        public string ItemKey { get; set; }
     }
 }

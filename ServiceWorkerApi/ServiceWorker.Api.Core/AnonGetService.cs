@@ -46,6 +46,9 @@ namespace ServiceWorker.Api
                     case ApiRequestAnonType.GetRefData:
                         responseObject = await ExecuteGetRefDataRequestAsync(requestDto.GetRefData);
                         break;
+                    case ApiRequestAnonType.GetRefDataItem:
+                        responseObject = await ExecuteGetRefDataItemRequestAsync(requestDto.GetRefData);
+                        break;
                     default:
                         throw new Exception($"Request type '{requestDto.RequestType}' unrecognised.");
                 }
@@ -152,6 +155,26 @@ namespace ServiceWorker.Api
                 IDynamoTable refDataTable = dynamoDbService.GetTable(tableInstanceName, "RefDataType", "RefDataKey");
                 IEnumerable<IDynamoItem> items = await refDataTable.GetItemsAsync(requestDto.ItemType, null, "JsonData");
                 return items.Select(x => x.GetStringAsObject<object>("JsonData")).ToArray();
+            }
+        }
+
+        /// <summary>Executes a get-ref-data request.</summary>
+        private async Task<object> ExecuteGetRefDataItemRequestAsync(ApiRequestGetRefDataDto requestDto)
+        {
+            // Check AWS service
+            IAwsService awsService = this.AwsService;
+            if (awsService == null)
+            {
+                throw new Exception("Cannot get ref data without an AWS service.");
+            }
+
+            // Read data
+            using (IDynamoService dynamoDbService = awsService.CreateDynamoService())
+            {
+                string tableInstanceName = this.TableNameProvider.GetInstanceNameFromConceptName("RefData");
+                IDynamoTable refDataTable = dynamoDbService.GetTable(tableInstanceName, "RefDataType", "RefDataKey");
+                IDynamoItem item = await refDataTable.GetItemByKeyAsync(requestDto.ItemType, requestDto.ItemKey, "JsonData");
+                return item.GetStringAsObject<object>("JsonData");
             }
         }
     }
