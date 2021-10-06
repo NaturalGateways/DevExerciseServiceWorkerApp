@@ -75,7 +75,7 @@
           ],
           "PassthroughBehavior": "NEVER",
           "RequestTemplates": {
-            "application/json": "#set($queryString = $input.params().querystring)\n{\"body\":{\"RequestType\": \"$util.escapeJavaScript($queryString.get('RequestType'))\",\"GetRefData\":{\"ItemType\": \"$util.escapeJavaScript($queryString.get('ItemType'))\"}}}"
+            "application/json": "#set($queryString = $input.params().querystring)\n{\"body\":{\"RequestType\": \"$util.escapeJavaScript($queryString.get('RequestType'))\",\"GetRefData\":{\"ItemType\": \"$util.escapeJavaScript($queryString.get('ItemType'))\",\"ItemKey\": \"$util.escapeJavaScript($queryString.get('ItemKey'))\"}}}"
           },
           "Type": "AWS",
           "Uri": {
