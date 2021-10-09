@@ -41,7 +41,7 @@ namespace ServiceWorker.DynamoDbMaintainer
         /// <summary>Sets a job type.</summary>
         private static void SetForm(IDynamoTable refDataTable, string dbNow, RefDataModel.RefDataForm form)
         {
-            refDataTable.PutItemAsync("Form", form.Key, new ItemUpdate
+            refDataTable.PutItemAsync("Forms", $"Form-{form.Key}", new ItemUpdate
             {
                 StringAttributes = new Dictionary<string, string>
                 {
@@ -54,12 +54,18 @@ namespace ServiceWorker.DynamoDbMaintainer
         /// <summary>Sets a job type.</summary>
         private static void SetFormList(IDynamoTable refDataTable, string dbNow, string[] formKeyArray)
         {
-            refDataTable.PutItemAsync("Master", "FormList", new ItemUpdate
+            Dictionary<string, object> jsonData = new Dictionary<string, object>
+            {
+                { "LastModified", dbNow },
+                { "Forms", formKeyArray }
+            };
+
+            refDataTable.PutItemAsync("Forms", "Summary", new ItemUpdate
             {
                 StringAttributes = new Dictionary<string, string>
                 {
                     { "DateTimeUtc", dbNow },
-                    { "JsonData", System.Text.Json.JsonSerializer.Serialize(formKeyArray) }
+                    { "JsonData", System.Text.Json.JsonSerializer.Serialize(jsonData) }
                 }
             }).Wait();
         }
