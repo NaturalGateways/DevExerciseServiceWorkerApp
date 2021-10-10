@@ -49,14 +49,27 @@ namespace NG.ServiceWorker.DebugUI.FilesystemDebugUI
                     UI.ListUI.ListSectionViewModel sectionViewModel = new UI.ListUI.ListSectionViewModel { Title = $"Row {++rowIndex}" };
                     foreach ((string columnName, string dataType) column in columnList)
                     {
-                        string valueString = row.GetString();
-                        if ((valueString.StartsWith("{") && valueString.EndsWith("}")) || (valueString.StartsWith("[") && valueString.EndsWith("]")))
+                        switch (column.dataType)
                         {
-                            sectionViewModel.Add(UI.ListUI.ListItemViewModel.CreateAttribute(column.columnName, "JSON"));
-                        }
-                        else
-                        {
-                            sectionViewModel.Add(UI.ListUI.ListItemViewModel.CreateAttribute(column.columnName, valueString));
+                            case "integer":
+                                {
+                                    int valueString = row.GetInteger();
+                                    sectionViewModel.Add(UI.ListUI.ListItemViewModel.CreateAttribute(column.columnName, valueString.ToString()));
+                                    break;
+                                }
+                            default:
+                                {
+                                    string valueString = row.GetString();
+                                    if ((valueString.StartsWith("{") && valueString.EndsWith("}")) || (valueString.StartsWith("[") && valueString.EndsWith("]")))
+                                    {
+                                        sectionViewModel.Add(UI.ListUI.ListItemViewModel.CreateAttribute(column.columnName, "JSON"));
+                                    }
+                                    else
+                                    {
+                                        sectionViewModel.Add(UI.ListUI.ListItemViewModel.CreateAttribute(column.columnName, valueString));
+                                    }
+                                    break;
+                                }
                         }
                     }
                     listViewModel.SectionList.Add(sectionViewModel);

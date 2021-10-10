@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:NG.ServiceWorker.ContactsUI"
+    x:Class="NG.ServiceWorker.ContactsUI.ContactListPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="{Binding AddImageSource}" Command="{Binding AddCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <CollectionView ItemsSource="{Binding ItemViewModels}" ItemSizingStrategy="MeasureFirstItem" VerticalScrollBarVisibility="Never">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Vertical" ItemSpacing="1"/>
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <local:ContactListItemView/>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

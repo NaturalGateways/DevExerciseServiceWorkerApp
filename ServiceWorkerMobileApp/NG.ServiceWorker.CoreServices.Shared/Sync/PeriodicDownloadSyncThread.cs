@@ -27,7 +27,8 @@ namespace NG.ServiceWorker.CoreServices.Sync
             m_stepArray = new IDownloadStep[]
             {
                 new PeriodicDownloadSteps.JobStatusStep(),
-                new PeriodicDownloadSteps.PaymentTypeStep()
+                new PeriodicDownloadSteps.PaymentTypeStep(),
+                new PeriodicDownloadSteps.FormsStep()
             };
 
             // Create thread

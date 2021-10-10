@@ -1,19 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace NG.ServiceWorker.CoreServices.JsonObjects
 {
-    public class JsonObjectDictionary : IJsonObject
+    public class JsonObjectJObject : IJsonObject
     {
         #region Base
 
         /// <summary>The JSON object.</summary>
-        private Dictionary<string, object> m_dictionary = null;
+        private Newtonsoft.Json.Linq.JObject m_jObject = null;
 
         /// <summary>Constructor.</summary>
-        public JsonObjectDictionary(Dictionary<string, object> dictionary)
+        public JsonObjectJObject(Newtonsoft.Json.Linq.JObject jObject)
         {
-            m_dictionary = dictionary;
+            m_jObject = jObject;
         }
 
         #endregion
@@ -32,15 +31,15 @@ namespace NG.ServiceWorker.CoreServices.JsonObjects
         /// <summary>Getter for whether the given key exists.</summary>
         public bool HasDictionaryKey(string key)
         {
-            return m_dictionary.ContainsKey(key);
+            return m_jObject.ContainsKey(key);
         }
 
         /// <summary>Getter for the given dictionary object.</summary>
         public IJsonObject GetDictionaryObject(string key)
         {
-            if (m_dictionary.ContainsKey(key))
+            if (m_jObject.ContainsKey(key))
             {
-                return JsonObjectFactory.FromObject(m_dictionary[key]);
+                return JsonObjectFactory.FromObject(m_jObject[key]);
             }
             return JsonObjectNull.Null;
         }

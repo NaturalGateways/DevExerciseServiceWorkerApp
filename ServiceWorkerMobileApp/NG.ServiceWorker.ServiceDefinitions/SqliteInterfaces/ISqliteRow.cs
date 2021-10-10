@@ -15,5 +15,8 @@ namespace NG.ServiceWorker
 
         /// <summary>Getter for a not-nullable integer.</summary>
         int GetInteger();
+
+        /// <summary>Getter for a not-nullable string of JSON of a specific type.</summary>
+        JsonType GetJson<JsonType>();
     }
 }

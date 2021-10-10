@@ -1,13 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:jobs="clr-namespace:NG.ServiceWorker.Jobs"
+             xmlns:contact="clr-namespace:NG.ServiceWorker.ContactsUI"
              xmlns:map="clr-namespace:NG.ServiceWorker.MapUI"
              xmlns:system="clr-namespace:NG.ServiceWorker.SystemUI"
              x:Class="NG.ServiceWorker.MainPage">
     <NavigationPage Title="Jobs" IconImageSource="icon_maintabs_jobs">
         <x:Arguments>
             <jobs:JobListPage Title="Jobs"/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Contacts" IconImageSource="icon_maintabs_jobs">
+        <x:Arguments>
+            <contact:ContactListPage Title="Contacts"/>
         </x:Arguments>
     </NavigationPage>
     <map:MapPage Title="Map" IconImageSource="icon_maintabs_map"/>

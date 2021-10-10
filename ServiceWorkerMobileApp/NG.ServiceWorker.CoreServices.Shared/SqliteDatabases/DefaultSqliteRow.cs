@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 #if WINDOWS_UWP
 using SqliteDataReader = Microsoft.Data.Sqlite.SqliteDataReader;
@@ -67,6 +67,18 @@ namespace NG.ServiceWorker.CoreServices.SqliteDatabases
                 throw new Exception("Expected a not-null integer from a SQLite database.");
             }
             return m_reader.GetInt32(columnIndex);
+        }
+
+        /// <summary>Getter for a not-nullable string of JSON of a specific type.</summary>
+        public JsonType GetJson<JsonType>()
+        {
+            int columnIndex = m_columnIndex++;
+            if (m_reader.IsDBNull(columnIndex))
+            {
+                throw new Exception("Expected a not-null string from a SQLite database.");
+            }
+            string valueString = m_reader.GetString(columnIndex);
+            return Services.JsonService.DeserialiseString<JsonType>(valueString);
         }
 
         #endregion

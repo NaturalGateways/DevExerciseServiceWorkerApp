@@ -22,6 +22,7 @@
     <Folder Include="DebugUI\FilesystemDebugUI\" />
     <Folder Include="SystemUI\LogsUI\" />
     <Folder Include="OpenJobUI\" />
+    <Folder Include="ContactsUI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.UI.AppViewModels\NG.ServiceWorker.UI.AppViewModels.csproj" />
@@ -32,5 +33,6 @@
   <ItemGroup>
     <None Remove="SystemUI\LogsUI\" />
     <None Remove="OpenJob\" />
+    <None Remove="ContactsUI\" />
   </ItemGroup>
 </Project>

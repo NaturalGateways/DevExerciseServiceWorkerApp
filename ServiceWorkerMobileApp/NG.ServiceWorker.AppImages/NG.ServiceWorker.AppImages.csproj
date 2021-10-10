@@ -22,6 +22,9 @@
     <EmbeddedResource Include="..\Images\ui_list_tick.svg">
       <Link>SvgFiles\ui_list_tick.svg</Link>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\Images\icon_add.svg">
+      <Link>SvgFiles\icon_add.svg</Link>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Remove="svg-files.xml" />

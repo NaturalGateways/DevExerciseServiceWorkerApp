@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NG.ServiceWorker.CoreServices.JsonObjects
 {
@@ -13,7 +14,7 @@ namespace NG.ServiceWorker.CoreServices.JsonObjects
             Newtonsoft.Json.Linq.JObject jObject = jtoken as Newtonsoft.Json.Linq.JObject;
             if (jObject != null)
             {
-                return new JsonObjectDictionary(jObject);
+                return new JsonObjectJObject(jObject);
             }
             Newtonsoft.Json.Linq.JArray jArray = jtoken as Newtonsoft.Json.Linq.JArray;
             if (jArray != null)
@@ -43,6 +44,11 @@ namespace NG.ServiceWorker.CoreServices.JsonObjects
             if (stringValue != null)
             {
                 return new JsonObjectString(stringValue);
+            }
+            Dictionary<string, object> objectsByStrings = anonObject as Dictionary<string, object>;
+            if (objectsByStrings != null)
+            {
+                return new JsonObjectDictionary(objectsByStrings);
             }
             return JsonObjectNull.Null;
         }

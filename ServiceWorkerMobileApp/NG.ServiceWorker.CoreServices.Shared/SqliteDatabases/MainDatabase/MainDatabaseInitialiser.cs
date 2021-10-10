@@ -7,7 +7,7 @@ namespace NG.ServiceWorker.CoreServices.SqliteDatabases.MainDatabase
     {
         public override int MinVersion { get { return 1; } }
 
-        public override int CurrentVersion { get { return 2; } }
+        public override int CurrentVersion { get { return 3; } }
 
         public static ISqliteConnection Connect()
         {
@@ -28,6 +28,13 @@ namespace NG.ServiceWorker.CoreServices.SqliteDatabases.MainDatabase
             connection.ExecuteSql("CREATE TABLE IF NOT EXISTS REF_ITEM (REF_TYPE text NOT NULL, LIST_KEY text NOT NULL, ITEM_KEY text NOT NULL, JSON_DATA text NOT NULL, PRIMARY KEY (REF_TYPE, LIST_KEY, ITEM_KEY));", null);
             connection.ExecuteSql("CREATE INDEX IDX_REF_ITEM_BY_LIST ON REF_ITEM (REF_TYPE, LIST_KEY);", null);
 
+            // Create entity table
+            connection.ExecuteSql("CREATE TABLE IF NOT EXISTS ENTITY (ENTITY_TYPE integer NOT NULL, ENTITY_ID text NOT NULL, PRIMARY KEY (ENTITY_TYPE, ENTITY_ID));", null);
+
+            // Create entity data table
+            connection.ExecuteSql("CREATE TABLE IF NOT EXISTS ENTITY_DATA (ENTITY_TYPE integer NOT NULL, ENTITY_ID text NOT NULL, DATA_TYPE text NOT NULL, DATA_KEY text NOT NULL, JSON_DATA text NOT NULL, PRIMARY KEY (ENTITY_TYPE, ENTITY_ID, DATA_TYPE, DATA_KEY));", null);
+            connection.ExecuteSql("CREATE INDEX IDX_ENTITY_DATA_BY_ENTITY ON ENTITY_DATA (ENTITY_TYPE, ENTITY_ID, DATA_TYPE);", null);
+
             // Return current version
             return this.CurrentVersion;
         }
@@ -39,6 +46,8 @@ namespace NG.ServiceWorker.CoreServices.SqliteDatabases.MainDatabase
             {
                 case 1:
                     return Upgrade1to2_AddRefListTables(connection);
+                case 2:
+                    return Upgrade2to3_AddentityTables(connection);
                 default:
                     throw new Exception($"No code to handle an upgrade from {curVersion}.");
             }
@@ -56,6 +65,20 @@ namespace NG.ServiceWorker.CoreServices.SqliteDatabases.MainDatabase
 
             // Return
             return 2;
+        }
+
+        /// <summary>Sets up the database.</summary>
+        private int Upgrade2to3_AddentityTables(ISqliteConnection connection)
+        {
+            // Create entity table
+            connection.ExecuteSql("CREATE TABLE IF NOT EXISTS ENTITY (ENTITY_TYPE integer NOT NULL, ENTITY_ID text NOT NULL, PRIMARY KEY (ENTITY_TYPE, ENTITY_ID));", null);
+
+            // Create entity data table
+            connection.ExecuteSql("CREATE TABLE IF NOT EXISTS ENTITY_DATA (ENTITY_TYPE integer NOT NULL, ENTITY_ID text NOT NULL, DATA_TYPE text NOT NULL, DATA_KEY text NOT NULL, JSON_DATA text NOT NULL, PRIMARY KEY (ENTITY_TYPE, ENTITY_ID, DATA_TYPE, DATA_KEY));", null);
+            connection.ExecuteSql("CREATE INDEX IDX_ENTITY_DATA_BY_ENTITY ON ENTITY_DATA (ENTITY_TYPE, ENTITY_ID, DATA_TYPE);", null);
+
+            // Return
+            return 3;
         }
     }
 }

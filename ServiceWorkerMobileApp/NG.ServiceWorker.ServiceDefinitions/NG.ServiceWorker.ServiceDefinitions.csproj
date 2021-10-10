@@ -21,6 +21,7 @@
     <Folder Include="ApiModel\RefData\" />
     <Folder Include="ServiceInterfaces\MainDataClasses\" />
     <Folder Include="DataModel\RefData\" />
+    <Folder Include="DataModel\Entities\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\services_config.xml" />
@@ -32,6 +33,7 @@
     <None Remove="ApiModel\RefData\" />
     <None Remove="ServiceInterfaces\MainDataClasses\" />
     <None Remove="DataModel\RefData\" />
+    <None Remove="DataModel\Entities\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\services_config.xml" />

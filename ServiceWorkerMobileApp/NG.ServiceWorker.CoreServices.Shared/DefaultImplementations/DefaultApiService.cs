@@ -62,6 +62,27 @@ namespace NG.ServiceWorker.CoreServices
             return GetApiJson<ApiModel.LastMod>(url);
         }
 
+        /// <summary>Geter for the form designs.</summary>
+        public ApiModel.FormDesignSummary GetFormDesigns()
+        {
+            string url = $"{API_DOMAIN}/anon?RequestType=GetRefDataItem&ItemType=Forms&ItemKey=Summary";
+            return GetApiJson<ApiModel.FormDesignSummary>(url);
+        }
+
+        /// <summary>Geter for a specific form.</summary>
+        public ApiModel.FormDesign GetFormDesign(string formKey)
+        {
+            string url = $"{API_DOMAIN}/anon?RequestType=GetRefDataItem&ItemType=Forms&ItemKey=Form-{formKey}";
+            return GetApiJson<ApiModel.FormDesign>(url);
+        }
+
+        /// <summary>Get a Forms.IO design.</summary>
+        public ApiModel.FormIOModel.FormDesign GetFormsIOModel(string url)
+        {
+            IHttpConnection connection = Services.HttpService.GetConnection(url);
+            return connection.GetJson<ApiModel.FormIOModel.FormDesign>(url);
+        }
+
         /// <summary>Get for some reference data.</summary>
         public ApiModel.RefData.JobStatus[] GetJobStatuses()
         {

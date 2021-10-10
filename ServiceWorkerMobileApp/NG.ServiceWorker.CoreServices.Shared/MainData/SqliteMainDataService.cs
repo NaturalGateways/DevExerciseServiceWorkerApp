@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NG.ServiceWorker.CoreServices.MainData
 {
@@ -12,6 +13,8 @@ namespace NG.ServiceWorker.CoreServices.MainData
 
         /// <summary>Mutex for the reference data read and write.</summary>
         private object m_refDataLock = new object();
+        /// <summary>Mutex for the entity data read and write.</summary>
+        private object m_entityLock = new object();
 
         /// <summary>Constructor.</summary>
         public SqliteMainDataService()
@@ -145,6 +148,93 @@ namespace NG.ServiceWorker.CoreServices.MainData
                         { "dateTime", dateTime }
                     };
                     m_connection.ExecuteSql(sql, bindVars);
+                }
+            }
+        }
+
+        /// <summary>Fetches entity data.</summary>
+        public DataType GetEntityDataItem<DataType>(EntityType entityType, string entityId, string itemKey)
+        {
+            string sql = "SELECT JSON_DATA FROM ENTITY_DATA WHERE ENTITY_TYPE=@entityType AND ENTITY_ID=@entityId AND DATA_TYPE=@dataType AND DATA_KEY=@dataKey LIMIT 1;";
+            Dictionary<string, object> bindVars = new Dictionary<string, object>
+            {
+                { "entityType", (int)entityType },
+                { "entityId", entityId },
+                { "dataType", typeof(DataType).FullName },
+                { "dataKey", itemKey ?? "NO_KEY" }
+            };
+            lock (m_entityLock)
+            {
+                DataType dataType = default(DataType);
+                m_connection.Query(sql, bindVars, (row) =>
+                {
+                    dataType = row.GetJson<DataType>();
+                });
+                return dataType;
+            }
+        }
+
+        /// <summary>Fetches all the entities, returning a data type for each entity.</summary>
+        public IEnumerable<DataType> GetEntitys<DataType>(EntityType entityType)
+        {
+            string sql = "SELECT JSON_DATA FROM ENTITY_DATA WHERE ENTITY_TYPE=@entityType AND DATA_TYPE=@dataType AND DATA_KEY='NO_KEY';";
+            Dictionary<string, object> bindVars = new Dictionary<string, object>
+            {
+                { "entityType", (int)entityType },
+                { "dataType", typeof(DataType).FullName }
+            };
+            lock (m_entityLock)
+            {
+                List<DataType> dataList = new List<DataType>();
+                m_connection.Query(sql, bindVars, (row) =>
+                {
+                    dataList.Add(row.GetJson<DataType>());
+                });
+                return dataList;
+            }
+        }
+
+        /// <summary>Sets an entity in the data.</summary>
+        public void SetEntity(EntityType entityType, string entityId, IEnumerable<MainDataEntityDataItem> items)
+        {
+            int entityTypeInt = (int)entityType;
+
+            lock (m_entityLock)
+            {
+                // Check exists
+                const string existsSql = "SELECT 1 FROM ENTITY WHERE ENTITY_TYPE=@entityType AND ENTITY_ID=@entityId LIMIT 1;";
+                Dictionary<string, object> existsBindVars = new Dictionary<string, object>
+                {
+                    { "entityType", entityTypeInt },
+                    { "entityId", entityId }
+                };
+                if (m_connection.QueryExists(existsSql, existsBindVars))
+                {
+                    throw new NotImplementedException();
+                }
+                else
+                {
+                    // Insert entity
+                    const string entitySql = "INSERT INTO ENTITY (ENTITY_TYPE, ENTITY_ID) VALUES (@entityType, @entityId);";
+                    m_connection.ExecuteSql(entitySql, existsBindVars);
+
+                    // Insert components
+                    if (items?.Any() ?? false)
+                    {
+                        const string entityDataSql = "INSERT INTO ENTITY_DATA (ENTITY_TYPE, ENTITY_ID, DATA_TYPE, DATA_KEY, JSON_DATA) VALUES (@entityType, @entityId, @dataType, @dataKey, @jsonData);";
+                        foreach (MainDataEntityDataItem item in items)
+                        {
+                            Dictionary<string, object> entityDataBindVars = new Dictionary<string, object>
+                            {
+                                { "entityType", entityTypeInt },
+                                { "entityId", entityId },
+                                { "dataType", item.DataType.FullName },
+                                { "dataKey", item.DataKey ?? "NO_KEY" },
+                                { "jsonData", Services.JsonService.SerialiseObject(item.DataObject) }
+                            };
+                            m_connection.ExecuteSql(entityDataSql, entityDataBindVars);
+                        }
+                    }
                 }
             }
         }

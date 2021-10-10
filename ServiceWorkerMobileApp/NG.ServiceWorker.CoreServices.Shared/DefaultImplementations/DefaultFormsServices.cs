@@ -6,6 +6,18 @@ namespace NG.ServiceWorker.CoreServices
     {
         #region IFormsService implementation
 
+        /// <summary>Creates a form from a design.</summary>
+        public SwForms.IFormDocument CreateFormFromDesign(DataModel.FormDesign formDesign)
+        {
+            return FormTypes.FormsIO.Converter.ApiModel2SwForms.CreateDocument(formDesign.FormsIO);
+        }
+
+        /// <summary>Creates the form instance from the form.</summary>
+        public object ConvertFormToFormInstance(SwForms.IFormDocument document)
+        {
+            return FormTypes.FormsIO.Converter.SwForms2DataModel.CreateData(document);
+        }
+
         /// <summary>Creates a job form.</summary>
         public SwForms.IFormDocument CreateJobForm(object formData)
         {

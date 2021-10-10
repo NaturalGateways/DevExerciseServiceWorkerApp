@@ -62,5 +62,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Sync\IDownloadStep.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sync\PeriodicDownloadSteps\JobStatusStep.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sync\PeriodicDownloadSteps\PaymentTypeStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sync\PeriodicDownloadSteps\FormsStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\JsonObjectJObject.cs" />
   </ItemGroup>
 </Project>
