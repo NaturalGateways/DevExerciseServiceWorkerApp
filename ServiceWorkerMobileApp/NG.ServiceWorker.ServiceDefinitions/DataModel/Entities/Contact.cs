@@ -8,6 +8,8 @@ namespace NG.ServiceWorker.DataModel
 
         public string FullName { get; set; }
 
+        public string BusinessName { get; set; }
+
         public string Address { get; set; }
     }
 
@@ -16,6 +18,8 @@ namespace NG.ServiceWorker.DataModel
         public string ContactId { get; set; }
 
         public string FullName { get; set; }
+
+        public string BusinessName { get; set; }
 
         public string Address { get; set; }
 

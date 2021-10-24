@@ -6,8 +6,10 @@ using Xamarin.Forms;
 
 namespace NG.ServiceWorker.ContactsUI
 {
-    public partial class ContactListPage : ContentPage
+    public partial class ContactListPage : ContentPage, UI.IModelListener
     {
+        #region Base
+
         private ContactListViewModel m_viewModel = null;
 
         public ContactListPage()
@@ -27,18 +29,25 @@ namespace NG.ServiceWorker.ContactsUI
                 try
                 {
                     // Get data
-                    IEnumerable<DataModel.ContactSummary> contactSummaries = Services.MainDataService.GetEntitys<DataModel.ContactSummary>(EntityType.Contact);
+                    UIModel.ContactListModel contactListModel = Services.UserInterfaceActiveDataService.ContactList;
 
-                    // Create items
-                    if (contactSummaries?.Any() ?? false)
+                    // Thread lock
+                    lock (contactListModel)
                     {
-                        foreach (DataModel.ContactSummary contactSummary in contactSummaries)
+                        // Create items
+                        if (contactListModel.ContactList?.Any() ?? false)
                         {
-                            m_viewModel.ItemViewModels.Add(new ContactListItemViewModel
+                            foreach (UIModel.ContactListContactModel contact in contactListModel.ContactList)
                             {
-                                ContactSummary = contactSummary
-                            });
+                                m_viewModel.ItemViewModels.Add(new ContactListItemViewModel(contact)
+                                {
+                                    XamarinView = this
+                                });
+                            }
                         }
+
+                        // Listen for further changes
+                        contactListModel.AddListener(this);
                     }
                 }
                 catch (Exception ex)
@@ -68,5 +77,48 @@ namespace NG.ServiceWorker.ContactsUI
             Page page = Services.UserInterfaceViewFactoryService.CreatePageFromViewModel<AddContactViewModel>(pageViewModel);
             this.Navigation.PushAsync(page);
         }
+
+        #endregion
+
+        #region UI.IModelListener
+
+        /// <summary>Called when the data has changed.</summary>
+        public void OnDataChanged(UI.Model model)
+        {
+            // Run on backgroud thread
+            Services.ThreadService.RunActionOnBackgroundThread("UpdateContactList", () =>
+            {
+                try
+                {
+                    // Get data
+                    UIModel.ContactListModel contactListModel = Services.UserInterfaceActiveDataService.ContactList;
+
+                    // Thread lock
+                    lock (contactListModel)
+                    {
+                        // Create items
+                        Dictionary<string, ContactListItemViewModel> oldItemsById = m_viewModel.ItemViewModels.ToDictionary(x => x.ContactSummary.ContactId);
+                        Dictionary<string, UIModel.ContactListContactModel> newSummariesById = contactListModel.ContactList.ToDictionary(x => x.ContactSummary.ContactId);
+                        foreach (ContactListItemViewModel doomedItem in oldItemsById.Where(x => newSummariesById.ContainsKey(x.Key) == false).Select(x => x.Value))
+                        {
+                            m_viewModel.ItemViewModels.Remove(doomedItem);
+                        }
+                        foreach (UIModel.ContactListContactModel newModel in newSummariesById.Where(x => oldItemsById.ContainsKey(x.Key) == false).Select(x => x.Value))
+                        {
+                            m_viewModel.ItemViewModels.Insert(0, new ContactListItemViewModel(newModel)
+                            {
+                                XamarinView = this
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Services.LogService.CreateLogger("ContactsUpdate").Error("Error updating contacts.", ex);
+                }
+            });
+        }
+
+        #endregion
     }
 }

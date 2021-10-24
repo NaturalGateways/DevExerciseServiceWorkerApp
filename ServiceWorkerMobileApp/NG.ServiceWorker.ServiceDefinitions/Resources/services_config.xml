@@ -35,6 +35,9 @@
     </service>
 
     <!-- UI services -->
+    <service type="NG.ServiceWorker.UIServices.IUserInterfaceActiveDataService">
+        <implementation type="NG.ServiceWorker.UIServices.CoreUIServices.DefaultUserInterfaceActiveDataService"/>
+    </service>
     <service type="NG.ServiceWorker.UIServices.IUserInterfaceViewFactoryService">
         <implementation type="NG.ServiceWorker.UIServices.CoreUIServices.DefaultUserInterfaceViewFactoryService"/>
     </service>

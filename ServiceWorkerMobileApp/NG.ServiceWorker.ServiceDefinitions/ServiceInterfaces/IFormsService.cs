@@ -15,5 +15,8 @@ namespace NG.ServiceWorker
 
         /// <summary>Creates the job data from a form.</summary>
         object ConvertJobFormToData(SwForms.IFormDocument document);
+
+        /// <summary>Creates a form for editing a contact.</summary>
+        SwForms.IFormDocument CreateContactEditForm(string contactId);
     }
 }

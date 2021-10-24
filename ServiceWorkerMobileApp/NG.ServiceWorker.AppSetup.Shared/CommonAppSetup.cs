@@ -25,6 +25,7 @@ namespace NG.ServiceWorker.AppSetup
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.FormsUI.InputPageUI.SegueMultiSelectionInputPageViewModel, UI.FormsUI.InputPageUI.SegueMultiSelectionInputPage>();
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.FormsUI.InputPageUI.SegueSelectionInputPageViewModel, UI.FormsUI.InputPageUI.SegueSelectionInputPage>();
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<ContactsUI.AddContactViewModel, ContactsUI.AddContactPage>();
+            Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<ContactsUI.EditContactViewModel, ContactsUI.EditContactPage>();
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<OpenJobUI.OpenJobViewModel, OpenJobUI.OpenJobPage>();
 
             // Start sync

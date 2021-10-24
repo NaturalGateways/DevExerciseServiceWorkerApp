@@ -36,6 +36,26 @@ namespace NG.ServiceWorker.CoreServices
             return FormTypes.FormsIO.Converter.SwForms2DataModel.CreateData(document);
         }
 
+        /// <summary>Creates a form for editing a contact.</summary>
+        public SwForms.IFormDocument CreateContactEditForm(string contactId)
+        {
+            // Load the contact
+            DataModel.Contact contact = Services.MainDataService.GetEntityDataItem<DataModel.Contact>(EntityType.Contact, contactId, null);
+            if (contact == null)
+            {
+                throw new Exception($"Cannot find contact '{contactId}',");
+            }
+
+            // Load contact form
+            DataModel.FormDesign formDesign = Services.MainDataService.GetRefListItem<DataModel.FormDesign>(null, "contact");
+            FormTypes.FormsIO.FormsIoDocument formDocument = FormTypes.FormsIO.Converter.ApiModel2SwForms.CreateDocument(formDesign.FormsIO);
+            if (contact.Data != null)
+            {
+                FormTypes.FormsIO.Converter.LoadDataModel.Load(contact.Data, formDocument);
+            }
+            return formDocument;
+        }
+
         #endregion
     }
 }

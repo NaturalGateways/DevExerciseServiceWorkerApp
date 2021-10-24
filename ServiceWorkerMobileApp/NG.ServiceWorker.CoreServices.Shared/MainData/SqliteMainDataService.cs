@@ -210,7 +210,39 @@ namespace NG.ServiceWorker.CoreServices.MainData
                 };
                 if (m_connection.QueryExists(existsSql, existsBindVars))
                 {
-                    throw new NotImplementedException();
+                    // Insert or update components
+                    if (items?.Any() ?? false)
+                    {
+                        const string itemCheckSql = "SELECT 1 FROM ENTITY_DATA WHERE ENTITY_TYPE=@entityType AND ENTITY_ID=@entityId AND DATA_TYPE=@dataType AND DATA_KEY=@dataKey LIMIT 1;";
+                        const string itemInsertSql = "INSERT INTO ENTITY_DATA (ENTITY_TYPE, ENTITY_ID, DATA_TYPE, DATA_KEY, JSON_DATA) VALUES (@entityType, @entityId, @dataType, @dataKey, @jsonData);";
+                        const string itemUpdateSql = "UPDATE ENTITY_DATA SET JSON_DATA=@jsonData WHERE ENTITY_TYPE=@entityType AND ENTITY_ID=@entityId AND DATA_TYPE=@dataType AND DATA_KEY=@dataKey;";
+                        foreach (MainDataEntityDataItem item in items)
+                        {
+                            Dictionary<string, object> itemCheckBindVars = new Dictionary<string, object>
+                            {
+                                { "entityType", entityTypeInt },
+                                { "entityId", entityId },
+                                { "dataType", item.DataType.FullName },
+                                { "dataKey", item.DataKey ?? "NO_KEY" }
+                            };
+                            Dictionary<string, object> itemSetBindVars = new Dictionary<string, object>
+                            {
+                                { "entityType", entityTypeInt },
+                                { "entityId", entityId },
+                                { "dataType", item.DataType.FullName },
+                                { "dataKey", item.DataKey ?? "NO_KEY" },
+                                { "jsonData", Services.JsonService.SerialiseObject(item.DataObject) }
+                            };
+                            if (m_connection.QueryExists(itemCheckSql, itemCheckBindVars))
+                            {
+                                m_connection.ExecuteSql(itemUpdateSql, itemSetBindVars);
+                            }
+                            else
+                            {
+                                m_connection.ExecuteSql(itemInsertSql, itemSetBindVars);
+                            }
+                        }
+                    }
                 }
                 else
                 {

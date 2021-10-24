@@ -2,12 +2,12 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="NG.ServiceWorker.ContactsUI.AddContactPage">
+    x:Class="NG.ServiceWorker.ContactsUI.EditContactPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="{Binding SaveImageSource}" Command="{Binding SaveCommand}"/>
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-        <ContentView Margin="8,0,8,8" Content="{Binding FormsView}"/>
+        <ContentView Grid.Row="3" Margin="8" Content="{Binding FormsView}"/>
     </ScrollView>
 </ContentPage>

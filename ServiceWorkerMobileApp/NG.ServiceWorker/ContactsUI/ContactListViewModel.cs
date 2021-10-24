@@ -8,10 +8,10 @@ namespace NG.ServiceWorker.ContactsUI
 {
     public class ContactListViewModel
     {
-        public ImageSource AddImageSource { get { return Services.SvgService.GetPngFile("icon_add", 35, null).AsImageSource; } }
+        public ImageSource AddImageSource { get { return Services.SvgService.GetPngFile("icon_add", 30, null).AsImageSource; } }
 
         public ICommand AddCommand { get; set; }
 
-        public ObservableCollection<object> ItemViewModels { get; private set; } = new ObservableCollection<object>();
+        public ObservableCollection<ContactListItemViewModel> ItemViewModels { get; private set; } = new ObservableCollection<ContactListItemViewModel>();
     }
 }

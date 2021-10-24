@@ -33,7 +33,7 @@ namespace NG.ServiceWorker.CoreServices.JsonObjects
         public static IJsonObject FromObject(object anonObject)
         {
 #if DEBUG
-            string objectType = anonObject.GetType().FullName;
+            string objectType = anonObject?.GetType()?.FullName;
 #endif
             Newtonsoft.Json.Linq.JToken jToken = anonObject as Newtonsoft.Json.Linq.JToken;
             if (jToken != null)

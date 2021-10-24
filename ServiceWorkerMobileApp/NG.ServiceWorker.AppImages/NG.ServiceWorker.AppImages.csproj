@@ -25,6 +25,9 @@
     <EmbeddedResource Include="..\Images\icon_add.svg">
       <Link>SvgFiles\icon_add.svg</Link>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\Images\icon_save.svg">
+      <Link>SvgFiles\icon_save.svg</Link>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Remove="svg-files.xml" />

@@ -6,16 +6,17 @@ using Xamarin.Forms;
 
 namespace NG.ServiceWorker.ContactsUI
 {
-    public partial class AddContactPage : ContentPage
+    public partial class EditContactPage : ContentPage
     {
-        private AddContactViewModel m_viewModel = null;
+        private EditContactViewModel m_viewModel = null;
 
-        public AddContactPage(AddContactViewModel viewModel)
+        public EditContactPage(EditContactViewModel viewModel)
         {
             InitializeComponent();
 
             m_viewModel = viewModel;
-            viewModel.SaveCommand = new Command(OnSaveContact);
+            m_viewModel.XamarinPage = this;
+            m_viewModel.SaveCommand = new Command(OnSaveContact);
         }
 
         private void OnSaveContact()
@@ -35,7 +36,7 @@ namespace NG.ServiceWorker.ContactsUI
             // Create contact data
             DataModel.Contact contact = new DataModel.Contact
             {
-                ContactId = Guid.NewGuid().ToString(),
+                ContactId = m_viewModel.Summary.ContactId,
                 FullName = string.Join(" ", fullNameComponents.Where(x => string.IsNullOrEmpty(x) == false)),
                 BusinessName = formInstanceJson.GetDictionaryObject("businessName").AsString,
                 Address = formInstanceJson.GetDictionaryObject("address").AsString,
@@ -55,13 +56,9 @@ namespace NG.ServiceWorker.ContactsUI
                 MainDataEntityDataItem.Create<DataModel.ContactSummary>(null, contactSummary)
             });
 
-            // Add to UI
-            UIModel.ContactListModel contactListModel = Services.UserInterfaceActiveDataService.ContactList;
-            lock (contactListModel)
-            {
-                contactListModel.ContactList.Add(new UIModel.ContactListContactModel(contactSummary));
-                contactListModel.OnDataChanged();
-            }
+            // Update contact UI
+            m_viewModel.ContactItem.ContactSummary = contactSummary;
+            m_viewModel.ContactItem.OnDataChanged();
 
             // Segue back
             this.Navigation.PopAsync();

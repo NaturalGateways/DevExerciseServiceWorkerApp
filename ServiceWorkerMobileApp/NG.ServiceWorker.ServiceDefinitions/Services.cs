@@ -28,6 +28,8 @@ namespace NG.ServiceWorker
 
         public static IThreadService ThreadService { get { return ServiceProvider.GetService<IThreadService>(); } }
 
+        public static UIServices.IUserInterfaceActiveDataService UserInterfaceActiveDataService { get { return ServiceProvider.GetService<UIServices.IUserInterfaceActiveDataService>(); } }
+
         public static UIServices.IUserInterfaceViewFactoryService UserInterfaceViewFactoryService { get { return ServiceProvider.GetService<UIServices.IUserInterfaceViewFactoryService>(); } }
     }
 }

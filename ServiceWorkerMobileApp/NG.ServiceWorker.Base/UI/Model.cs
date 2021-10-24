@@ -5,7 +5,7 @@ namespace NG.ServiceWorker.UI
 {
     public interface IModelListener
     {
-        /// <summary>Called when the data has cchanged.</summary>
+        /// <summary>Called when the data has changed.</summary>
         void OnDataChanged(Model model);
     }
 
