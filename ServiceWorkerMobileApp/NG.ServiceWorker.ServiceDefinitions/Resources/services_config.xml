@@ -32,6 +32,7 @@
     </service>
     <service type="NG.ServiceWorker.ISqliteService">
         <implementation type="NG.ServiceWorker.CoreServices.SqliteDatabases.DefaultSqliteService"/>
+        <implementation flag="UWP" type="NG.ServiceWorker.CoreServices.UwpServices.UwpSqliteService"/>
     </service>
 
     <!-- UI services -->

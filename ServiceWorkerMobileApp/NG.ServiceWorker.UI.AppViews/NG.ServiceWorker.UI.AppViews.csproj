@@ -23,6 +23,7 @@
     <Folder Include="FormsUI\FieldsUI\SelectionUI\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />
     <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj" />
     <ProjectReference Include="..\NG.ServiceWorker.UI.AppViewModels\NG.ServiceWorker.UI.AppViewModels.csproj" />
     <ProjectReference Include="..\NG.ServiceWorker.UI.AppControls\NG.ServiceWorker.UI.AppControls.csproj" />

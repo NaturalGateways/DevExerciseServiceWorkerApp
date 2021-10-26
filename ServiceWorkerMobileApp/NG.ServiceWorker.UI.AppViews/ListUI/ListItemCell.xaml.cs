@@ -15,6 +15,12 @@ namespace NG.ServiceWorker.UI.ListUI
         public ListItemCell()
         {
             InitializeComponent();
+
+            // For UWP, the height must be set manually to a constant
+            if (ServiceWorker.Platform.GetPlatform().HasFlag(ServiceWorker.Platform.PLATFORM_UWP))
+            {
+                this.BackgroundGrid.HeightRequest = 60;
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NG.ServiceWorker.CoreServices.UwpServices
 {
-    public class UwpFileSystemService
+    public class UwpFileSystemService : IFileSystemService
     {
         #region Base
 

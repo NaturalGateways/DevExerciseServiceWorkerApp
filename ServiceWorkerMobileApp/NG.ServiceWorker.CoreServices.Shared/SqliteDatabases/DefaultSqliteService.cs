@@ -12,6 +12,12 @@ namespace NG.ServiceWorker.CoreServices.SqliteDatabases
     {
         #region Base
 
+        /// <summary>Creates a connection string fomr a filepath, overridable to allow changed depending on platform.</summary>
+        protected virtual string CreateConnectionStringFromFilepath(string filepath)
+        {
+            return $"Data Source={filepath};Version=3;";
+        }
+
         #endregion
 
         #region ISqliteService implementation
@@ -19,7 +25,7 @@ namespace NG.ServiceWorker.CoreServices.SqliteDatabases
         /// <summary>Connects to the database at the given location.</summary>
         public ISqliteConnection ConnectToFilepath(string filepath)
         {
-            string connectionString = $"Data Source={filepath};Version=3;";
+            string connectionString = CreateConnectionStringFromFilepath(filepath);
             SqliteConnection conn = new SqliteConnection(connectionString);
             conn.Open();
 

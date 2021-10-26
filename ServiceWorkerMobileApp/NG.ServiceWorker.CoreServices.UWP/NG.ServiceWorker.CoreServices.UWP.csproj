@@ -122,11 +122,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UwpServices\UwpFileSystemService.cs" />
+    <Compile Include="UwpServices\UwpSqliteService.cs" />
     <EmbeddedResource Include="Properties\NG.ServiceWorker.CoreServices.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.Sqlite.Core">
-      <Version>5.0.7</Version>
+    <PackageReference Include="Microsoft.Data.Sqlite">
+      <Version>5.0.11</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
@@ -143,6 +144,10 @@
     <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj">
       <Project>{a91c3817-d1a8-4b98-9c84-3bd412b2e9a1}</Project>
       <Name>NG.ServiceWorker.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.FormsInterface\NG.ServiceWorker.FormsInterface.csproj">
+      <Project>{6be6f522-b5d3-47d3-8066-6ad12f3ac3d6}</Project>
+      <Name>NG.ServiceWorker.FormsInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj">
       <Project>{5674d163-f5fc-4626-9c4f-b2c37dba9cb4}</Project>
