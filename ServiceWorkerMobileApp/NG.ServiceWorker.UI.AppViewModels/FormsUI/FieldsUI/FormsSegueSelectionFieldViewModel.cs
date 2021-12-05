@@ -48,6 +48,8 @@ namespace NG.ServiceWorker.UI.FormsUI.FieldsUI
             OnPropertyChanged("ValueText");
             OnPropertyChanged("IsValueVisible");
             OnPropertyChanged("IsNoValueVisible");
+            OnPropertyChanged("ValidationIsShowing");
+            OnPropertyChanged("ValidationText");
         }
 
         #endregion
@@ -56,6 +58,9 @@ namespace NG.ServiceWorker.UI.FormsUI.FieldsUI
 
         /// <summary>The label text.</summary>
         public string LabelText { get { return this.FormField.Label; } }
+
+        /// <summary>Bound property.</summary>
+        public bool MandatoryIsShowing { get { if (this.FormField.Validation == null) { return false; } return this.FormField.Validation.ValidationFlags.HasFlag(SwForms.ValidationFlags.Mandatory); } }
 
         /// <summary>The value text.</summary>
         public string ValueText { get { return this.FormField.AnswerModel.Answer.DisplayValue; } }
@@ -66,6 +71,11 @@ namespace NG.ServiceWorker.UI.FormsUI.FieldsUI
         public bool IsValueVisible { get { return string.IsNullOrEmpty(this.ValueText) == false; } }
         /// <summary>Visibility property.</summary>
         public bool IsNoValueVisible { get { return string.IsNullOrEmpty(this.ValueText); } }
+
+        /// <summary>Bound property.</summary>
+        public bool ValidationIsShowing { get { return this.FormField.AnswerModel.Validation.IsFailed; } }
+        /// <summary>Bound property.</summary>
+        public string ValidationText { get { return this.FormField.AnswerModel.Validation.FieldMessage ?? string.Empty; } }
 
         #endregion
 

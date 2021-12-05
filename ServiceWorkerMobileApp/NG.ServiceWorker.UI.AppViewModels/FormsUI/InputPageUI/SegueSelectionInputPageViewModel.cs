@@ -33,8 +33,7 @@ namespace NG.ServiceWorker.UI.FormsUI.InputPageUI
         private async Task OnItemClicked(Xamarin.Forms.View view, SwForms.IAnswer answer)
         {
             // Set answer
-            this.FormField.AnswerModel.Answer = answer;
-            this.FormField.AnswerModel.OnDataChanged();
+            SwForms.FormsHelper.SetAnswer(this.FormField, answer);
 
             // Go back
             await view.Navigation.PopAsync();

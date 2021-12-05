@@ -19,7 +19,7 @@ namespace NG.ServiceWorker.UI.FormsUI.InputPageUI
             // Work out list of items
             foreach (SwForms.IAnswer answer in formField.SelectList.FlatLevel.SelectableAnswers)
             {
-                sectionViewModel.Add(new SegueMultiSelectionInputItemViewModel(formField.AnswerModel, answer));
+                sectionViewModel.Add(new SegueMultiSelectionInputItemViewModel(formField, answer));
             }
 
             // Add section

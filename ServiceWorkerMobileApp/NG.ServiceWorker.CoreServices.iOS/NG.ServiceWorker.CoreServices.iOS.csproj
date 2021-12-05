@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="iOSServices\iOSFileSystemService.cs" />
+    <Compile Include="iOSServices\iOSUserInterfaceDialogService.cs" />
+    <Compile Include="iOSServices\iOSThreadService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.ServiceDefinitions\NG.ServiceWorker.ServiceDefinitions.csproj">

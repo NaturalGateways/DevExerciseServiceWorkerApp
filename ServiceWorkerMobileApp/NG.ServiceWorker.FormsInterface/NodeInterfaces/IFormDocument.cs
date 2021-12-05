@@ -7,5 +7,8 @@ namespace NG.ServiceWorker.SwForms
     {
         /// <summary>The sections.</summary>
         IEnumerable<IFormSection> Sections { get; }
+
+        /// <summary>The validation of the document.</summary>
+        IValidation Validation { get; }
     }
 }

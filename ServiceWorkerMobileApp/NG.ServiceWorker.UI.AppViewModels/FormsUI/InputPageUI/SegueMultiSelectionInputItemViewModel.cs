@@ -7,6 +7,8 @@ namespace NG.ServiceWorker.UI.FormsUI.InputPageUI
 {
     public class SegueMultiSelectionInputItemViewModel : ListUI.ListItemViewModel
     {
+        /// <summary>The field being modified.</summary>
+        private SwForms.IFormField m_formField = null;
         /// <summary>The model for the current answer.</summary>
         private SwForms.AnswerModel m_answerModel = null;
 
@@ -24,9 +26,10 @@ namespace NG.ServiceWorker.UI.FormsUI.InputPageUI
         }
 
         /// <summary>Constructor.</summary>
-        public SegueMultiSelectionInputItemViewModel(SwForms.AnswerModel answerModel, SwForms.IAnswer selectableAnswer)
+        public SegueMultiSelectionInputItemViewModel(SwForms.IFormField formField, SwForms.IAnswer selectableAnswer)
         {
-            m_answerModel = answerModel;
+            m_formField = formField;
+            m_answerModel = formField.AnswerModel;
             m_selectableAnswer = selectableAnswer;
 
             this.MainText = selectableAnswer.DisplayValue;
@@ -43,13 +46,12 @@ namespace NG.ServiceWorker.UI.FormsUI.InputPageUI
             SwForms.Answers.MultiAnswer originalMultiAnswer = originalAnswer as SwForms.Answers.MultiAnswer;
             if (originalMultiAnswer?.HasCodeValue(m_selectableAnswer.CodeValue) ?? false)
             {
-                m_answerModel.Answer = originalMultiAnswer.MultiAnswerWithAnswerRemoved(m_selectableAnswer.CodeValue);
+                SwForms.FormsHelper.SetAnswer(m_formField, originalMultiAnswer.MultiAnswerWithAnswerRemoved(m_selectableAnswer.CodeValue));
             }
             else
             {
-                m_answerModel.Answer = new SwForms.Answers.MultiAnswer(originalAnswer, m_selectableAnswer);
+                SwForms.FormsHelper.SetAnswer(m_formField, new SwForms.Answers.MultiAnswer(originalAnswer, m_selectableAnswer));
             }
-            m_answerModel.OnDataChanged();
 
             // Refresh UI
             this.Selection = this.IsSelected ? ListUI.ListItemSelection.CheckedOn : ListUI.ListItemSelection.CheckedOff;

@@ -42,6 +42,9 @@
     <service type="NG.ServiceWorker.UIServices.IUserInterfaceViewFactoryService">
         <implementation type="NG.ServiceWorker.UIServices.CoreUIServices.DefaultUserInterfaceViewFactoryService"/>
     </service>
+    <service type="NG.ServiceWorker.UIServices.IUserInterfaceDialogService">
+        <implementation flag="iOS" type="NG.ServiceWorker.UIServices.CoreUIServices.iOSUserInterfaceDialogService"/>
+    </service>
 
     <!-- Platform specific services -->
     <service type="NG.ServiceWorker.IFileSystemService">
@@ -51,5 +54,6 @@
     </service>
     <service type="NG.ServiceWorker.IThreadService">
         <implementation type="NG.ServiceWorker.CoreServices.BaseThreadService"/>
+        <implementation flag="iOS" type="NG.ServiceWorker.CoreServices.iOSServices.iOSThreadService"/>
     </service>
 </services>

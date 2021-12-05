@@ -25,5 +25,8 @@ namespace NG.ServiceWorker.SwForms
 
         /// <summary>The select list if this is a selectable type.</summary>
         ISelectList SelectList { get; }
+
+        /// <summary>The validation of the field.</summary>
+        IValidation Validation { get; }
     }
 }

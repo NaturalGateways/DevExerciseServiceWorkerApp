@@ -20,9 +20,13 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <StackLayout Orientation="Vertical">
-        <Label Text="{Binding LabelText}" Style="{StaticResource TitleLabel}"/>
+        <StackLayout Orientation="Horizontal" Spacing="4">
+            <Label Text="{Binding LabelText}" Style="{StaticResource TitleLabel}"/>
+            <Label Text="*" Style="{StaticResource TitleLabel}" TextColor="{StaticResource Negative}" IsVisible="{Binding MandatoryIsShowing}"/>
+        </StackLayout>
         <Label Text="{Binding ValueText}" Style="{StaticResource ValueLabel}" IsVisible="{Binding IsValueVisible}"/>
         <Label Text="{Binding NoValuePlaceholderText}" Style="{StaticResource NoValueLabel}" IsVisible="{Binding IsNoValueVisible}"/>
         <Button Text="Edit" HorizontalOptions="Start" Command="{Binding EditCommand}"/>
+        <Label Text="{Binding ValidationText}" IsVisible="{Binding ValidationIsShowing}" TextColor="{StaticResource Negative}" HorizontalOptions="Fill"/>
     </StackLayout>
 </ContentView>

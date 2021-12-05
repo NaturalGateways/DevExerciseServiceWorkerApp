@@ -10,12 +10,14 @@
     <None Remove="Answers\" />
     <None Remove="SelectLists\" />
     <None Remove="Models\" />
+    <None Remove="Validation\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NodeInterfaces\" />
     <Folder Include="Answers\" />
     <Folder Include="SelectLists\" />
     <Folder Include="Models\" />
+    <Folder Include="Validation\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />

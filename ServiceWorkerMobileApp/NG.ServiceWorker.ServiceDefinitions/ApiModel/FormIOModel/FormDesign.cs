@@ -20,7 +20,7 @@ namespace NG.ServiceWorker.ApiModel.FormIOModel
 
         public string label { get; set; }
 
-        public bool multiple { get; set; }
+        public bool multiple { get; set; } = false;
 
         public bool disabled { get; set; }
 
@@ -30,6 +30,8 @@ namespace NG.ServiceWorker.ApiModel.FormIOModel
 
         public FormDesignComponentData data { get; set; }
 
+        public FormDesignComponentValidation validate { get; set; }
+
         public FormDesignComponentValue[] values { get; set; }
 
         public FormDesignComponent[] components { get; set; }
@@ -38,6 +40,11 @@ namespace NG.ServiceWorker.ApiModel.FormIOModel
     public class FormDesignComponentData
     {
         public FormDesignComponentValue[] values { get; set; }
+    }
+
+    public class FormDesignComponentValidation
+    {
+        public bool required { get; set; }
     }
 
     public class FormDesignComponentValue

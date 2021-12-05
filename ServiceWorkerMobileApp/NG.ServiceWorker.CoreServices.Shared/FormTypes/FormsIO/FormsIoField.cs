@@ -3,12 +3,15 @@ using System.Collections.Generic;
 
 namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
 {
-    public class FormsIoField : SwForms.IFormField
+    public class FormsIoField : SwForms.IFormField, SwForms.IValidation
     {
         #region Base
 
         /// <summary>The form design.</summary>
         public ApiModel.FormIOModel.FormDesignComponent FieldDesign { get; private set; }
+
+        /// <summary>The mandatory validation.</summary>
+        public SwForms.Validation.MandatoryValidation MandatoryValidation { get; private set; }
 
         /// <summary>Construtor.</summary>
         public FormsIoField(ApiModel.FormIOModel.FormDesignComponent fieldDesign)
@@ -34,7 +37,7 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
                         }
                         else
                         {
-                            this.InputType = SwForms.FormFieldInputType.SegueMultiSelection;
+                            this.InputType = fieldDesign.multiple ? SwForms.FormFieldInputType.SegueMultiSelection : SwForms.FormFieldInputType.SegueSingleSelection;
                             this.SelectList = new SelectLists.FormValuesSelectList(fieldDesign.data.values);
                         }
                         break;
@@ -58,6 +61,12 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
                         break;
                 }
             }
+
+            // Check validation
+            if (fieldDesign.validate?.required ?? false)
+            {
+                this.MandatoryValidation = new SwForms.Validation.MandatoryValidation(this);
+            }
         }
 
         #endregion
@@ -75,6 +84,50 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
 
         /// <summary>The select list if this is a selectable type.</summary>
         public SwForms.ISelectList SelectList { get; set; }
+
+        /// <summary>The validation of the field.</summary>
+        public SwForms.IValidation Validation { get { return this; } }
+
+        #endregion
+
+        #region SwForms.IValidation implementation
+
+        /// <summary>Getter for the validation flags.</summary>
+        public SwForms.ValidationFlags ValidationFlags
+        {
+            get
+            {
+                SwForms.ValidationFlags totalFlags = SwForms.ValidationFlags.None;
+                SwForms.Validation.MandatoryValidation mandatory = this.MandatoryValidation;
+                if (mandatory != null)
+                {
+                    totalFlags = totalFlags | SwForms.ValidationFlags.Mandatory;
+                }
+                return totalFlags;
+            }
+        }
+
+        /// <summary>Getter for the validation result without making any changes.</summary>
+        public SwForms.ValidationResult GetValidationResult()
+        {
+            // Check mandatory validation
+            SwForms.ValidationResult mandatory = this.MandatoryValidation?.GetValidationResult();
+            if (mandatory?.IsFailed ?? false)
+            {
+                return mandatory;
+            }
+            // Otherwise everything passed
+            return SwForms.ValidationResult.Passed;
+        }
+
+        /// <summary>Performs the validation.</summary>
+        public SwForms.ValidationResult Validate()
+        {
+            SwForms.ValidationResult result = GetValidationResult();
+            this.AnswerModel.Validation = result;
+            this.AnswerModel.OnDataChanged();
+            return result;
+        }
 
         #endregion
     }

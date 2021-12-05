@@ -6,5 +6,8 @@ namespace NG.ServiceWorker.SwForms
     {
         /// <summary>The answer.</summary>
         public IAnswer Answer { get; set; } = Answers.NullAnswer.Null;
+
+        /// <summary>The validation of the answer.</summary>
+        public ValidationResult Validation { get; set; } = ValidationResult.Passed;
     }
 }

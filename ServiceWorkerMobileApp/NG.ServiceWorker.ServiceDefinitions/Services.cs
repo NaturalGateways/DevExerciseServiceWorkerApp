@@ -31,5 +31,7 @@ namespace NG.ServiceWorker
         public static UIServices.IUserInterfaceActiveDataService UserInterfaceActiveDataService { get { return ServiceProvider.GetService<UIServices.IUserInterfaceActiveDataService>(); } }
 
         public static UIServices.IUserInterfaceViewFactoryService UserInterfaceViewFactoryService { get { return ServiceProvider.GetService<UIServices.IUserInterfaceViewFactoryService>(); } }
+
+        public static UIServices.IUserInterfaceDialogService UIDialogService { get { return ServiceProvider.GetService<UIServices.IUserInterfaceDialogService>(); } }
     }
 }

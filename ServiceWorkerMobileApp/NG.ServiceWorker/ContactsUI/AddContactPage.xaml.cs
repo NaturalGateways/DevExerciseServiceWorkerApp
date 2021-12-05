@@ -20,6 +20,14 @@ namespace NG.ServiceWorker.ContactsUI
 
         private void OnSaveContact()
         {
+            // Check validation
+            SwForms.ValidationResult validation = m_viewModel.FormsDocument.Validation?.Validate();
+            if (validation?.IsFailed ?? false)
+            {
+                Services.UIDialogService.ShowMessageAsync("Create Contact Error", validation.FailMessage).Wait();
+                return;
+            }
+
             // Save
             object formInstanceData = Services.FormsService.ConvertFormToFormInstance(m_viewModel.FormsDocument);
             IJsonObject formInstanceJson = Services.JsonService.JsonObjectFromAnonObject(formInstanceData);
