@@ -44,6 +44,7 @@
     </service>
     <service type="NG.ServiceWorker.UIServices.IUserInterfaceDialogService">
         <implementation flag="iOS" type="NG.ServiceWorker.UIServices.CoreUIServices.iOSUserInterfaceDialogService"/>
+        <implementation flag="Android" type="NG.ServiceWorker.UIServices.CoreUIServices.AndroidUserInterfaceDialogService"/>
     </service>
 
     <!-- Platform specific services -->
@@ -53,7 +54,7 @@
         <implementation flag="UWP" type="NG.ServiceWorker.CoreServices.UwpServices.UwpFileSystemService"/>
     </service>
     <service type="NG.ServiceWorker.IThreadService">
-        <implementation type="NG.ServiceWorker.CoreServices.BaseThreadService"/>
         <implementation flag="iOS" type="NG.ServiceWorker.CoreServices.iOSServices.iOSThreadService"/>
+        <implementation flag="Android" type="NG.ServiceWorker.CoreServices.AndroidServices.AndroidThreadService"/>
     </service>
 </services>

@@ -3670,6 +3670,7 @@ namespace NG.ServiceWorker.Droid
 			global::NG.ServiceWorker.CoreServices.Resource.Xml.standalone_badge_gravity_bottom_start = global::NG.ServiceWorker.Droid.Resource.Xml.standalone_badge_gravity_bottom_start;
 			global::NG.ServiceWorker.CoreServices.Resource.Xml.standalone_badge_gravity_top_start = global::NG.ServiceWorker.Droid.Resource.Xml.standalone_badge_gravity_top_start;
 			global::NG.ServiceWorker.CoreServices.Resource.Xml.standalone_badge_offset = global::NG.ServiceWorker.Droid.Resource.Xml.standalone_badge_offset;
+			global::NG.ServiceWorker.CoreServices.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::NG.ServiceWorker.Droid.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::NG.ServiceWorker.Droid.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::NG.ServiceWorker.Droid.Resource.Attribute.font;
 			global::Xamarin.Essentials.Resource.Attribute.fontProviderAuthority = global::NG.ServiceWorker.Droid.Resource.Attribute.fontProviderAuthority;

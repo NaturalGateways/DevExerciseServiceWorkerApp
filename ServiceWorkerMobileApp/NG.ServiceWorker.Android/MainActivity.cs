@@ -10,7 +10,7 @@ namespace NG.ServiceWorker.Droid
     [Activity(Label = "NG.ServiceWorker", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        private static object s_platformSingleton = null; // Will be platform object when platform class is written
+        private static AppSetup.AndroidSetup.AndroidPlatform s_platformSingleton = null;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -19,13 +19,14 @@ namespace NG.ServiceWorker.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            // Startup
+            // Startup or resume
             if (s_platformSingleton == null)
             {
-                // App setup
-                new AppSetup.AndroidSetup.AndroidPlatform();
-                AppSetup.CommonAppSetup.CommonStartup();
-                s_platformSingleton = new object();
+                s_platformSingleton = AppSetup.AndroidSetup.AndroidAppStartup.OnStartup(this);
+            }
+            else
+            {
+                AppSetup.AndroidSetup.AndroidAppStartup.OnResume(s_platformSingleton, this);
             }
 
             // Load application
