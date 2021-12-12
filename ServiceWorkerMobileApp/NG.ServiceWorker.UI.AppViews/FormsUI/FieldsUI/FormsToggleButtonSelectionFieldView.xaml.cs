@@ -14,7 +14,7 @@ namespace NG.ServiceWorker.UI.FormsUI.FieldsUI
 
             foreach (SwForms.IAnswer selectableAnswer in viewModel.FormField.SelectList.FlatLevel.SelectableAnswers)
             {
-                SelectionUI.ToggleButtonViewModel itemViewModel = new SelectionUI.ToggleButtonViewModel(viewModel.FormField.AnswerModel, selectableAnswer);
+                SelectionUI.ToggleButtonViewModel itemViewModel = new SelectionUI.ToggleButtonViewModel(viewModel.FormField, viewModel.FormField.AnswerModel, selectableAnswer);
                 m_itemViewModelList.Add(itemViewModel);
                 this.ToggleButtonStack.Children.Add(new SelectionUI.ToggleButton(itemViewModel));
             }

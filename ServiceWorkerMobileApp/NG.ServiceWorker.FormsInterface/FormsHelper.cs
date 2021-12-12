@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NG.ServiceWorker.SwForms
 {
@@ -16,6 +17,15 @@ namespace NG.ServiceWorker.SwForms
             if (validation != null)
             {
                 field.AnswerModel.Validation = validation.GetValidationResult();
+            }
+
+            // Do rule triggering
+            if (field.RuleCauses?.Any() ?? false)
+            {
+                foreach (IRule ruleCause in field.RuleCauses)
+                {
+                    ruleCause.OnCauseChanged();
+                }
             }
 
             // Update listeners

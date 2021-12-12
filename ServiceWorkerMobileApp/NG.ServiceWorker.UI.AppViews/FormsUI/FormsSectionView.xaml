@@ -2,13 +2,14 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="NG.ServiceWorker.UI.FormsUI.FormsSectionView">
+    x:Class="NG.ServiceWorker.UI.FormsUI.FormsSectionView"
+    IsVisible="{Binding IsVisible}">
     <ContentView.Resources>
         <Style x:Key="TitleLabel" TargetType="Label">
             <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryLight}, Dark={StaticResource PrimaryDark}}"/>
         </Style>
     </ContentView.Resources>
-    <StackLayout Orientation="Vertical">
+    <StackLayout Orientation="Vertical" IsVisible="{Binding IsVisible}">
         <Label Text="{Binding TitleText}" Style="{StaticResource TitleLabel}"/>
         <StackLayout x:Name="FieldStack" Orientation="Vertical"/>
     </StackLayout>

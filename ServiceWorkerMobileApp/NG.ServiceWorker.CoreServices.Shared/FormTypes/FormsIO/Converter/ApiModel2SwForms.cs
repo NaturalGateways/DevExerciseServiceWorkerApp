@@ -1,10 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO.Converter
 {
-    public static class ApiModel2SwForms
+    public class ApiModel2SwForms
     {
+        /// <summary>Static facade.</summary>
         public static FormsIoDocument CreateDocument(ApiModel.FormIOModel.FormDesign formDesign)
+        {
+            ApiModel2SwForms converter = new ApiModel2SwForms();
+            return converter.CreateDocumentFromApiModel(formDesign);
+        }
+
+        /// <summary>The list of conditional rules created.</summary>
+        private List<Rules.ConditionalRule> m_conditionalRuleList = new List<Rules.ConditionalRule>();
+
+        private FormsIoDocument CreateDocumentFromApiModel(ApiModel.FormIOModel.FormDesign formDesign)
         {
             // Create document
             FormsIoDocument doc = new FormsIoDocument(formDesign);
@@ -18,11 +29,27 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO.Converter
                 }
             }
 
+            // Initialise rules
+            foreach (Rules.ConditionalRule conditionalRule in m_conditionalRuleList)
+            {
+                foreach (Rules.ConditionalRule.CauseReference fieldRef in conditionalRule.CauseReferenceList)
+                {
+                    if (doc.FieldsByKey.ContainsKey(fieldRef.Key))
+                    {
+                        fieldRef.Field = doc.FieldsByKey[fieldRef.Key];
+                        if (fieldRef.Field.CauseRuleList == null)
+                            fieldRef.Field.CauseRuleList = new List<SwForms.IRule>();
+                        fieldRef.Field.CauseRuleList.Add(conditionalRule);
+                    }
+                }
+                conditionalRule.Initialise();
+            }
+
             // Return
             return doc;
         }
 
-        private static FormsIoSection CreateSection(FormsIoDocument doc, ApiModel.FormIOModel.FormDesignComponent sectionComponent)
+        private FormsIoSection CreateSection(FormsIoDocument doc, ApiModel.FormIOModel.FormDesignComponent sectionComponent)
         {
             // Create document
             FormsIoSection sectionNode = new FormsIoSection(sectionComponent);
@@ -41,11 +68,18 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO.Converter
                 }
             }
 
+            // Read rules
+            if (sectionComponent.conditional?.json != null)
+            {
+                Rules.ConditionalRule conditionalRule = new Rules.ConditionalRule(sectionNode, sectionComponent.conditional.json);
+                m_conditionalRuleList.Add(conditionalRule);
+            }
+
             // Return
             return sectionNode;
         }
 
-        private static FormsIoField CreateField(ApiModel.FormIOModel.FormDesignComponent fieldComponent)
+        private FormsIoField CreateField(ApiModel.FormIOModel.FormDesignComponent fieldComponent)
         {
             // Create document
             FormsIoField fieldNode = new FormsIoField(fieldComponent);

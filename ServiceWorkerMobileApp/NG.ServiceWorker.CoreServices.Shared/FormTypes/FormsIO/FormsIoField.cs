@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
 {
-    public class FormsIoField : SwForms.IFormField, SwForms.IValidation
+    public class FormsIoField : SwForms.IFormField, SwForms.IValidation, Rules.IRuleEffect
     {
         #region Base
 
@@ -12,6 +12,9 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
 
         /// <summary>The mandatory validation.</summary>
         public SwForms.Validation.MandatoryValidation MandatoryValidation { get; private set; }
+
+        /// <summary>The list of cause rules.</summary>
+        public List<SwForms.IRule> CauseRuleList = null;
 
         /// <summary>Construtor.</summary>
         public FormsIoField(ApiModel.FormIOModel.FormDesignComponent fieldDesign)
@@ -88,6 +91,9 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
         /// <summary>The validation of the field.</summary>
         public SwForms.IValidation Validation { get { return this; } }
 
+        /// <summary>The rule causes.</summary>
+        public IEnumerable<SwForms.IRule> RuleCauses { get { return CauseRuleList; } }
+
         #endregion
 
         #region SwForms.IValidation implementation
@@ -128,6 +134,16 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
             this.AnswerModel.OnDataChanged();
             return result;
         }
+
+        #endregion
+
+        #region Rules.IRuleEffect implementation
+
+        /// <summary>Proprty for whether the rule target is visible.</summary>
+        public bool RuleEffectIsVisible { get; set; }
+
+        /// <summary>Proprty for the effect model.</summary>
+        public UI.Model EffectModel { get { return this.AnswerModel; } }
 
         #endregion
     }

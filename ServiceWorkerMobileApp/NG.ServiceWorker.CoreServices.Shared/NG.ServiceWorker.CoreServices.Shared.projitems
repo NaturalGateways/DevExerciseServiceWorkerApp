@@ -25,6 +25,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\" />
     <Folder Include="$(MSBuildThisFileDirectory)Sync\" />
     <Folder Include="$(MSBuildThisFileDirectory)Sync\PeriodicDownloadSteps\" />
+    <Folder Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Rules\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultApiService.cs" />
@@ -65,5 +66,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Sync\PeriodicDownloadSteps\FormsStep.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\JsonObjects\JsonObjectJObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UserInterfaceImplementations\DefaultUserInterfaceActiveDataService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Rules\ConditionalRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Rules\IRuleEffect.cs" />
   </ItemGroup>
 </Project>

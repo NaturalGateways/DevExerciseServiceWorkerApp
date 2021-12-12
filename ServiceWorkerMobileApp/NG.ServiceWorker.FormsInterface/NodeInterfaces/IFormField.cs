@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace NG.ServiceWorker.SwForms
 {
@@ -28,5 +29,8 @@ namespace NG.ServiceWorker.SwForms
 
         /// <summary>The validation of the field.</summary>
         IValidation Validation { get; }
+
+        /// <summary>The rule causes.</summary>
+        IEnumerable<IRule> RuleCauses { get; }
     }
 }

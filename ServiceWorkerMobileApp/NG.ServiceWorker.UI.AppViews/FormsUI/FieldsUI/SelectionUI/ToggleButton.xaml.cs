@@ -8,6 +8,9 @@ namespace NG.ServiceWorker.UI.FormsUI.FieldsUI.SelectionUI
 {
     public class ToggleButtonViewModel : ViewModel
     {
+        /// <summary>The field.</summary>
+        private SwForms.IFormField m_field = null;
+
         /// <summary>The answer model.</summary>
         private SwForms.AnswerModel m_answerModel = null;
 
@@ -15,8 +18,9 @@ namespace NG.ServiceWorker.UI.FormsUI.FieldsUI.SelectionUI
         public SwForms.IAnswer Answer { get; private set; }
 
         /// <summary>constructor.</summary>
-        public ToggleButtonViewModel(SwForms.AnswerModel answerModel, SwForms.IAnswer answer)
+        public ToggleButtonViewModel(SwForms.IFormField field, SwForms.AnswerModel answerModel, SwForms.IAnswer answer)
         {
+            m_field = field;
             m_answerModel = answerModel;
             this.Answer = answer;
         }
@@ -29,8 +33,7 @@ namespace NG.ServiceWorker.UI.FormsUI.FieldsUI.SelectionUI
 
         private void OnClicked()
         {
-            m_answerModel.Answer = this.Answer;
-            m_answerModel.OnDataChanged();
+            SwForms.FormsHelper.SetAnswer(m_field, this.Answer);
         }
 
         public string ButtonText { get { return this.Answer.DisplayValue; } }

@@ -32,6 +32,8 @@ namespace NG.ServiceWorker.ApiModel.FormIOModel
 
         public FormDesignComponentValidation validate { get; set; }
 
+        public FormDesignComponentConditional conditional { get; set; }
+
         public FormDesignComponentValue[] values { get; set; }
 
         public FormDesignComponent[] components { get; set; }
@@ -45,6 +47,11 @@ namespace NG.ServiceWorker.ApiModel.FormIOModel
     public class FormDesignComponentValidation
     {
         public bool required { get; set; }
+    }
+
+    public class FormDesignComponentConditional
+    {
+        public object json { get; set; }
     }
 
     public class FormDesignComponentValue
