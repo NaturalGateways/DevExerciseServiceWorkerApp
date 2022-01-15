@@ -2,6 +2,7 @@
 
 <svgs>
     <svg id="icon_add" resId="NG.ServiceWorker.AppImages.SvgFiles.icon_add.svg" width="200" height="200"/>
+    <svg id="icon_cross" resId="NG.ServiceWorker.AppImages.SvgFiles.icon_cross.svg" width="200" height="200"/>
     <svg id="icon_profilepic_placeholder" resId="NG.ServiceWorker.AppImages.SvgFiles.icon_profilepic_placeholder.svg" width="200" height="200"/>
     <svg id="icon_save" resId="NG.ServiceWorker.AppImages.SvgFiles.icon_save.svg" width="200" height="200"/>
     <svg id="ui_list_disclosure" resId="NG.ServiceWorker.AppImages.SvgFiles.ui_list_disclosure.svg" width="120" height="200"/>

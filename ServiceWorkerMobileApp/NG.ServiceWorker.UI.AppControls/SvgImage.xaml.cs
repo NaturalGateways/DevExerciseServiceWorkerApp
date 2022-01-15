@@ -6,17 +6,20 @@ namespace NG.ServiceWorker.UI
 {
     public partial class SvgImage : ContentView
     {
-        public string SvgName { get; set; }
+        /// <summary>A bindable property.</summary>
+        public static readonly BindableProperty SvgNameProperty = BindableProperty.Create("SvgName", typeof(string), typeof(SvgImage), defaultBindingMode: BindingMode.TwoWay);
+        /// <summary>A bindable property.</summary>
+        public string SvgName { get { return (string)GetValue(SvgNameProperty); } set { SetValue(SvgNameProperty, value); } }
 
-        public static readonly BindableProperty RenderColourProperty = BindableProperty.Create(nameof(RenderColour), typeof(Color), typeof(SvgImage), new Color(0.0, 0.0, 0.0, 0.0), BindingMode.TwoWay, null, (bindObj, oldvalue, newValue) =>
+        public static readonly BindableProperty RenderColourProperty = BindableProperty.Create(nameof(RenderColour), typeof(Color), typeof(SvgImage), new Color(0.0, 0.0, 0.0, 0.0), BindingMode.OneWay, null, (bindObj, oldvalue, newValue) =>
         {
             SvgImage thisObject = (SvgImage)bindObj;
             thisObject.InvalidateLayout();
         });
         public Color RenderColour
         {
-            get => (Color)GetValue(RenderColourProperty);
-            set => SetValue(RenderColourProperty, value);
+            get { return (Color)GetValue(RenderColourProperty); }
+            set { SetValue(RenderColourProperty, value); }
         }
 
         public uint? RenderColourUint
@@ -42,8 +45,16 @@ namespace NG.ServiceWorker.UI
 
         protected override void LayoutChildren(double x, double y, double width, double height)
         {
+            // Check svg name
+            string svgName = this.SvgName;
+            if (string.IsNullOrEmpty(svgName))
+            {
+                return;
+            }
+
+            // Get SVG aspect
             ISvgService svgService = Services.SvgService;
-            double svgWoverH = svgService.GetSvgAspectRatioWoverH(this.SvgName);
+            double svgWoverH = svgService.GetSvgAspectRatioWoverH(svgName);
             double layoutWoverH = width / height;
 
             // Work out bounds
@@ -66,7 +77,7 @@ namespace NG.ServiceWorker.UI
 
             // Get image
             double retinaScale = ServiceWorker.Platform.GetPlatform().RetinaScale;
-            ImageSource pngImage = svgService.GetPngFile(this.SvgName, (int)(retinaScale * imageWidth), this.RenderColourUint).AsImageSource;
+            ImageSource pngImage = svgService.GetPngFile(svgName, (int)(retinaScale * imageWidth), this.RenderColourUint).AsImageSource;
             this.ImageControl.Source = pngImage;
 
             // Layout

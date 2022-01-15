@@ -11,5 +11,9 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AndroidPlatform.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AndroidAppStartup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\InvisibleButtonRenderer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Renderers\" />
   </ItemGroup>
 </Project>

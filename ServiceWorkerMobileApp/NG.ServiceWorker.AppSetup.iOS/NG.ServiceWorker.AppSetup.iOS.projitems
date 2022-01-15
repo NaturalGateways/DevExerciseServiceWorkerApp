@@ -10,5 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)iOSPlatform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\InvisibleButtonRenderer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Renderers\" />
   </ItemGroup>
 </Project>

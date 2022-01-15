@@ -166,6 +166,10 @@
       <Project>{9E1C5276-94BF-47CE-BFB8-217F25D1854E}</Project>
       <Name>NG.ServiceWorker.UI.AppViewModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.UI.AppControls\NG.ServiceWorker.UI.AppControls.csproj">
+      <Project>{D10F9B90-F1D4-413D-83F9-E8022AC6A45F}</Project>
+      <Name>NG.ServiceWorker.UI.AppControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\icon_maintabs_jobs.imageset\" />

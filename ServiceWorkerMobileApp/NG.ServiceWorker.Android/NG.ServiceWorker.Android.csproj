@@ -110,6 +110,9 @@
       <Project>{9E1C5276-94BF-47CE-BFB8-217F25D1854E}</Project>
       <Name>NG.ServiceWorker.UI.AppViewModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NG.ServiceWorker.UI.AppControls\NG.ServiceWorker.UI.AppControls.csproj">
+      <Name>NG.ServiceWorker.UI.AppControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\NG.ServiceWorker.AppSetup.Android\NG.ServiceWorker.AppSetup.Android.projitems" Label="Shared" Condition="Exists('..\NG.ServiceWorker.AppSetup.Android\NG.ServiceWorker.AppSetup.Android.projitems')" />
   <Import Project="..\NG.ServiceWorker.AppSetup.Shared\NG.ServiceWorker.AppSetup.Shared.projitems" Label="Shared" Condition="Exists('..\NG.ServiceWorker.AppSetup.Shared\NG.ServiceWorker.AppSetup.Shared.projitems')" />

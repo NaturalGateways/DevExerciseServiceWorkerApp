@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -19,7 +20,7 @@ namespace NG.ServiceWorker.ContactsUI
             // Create view model
             m_viewModel = new ContactListViewModel
             {
-                AddCommand = new Command(OnAddContact)
+                AddCommand = new Command(async () => { await OnAddContactAsync(); })
             };
             this.BindingContext = m_viewModel;
 
@@ -57,7 +58,7 @@ namespace NG.ServiceWorker.ContactsUI
             });
         }
 
-        private void OnAddContact()
+        private async Task OnAddContactAsync()
         {
             // Load contact form
             DataModel.FormDesign createContactFormDesign = Services.MainDataService.GetRefListItem<DataModel.FormDesign>(null, "contact");
@@ -75,7 +76,7 @@ namespace NG.ServiceWorker.ContactsUI
                 FormsView = formsView
             };
             Page page = Services.UserInterfaceViewFactoryService.CreatePageFromViewModel<AddContactViewModel>(pageViewModel);
-            this.Navigation.PushAsync(page);
+            await this.Navigation.PushAsync(page);
         }
 
         #endregion
