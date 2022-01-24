@@ -2,7 +2,7 @@
 
 ![Platform Badge](https://img.shields.io/badge/platform-iOS%20%7C%20Android%20%7C%20UWP-informational) ![Language Badge](https://img.shields.io/badge/lang-%20C%23-informational) [![License Badge](https://img.shields.io/github/license/NaturalGateways/DevExerciseServiceWorkerApp)](https://github.com/NaturalGateways/DevExerciseServiceWorkerApp/blob/main/LICENSE) ![Stability Badge](https://img.shields.io/badge/stability-experimental-critical)
 
-[![Twitch Badge](https://img.shields.io/badge/streams-Twitch_@SteveMooreNG-blueviolet)](https://www.twitch.tv/stevemooreng) [![Twitter Badge](https://img.shields.io/badge/notifications-Twitter_@SteveMooreNG-blue)](https://twitter.com/SteveMooreNG) [![Discord Badge](https://img.shields.io/badge/chat-Discord_invite_URL-blueviolet)](https://discord.gg/zJ49AUQmED)
+[![Twitch Badge](https://img.shields.io/badge/streams-Twitch_@SteveMooreAU-blueviolet)](https://www.twitch.tv/stevemooreau) [![Twitter Badge](https://img.shields.io/badge/notifications-Twitter_@SteveMooreAU-blue)](https://twitter.com/SteveMooreAU) [![Discord Badge](https://img.shields.io/badge/chat-Discord_invite_URL-blueviolet)](https://discord.gg/zJ49AUQmED)
 
 [![Discord Badge](https://img.shields.io/badge/stream_archive-twitch.naturalgateways.com-blue)](https://twitch.naturalgateways.com)
 
