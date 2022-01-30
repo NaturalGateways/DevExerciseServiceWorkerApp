@@ -30,6 +30,9 @@ namespace NG.ServiceWorker.CoreServices.FormTypes.FormsIO
             {
                 switch (this.FieldDesign.type)
                 {
+                    case "address":
+                        this.InputType = SwForms.FormFieldInputType.Address;
+                        break;
                     case "datetime":
                         this.InputType = SwForms.FormFieldInputType.DateTime;
                         break;

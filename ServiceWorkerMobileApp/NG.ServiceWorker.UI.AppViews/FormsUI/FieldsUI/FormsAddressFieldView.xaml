@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:common="clr-namespace:NG.ServiceWorker.UI;assembly=NG.ServiceWorker.UI.AppControls"
+    xmlns:addressui="clr-namespace:NG.ServiceWorker.UI.FormsUI.FieldsUI.AddressUI"
+    x:Class="NG.ServiceWorker.UI.FormsUI.FieldsUI.FormsAddressFieldView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TitleLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryLight}, Dark={StaticResource PrimaryDark}}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal" Spacing="4">
+            <Label Text="{Binding LabelText}" Style="{StaticResource TitleLabel}"/>
+            <Label Text="*" Style="{StaticResource TitleLabel}" TextColor="{StaticResource Negative}" IsVisible="{Binding MandatoryIsShowing}"/>
+        </StackLayout>
+        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="4">
+            <Entry Grid.Column="0" Text="{Binding ValueText}" HorizontalOptions="Fill" IsEnabled="{Binding ValueIsEnabled}" ReturnCommand="{Binding SearchCommand}"/>
+            <common:SvgButton Grid.Column="1" SvgName="icon_cross" RenderColour="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+        </Grid>
+        <Grid BackgroundColor="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}" IsVisible="{Binding GeocoderSuggestionsAreShowing}">
+            <StackLayout Orientation="Vertical" Spacing="1" Margin="1">
+                <addressui:FormsAddressSuggestionControl IsVisible="{Binding GeocoderSuggestion1IsShowing}"/>
+                <addressui:FormsAddressSuggestionControl IsVisible="{Binding GeocoderSuggestion2IsShowing}"/>
+                <addressui:FormsAddressSuggestionControl IsVisible="{Binding GeocoderSuggestion3IsShowing}"/>
+                <addressui:FormsAddressSuggestionControl IsVisible="{Binding GeocoderSuggestion4IsShowing}"/>
+                <addressui:FormsAddressSuggestionControl IsVisible="{Binding GeocoderSuggestion5IsShowing}"/>
+            </StackLayout>
+        </Grid>
+        <Label Text="{Binding GeocoderErrorText}" IsVisible="{Binding GeocoderErrorIsShowing}" TextColor="{StaticResource Negative}" HorizontalOptions="Fill"/>
+        <Label Text="{Binding ValidationText}" IsVisible="{Binding ValidationIsShowing}" TextColor="{StaticResource Negative}" HorizontalOptions="Fill"/>
+    </StackLayout>
+</ContentView>

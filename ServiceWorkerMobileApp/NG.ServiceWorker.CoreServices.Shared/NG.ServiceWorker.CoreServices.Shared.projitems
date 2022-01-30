@@ -26,6 +26,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)Sync\" />
     <Folder Include="$(MSBuildThisFileDirectory)Sync\PeriodicDownloadSteps\" />
     <Folder Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Rules\" />
+    <Folder Include="$(MSBuildThisFileDirectory)GeocoderImplementations\" />
+    <Folder Include="$(MSBuildThisFileDirectory)GeocoderImplementations\Essentials\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultApiService.cs" />
@@ -68,5 +70,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)UserInterfaceImplementations\DefaultUserInterfaceActiveDataService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Rules\ConditionalRule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Rules\IRuleEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GeocoderImplementations\Essentials\EssentialsGeocoderService.cs" />
   </ItemGroup>
 </Project>

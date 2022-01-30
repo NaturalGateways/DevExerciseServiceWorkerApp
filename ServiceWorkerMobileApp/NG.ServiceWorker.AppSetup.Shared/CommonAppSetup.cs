@@ -17,6 +17,7 @@ namespace NG.ServiceWorker.AppSetup
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.ListUI.ListViewModel, UI.ListUI.ListView>();
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.FormsUI.FormsDocumentViewModel, UI.FormsUI.FormsDocumentView>();
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.FormsUI.FormsSectionViewModel, UI.FormsUI.FormsSectionView>();
+            Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.FormsUI.FieldsUI.FormsAddressFieldViewModel, UI.FormsUI.FieldsUI.FormsAddressFieldView>();
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.FormsUI.FieldsUI.FormsDateTimeFieldViewModel, UI.FormsUI.FieldsUI.FormsDateTimeFieldView>();
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.FormsUI.FieldsUI.FormsReadOnlyFieldViewModel, UI.FormsUI.FieldsUI.FormsReadOnlyFieldView>();
             Services.UserInterfaceViewFactoryService.RegisterViewModelViewMapping<UI.FormsUI.FieldsUI.FormsSegueSelectionFieldViewModel, UI.FormsUI.FieldsUI.FormsSegueSelectionFieldView>();

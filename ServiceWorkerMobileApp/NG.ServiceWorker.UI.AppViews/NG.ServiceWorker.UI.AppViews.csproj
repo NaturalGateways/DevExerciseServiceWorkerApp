@@ -14,6 +14,7 @@
     <None Remove="FormsUI\FieldsUI\" />
     <None Remove="FormsUI\InputPageUI\" />
     <None Remove="FormsUI\FieldsUI\SelectionUI\" />
+    <None Remove="FormsUI\FieldsUI\AdressUI\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ListUI\" />
@@ -21,6 +22,7 @@
     <Folder Include="FormsUI\FieldsUI\" />
     <Folder Include="FormsUI\InputPageUI\" />
     <Folder Include="FormsUI\FieldsUI\SelectionUI\" />
+    <Folder Include="FormsUI\FieldsUI\AddressUI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NG.ServiceWorker.Base\NG.ServiceWorker.Base.csproj" />

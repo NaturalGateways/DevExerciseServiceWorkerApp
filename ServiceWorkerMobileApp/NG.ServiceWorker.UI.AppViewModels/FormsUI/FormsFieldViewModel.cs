@@ -18,6 +18,8 @@ namespace NG.ServiceWorker.UI.FormsUI
         {
             switch (formField.InputType)
             {
+                case SwForms.FormFieldInputType.Address:
+                    return new FieldsUI.FormsAddressFieldViewModel(formField);
                 case SwForms.FormFieldInputType.DateTime:
                     return new FieldsUI.FormsDateTimeFieldViewModel(formField);
                 case SwForms.FormFieldInputType.SegueMultiSelection:

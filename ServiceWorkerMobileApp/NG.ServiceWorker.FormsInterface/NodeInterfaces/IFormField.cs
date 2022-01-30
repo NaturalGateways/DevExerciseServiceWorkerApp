@@ -5,6 +5,7 @@ namespace NG.ServiceWorker.SwForms
 {
     public enum FormFieldInputType
     {
+        Address,
         DateTime,
         ReadOnly,
         SegueMultiSelection,

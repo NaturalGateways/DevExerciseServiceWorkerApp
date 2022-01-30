@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <services>
+    <!-- Default implementations -->
     <service type="NG.ServiceWorker.IApiService">
         <implementation type="NG.ServiceWorker.CoreServices.DefaultApiService"/>
     </service>
@@ -33,6 +34,11 @@
     <service type="NG.ServiceWorker.ISqliteService">
         <implementation type="NG.ServiceWorker.CoreServices.SqliteDatabases.DefaultSqliteService"/>
         <implementation flag="UWP" type="NG.ServiceWorker.CoreServices.UwpServices.UwpSqliteService"/>
+    </service>
+    
+    <!-- Multiple implementations -->
+    <service type="NG.ServiceWorker.IGeocoderService">
+        <implementation type="NG.ServiceWorker.CoreServices.Geocoder.Essentials.EssentialsGeocoderService"/>
     </service>
 
     <!-- UI services -->

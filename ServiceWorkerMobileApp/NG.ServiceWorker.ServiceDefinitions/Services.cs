@@ -12,6 +12,8 @@ namespace NG.ServiceWorker
 
         public static IFormsService FormsService { get { return ServiceProvider.GetService<IFormsService>(); } }
 
+        public static IGeocoderService GeocoderService { get { return ServiceProvider.GetService<IGeocoderService>(); } }
+
         public static IHttpService HttpService { get { return ServiceProvider.GetService<IHttpService>(); } }
 
         public static IJsonService JsonService { get { return ServiceProvider.GetService<IJsonService>(); } }
