@@ -5,6 +5,9 @@
     <service type="NG.ServiceWorker.IApiService">
         <implementation type="NG.ServiceWorker.CoreServices.DefaultApiService"/>
     </service>
+    <service type="NG.ServiceWorker.IConfigService">
+        <implementation type="NG.ServiceWorker.CoreServices.DefaultConfigService"/>
+    </service>
     <service type="NG.ServiceWorker.IFileService">
         <implementation type="NG.ServiceWorker.CoreServices.DefaultFileService"/>
     </service>
@@ -38,7 +41,8 @@
     
     <!-- Multiple implementations -->
     <service type="NG.ServiceWorker.IGeocoderService">
-        <implementation type="NG.ServiceWorker.CoreServices.Geocoder.Essentials.EssentialsGeocoderService"/>
+        <!--<implementation type="NG.ServiceWorker.CoreServices.Essentials.EssentialsGeocoderService"/>-->
+        <implementation type="NG.ServiceWorker.CoreServices.GoogleApi.GoogleApiGeocoderService"/>
     </service>
 
     <!-- UI services -->

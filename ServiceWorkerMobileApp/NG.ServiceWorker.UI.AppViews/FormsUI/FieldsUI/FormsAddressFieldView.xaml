@@ -20,15 +20,15 @@
         </StackLayout>
         <Grid ColumnDefinitions="*,Auto" ColumnSpacing="4">
             <Entry Grid.Column="0" Text="{Binding ValueText}" HorizontalOptions="Fill" IsEnabled="{Binding ValueIsEnabled}" ReturnCommand="{Binding SearchCommand}"/>
-            <common:SvgButton Grid.Column="1" SvgName="icon_cross" RenderColour="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}" WidthRequest="20" HeightRequest="20" VerticalOptions="Center"/>
+            <common:SvgButton Grid.Column="1" SvgName="icon_cross" RenderColour="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" Command="{Binding ClearCommand}"/>
         </Grid>
         <Grid BackgroundColor="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}" IsVisible="{Binding GeocoderSuggestionsAreShowing}">
             <StackLayout Orientation="Vertical" Spacing="1" Margin="1">
-                <addressui:FormsAddressSuggestionControl IsVisible="{Binding GeocoderSuggestion1IsShowing}"/>
-                <addressui:FormsAddressSuggestionControl IsVisible="{Binding GeocoderSuggestion2IsShowing}"/>
-                <addressui:FormsAddressSuggestionControl IsVisible="{Binding GeocoderSuggestion3IsShowing}"/>
-                <addressui:FormsAddressSuggestionControl IsVisible="{Binding GeocoderSuggestion4IsShowing}"/>
-                <addressui:FormsAddressSuggestionControl IsVisible="{Binding GeocoderSuggestion5IsShowing}"/>
+                <addressui:FormsAddressSuggestionControl Address="{Binding GeocoderSuggestion1Text}" IsVisible="{Binding GeocoderSuggestion1IsShowing}" ClickCommand="{Binding Suggestion1Command}"/>
+                <addressui:FormsAddressSuggestionControl Address="{Binding GeocoderSuggestion2Text}" IsVisible="{Binding GeocoderSuggestion2IsShowing}" ClickCommand="{Binding Suggestion2Command}"/>
+                <addressui:FormsAddressSuggestionControl Address="{Binding GeocoderSuggestion3Text}" IsVisible="{Binding GeocoderSuggestion3IsShowing}" ClickCommand="{Binding Suggestion3Command}"/>
+                <addressui:FormsAddressSuggestionControl Address="{Binding GeocoderSuggestion4Text}" IsVisible="{Binding GeocoderSuggestion4IsShowing}" ClickCommand="{Binding Suggestion4Command}"/>
+                <addressui:FormsAddressSuggestionControl Address="{Binding GeocoderSuggestion5Text}" IsVisible="{Binding GeocoderSuggestion5IsShowing}" ClickCommand="{Binding Suggestion5Command}"/>
             </StackLayout>
         </Grid>
         <Label Text="{Binding GeocoderErrorText}" IsVisible="{Binding GeocoderErrorIsShowing}" TextColor="{StaticResource Negative}" HorizontalOptions="Fill"/>

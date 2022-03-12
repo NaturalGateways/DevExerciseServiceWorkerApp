@@ -40,6 +40,15 @@ namespace NG.ServiceWorker.CoreServices
 
         #region IApiService implementations
 
+        /// <summary>Getter for a string from an HTTP endpoint.</summary>
+        public string GetString(string url)
+        {
+            lock (m_httpClient)
+            {
+                return m_httpClient.GetStringAsync(url).Result;
+            }
+        }
+
         /// <summary>Getter for a JSON from an HTTP endpoint.</summary>
         public JsonType GetJson<JsonType>(string url)
         {

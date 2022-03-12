@@ -1,22 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace NG.ServiceWorker.CoreServices.Geocoder.Essentials
+using Xamarin.Essentials;
+
+namespace NG.ServiceWorker.CoreServices.Essentials
 {
     public class EssentialsGeocoderService : IGeocoderService
     {
-        #region IGeocoderService implementation
+        #region Suggestion class
 
         /// <summary>Warpper for a suggested address.</summary>
         private class Suggestion : IGeocoderSuggestion
         {
             #region Base
 
+            /// <summary>The location.</summary>
+            private Location m_location = null;
+            /// <summary>The location.</summary>
+            private Placemark m_placemark = null;
+
             /// <summary>Constructor.</summary>
-            public Suggestion(string addressText)
+            public Suggestion(Location location, Placemark placemark)
             {
-                this.DisplayName = addressText;
+                m_location = location;
+                m_placemark = placemark;
+                this.DisplayName = $"{placemark.FeatureName}, {placemark.Locality} {placemark.AdminArea} {placemark.PostalCode}";
             }
 
             #endregion
@@ -34,21 +44,29 @@ namespace NG.ServiceWorker.CoreServices.Geocoder.Essentials
         #region IGeocoderService implementation
 
         /// <summary>Gets a set of suggested addresses from a Geocoder source for a piece of text.</summary>
-        public Task<GeocoderSuggestionFetchResults> GetSuggestionsForTextAsync(string addressText, int maxNum)
+        public async Task<GeocoderSuggestionFetchResults> GetSuggestionsForTextAsync(string addressText, int maxNum)
         {
-            System.Threading.Thread.Sleep(500);
-
-            //return Task.FromResult<GeocoderSuggestionFetchResults>(new GeocoderSuggestionFetchResults { ErrorText = "Not implemented" });
-
-            return Task.FromResult<GeocoderSuggestionFetchResults>(new GeocoderSuggestionFetchResults
+            // Get the locations
+            IEnumerable<Location> locations = await Geocoding.GetLocationsAsync(addressText);
+            if (locations == null)
             {
-                Suggestions = new IGeocoderSuggestion[]
+                return new GeocoderSuggestionFetchResults { ErrorText = "Cannot find any addresses." };
+            }
+
+            // Look up placemarks to create results
+            List<IGeocoderSuggestion> suggestionList = new List<IGeocoderSuggestion>();
+            foreach (Location location in locations)
+            {
+                IEnumerable<Placemark> placemarks = await Geocoding.GetPlacemarksAsync(location);
+                Placemark placemark = placemarks?.FirstOrDefault();
+                if (placemark != null)
                 {
-                    new Suggestion("Alpha"),
-                    new Suggestion("Beta"),
-                    new Suggestion("Gamma")
+                    suggestionList.Add(new Suggestion(location, placemark));
                 }
-            });
+            }
+
+            // Return
+            return new GeocoderSuggestionFetchResults { Suggestions = suggestionList.Take(maxNum).ToArray() };
         }
 
         #endregion

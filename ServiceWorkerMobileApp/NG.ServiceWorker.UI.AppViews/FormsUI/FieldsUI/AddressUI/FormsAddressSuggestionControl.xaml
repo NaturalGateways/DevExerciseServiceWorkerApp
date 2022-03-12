@@ -4,9 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:common="clr-namespace:NG.ServiceWorker.UI;assembly=NG.ServiceWorker.UI.AppControls"
     x:Class="NG.ServiceWorker.UI.FormsUI.FieldsUI.AddressUI.FormsAddressSuggestionControl">
-    <Grid BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}">
-        <Label Text="Example Address" TextColor="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}" Margin="16,8"/>
-        <common:InvisibleButton ShowPressed="{Binding Pressed}"/>
+    <Grid x:Name="BindingTarget" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}">
+        <Label Text="{Binding Address}" TextColor="{AppThemeBinding Light={StaticResource ForegroundLight}, Dark={StaticResource ForegroundDark}}" Margin="16,8"/>
+        <common:InvisibleButton ShowPressed="{Binding Pressed}" Command="{Binding ClickCommand}"/>
         <Grid BackgroundColor="#6fff" IsVisible="{Binding Pressed}"/>
     </Grid>
 </ContentView>

@@ -14,6 +14,26 @@ namespace NG.ServiceWorker.CoreServices
 
         #region IApiService implementations
 
+        /// <summary>Encodes a string to be URL friendly.</summary>
+        public string EncodeUrl(string rawText)
+        {
+            if (string.IsNullOrEmpty(rawText))
+            {
+                return rawText;
+            }
+            string encodedString = rawText;
+            encodedString = encodedString.Replace(" ", "%20");
+            encodedString = encodedString.Replace("[", "%5B");
+            encodedString = encodedString.Replace("]", "%5D");
+            encodedString = encodedString.Replace("{", "%7B");
+            encodedString = encodedString.Replace("}", "%7D");
+            encodedString = encodedString.Replace("\"", "%22");
+            encodedString = encodedString.Replace(":", "%3A");
+            encodedString = encodedString.Replace(",", "%2C");
+            encodedString = encodedString.Replace("#", "%23");
+            return encodedString;
+        }
+
         /// <summary>Getter for a HTTP connection.</summary>
         public IHttpConnection GetConnection(string domainUrl)
         {

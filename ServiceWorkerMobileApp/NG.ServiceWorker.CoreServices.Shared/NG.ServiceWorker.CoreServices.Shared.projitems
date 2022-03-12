@@ -28,6 +28,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Rules\" />
     <Folder Include="$(MSBuildThisFileDirectory)GeocoderImplementations\" />
     <Folder Include="$(MSBuildThisFileDirectory)GeocoderImplementations\Essentials\" />
+    <Folder Include="$(MSBuildThisFileDirectory)GeocoderImplementations\GoogleApi\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultApiService.cs" />
@@ -71,5 +72,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Rules\ConditionalRule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FormTypes\FormsIO\Rules\IRuleEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GeocoderImplementations\Essentials\EssentialsGeocoderService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GeocoderImplementations\GoogleApi\GoogleApiGeocoderService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultImplementations\DefaultConfigService.cs" />
   </ItemGroup>
 </Project>
